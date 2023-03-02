@@ -2,6 +2,19 @@
 
 ### Bootstrapping
 
-sudo dnf install neovim nodejs gcc-c++ golang                                                                                                             
+```
+sudo dnf install neovim nodejs gcc-c++ golang
 
-cp dotfiles/.config/nvim ~/.config/
+ln -sf ~/devel/dotfiles/.vimrc .vimrc
+ln -sf ~/devel/dotfiles/.gitignore .gitignore
+ln -sf ~/devel/dotfiles/.gitconfig .gitconfig
+ln -sf ~/devel/dotfiles/.bashrc .bashrc
+ln -sf ~/devel/dotfiles/.config/nvim .config/nvim
+```
+### Fonts
+
+Download SourceCodePro:
+
+https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCodePro.zip
+
+unpack in ~/.local/share/fonts/
