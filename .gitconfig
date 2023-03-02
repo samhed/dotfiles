@@ -1,0 +1,27 @@
+[user]
+    name = Samuel Mannehed
+    email = samuel@cendio.se
+[core]
+    pager = less -+X
+    excludesFile = ~/.gitignore
+[color]
+    ui = true
+[github]
+    user = samhed
+    token = 2de64371070e9eb3c49f9defa06a6da05668d4fd
+[credential]
+    helper = cache
+[diff]
+    algorithm = patience
+    colorMoved = true
+[interactive]
+    diffFilter = /usr/share/git-core/contrib/diff-highlight
+[pager]
+    diff = "/usr/share/git-core/contrib/diff-highlight | less -+X"
+    show = "/usr/share/git-core/contrib/diff-highlight | less -+X"
+[svn]
+    rmdir = true
+[commit]
+    verbose = true
+[log]
+    decorate = auto
