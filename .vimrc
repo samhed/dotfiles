@@ -699,7 +699,18 @@ require('telescope').load_extension('fzf')
 require("telescope").load_extension("ui-select")
 
 local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
+
+local project_files = function()
+  local opts = {} -- define here if you want to define something
+  vim.fn.system('git rev-parse --is-inside-work-tree')
+  if vim.v.shell_error == 0 then
+    telescope.git_files(opts)
+  else
+    telescope.find_files(opts)
+  end
+end
+
+vim.keymap.set('n', '<leader>ff', project_files, {})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {})
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
