@@ -1,11 +1,3 @@
-" -------------
-" BOOTSTRAPPING
-" -------------
-"
-" sudo dnf install neovim nodejs gcc-c++ golang
-" cp dotfiles/.config/nvim ~/.config/
-" cp dotfiles/.vimrc ~/.vimrc
-"
 if ! empty(globpath(&rtp, 'autoload/plug.vim'))
   call plug#begin('~/.vim/plugged')
   " Coc will use pycodestyle as a py-linter, exceptions or other config
