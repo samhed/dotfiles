@@ -670,6 +670,9 @@ require('telescope').setup {
         i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
       },
     },
+    find_files = {
+        hidden = true,
+    },
   },
   extensions = {
     fzf = {
