@@ -665,6 +665,7 @@ require('telescope').setup {
     },
     mappings = {
       i = {
+        ["<esc>"] = require('telescope.actions').close,
         ["<C-w>"] = 'which_key',
         ["<C-Down>"] = require('telescope.actions').cycle_history_next,
         ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
