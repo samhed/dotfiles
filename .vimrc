@@ -45,6 +45,9 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
     " gitsigns shows git diffs in the sign column
     Plug 'lewis6991/gitsigns.nvim'
 
+    " Merge conflicts
+    Plug 'akinsho/git-conflict.nvim'
+
     " Required by UFO
     Plug 'kevinhwang91/promise-async'
 
@@ -626,6 +629,12 @@ require('onedark').setup()
 ------ gitsigns --------
 
 require('gitsigns').setup()
+
+------ git-conflict --------
+
+require('git-conflict').setup {
+  disable_diagnostics = true,
+}
 
 ------ telescope -------
 
