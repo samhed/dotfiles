@@ -735,6 +735,78 @@ require("toggleterm").setup {
   },
 }
 
+------ lualine -----
+
+-- onedark 'deep' bg1 & orange
+vim.cmd "highlight bc1_s guifg=#abb2bf guibg=#21283b"
+vim.cmd "highlight bc1_m guifg=#dd9046 guibg=#21283b"
+vim.cmd "highlight bc1_e guifg=#1a212e guibg=#21283b"
+
+-- onedark 'deep' bg0 & blue
+vim.cmd "highlight bc2_s guifg=#abb2bf guibg=#1a212e"
+vim.cmd "highlight bc2_m guifg=#61afef guibg=#1a212e"
+vim.cmd "highlight bc2_e guifg=#1a212e guibg=#1a212e"
+
+-- onedark 'deep' bg0 & cyan
+vim.cmd "highlight bc3_s guifg=#abb2bf guibg=#1a212e"
+vim.cmd "highlight bc3_m guifg=#56b6c2 guibg=#1a212e"
+vim.cmd "highlight bc3_e guifg=#1a212e guibg=#1a212e"
+
+local symbols = {
+    { 'bc1_s', '  ', 'bc1_m', 'bc1_e', '' },
+    { 'bc2_s', ' 󰊕 ', 'bc2_m', 'bc2_e', ' %##%#bc2_e#' },
+    { 'bc3_s', '  ', 'bc3_m', 'bc3_e', '%##%#bc3_e#' },
+}
+
+-- show breadcrumbs if available
+local function breadcrumbs()
+  local items = vim.b.coc_nav
+  local t = {''}
+  for k,v in ipairs(items) do
+    setmetatable(v, { __index = function(table, key)
+      return ''
+    end})
+    t[#t+1] = '%#' .. (symbols[k][1] or 'Normal') .. '#' ..
+              (symbols[k][2] or '') ..
+              '%#' .. (symbols[k][3] or 'Normal') .. '#' ..
+              (v.name or '')
+    if next(items,k) ~= nil then
+      t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' .. (symbols[k][5] or '')
+    end
+  end
+  return table.concat(t)
+end
+
+require("lualine").setup {
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {'searchcount'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  tabline = {},
+  winbar = {},
+  -- winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = {'filetype'},
+  --   lualine_y = {'filename'},
+  --   lualine_z = {breadcrumbs}
+  -- },
+  inactive_winbar = {},
+}
+
 ------ notify ------
 
 vim.notify = require("notify")
@@ -820,79 +892,10 @@ function coc_notify(msg, level)
   vim.notify(msg, level, notify_opts)
 end
 
------- lualine -----
-
--- onedark 'deep' bg1 & orange
-vim.cmd "highlight bc1_s guifg=#abb2bf guibg=#21283b"
-vim.cmd "highlight bc1_m guifg=#dd9046 guibg=#21283b"
-vim.cmd "highlight bc1_e guifg=#1a212e guibg=#21283b"
-
--- onedark 'deep' bg0 & blue
-vim.cmd "highlight bc2_s guifg=#abb2bf guibg=#1a212e"
-vim.cmd "highlight bc2_m guifg=#61afef guibg=#1a212e"
-vim.cmd "highlight bc2_e guifg=#1a212e guibg=#1a212e"
-
--- onedark 'deep' bg0 & cyan
-vim.cmd "highlight bc3_s guifg=#abb2bf guibg=#1a212e"
-vim.cmd "highlight bc3_m guifg=#56b6c2 guibg=#1a212e"
-vim.cmd "highlight bc3_e guifg=#1a212e guibg=#1a212e"
-
-local symbols = {
-    { 'bc1_s', '  ', 'bc1_m', 'bc1_e', '' },
-    { 'bc2_s', ' 󰊕 ', 'bc2_m', 'bc2_e', ' %##%#bc2_e#' },
-    { 'bc3_s', '  ', 'bc3_m', 'bc3_e', '%##%#bc3_e#' },
-}
-
--- show breadcrumbs if available
-local function breadcrumbs()
-  local items = vim.b.coc_nav
-  local t = {''}
-  for k,v in ipairs(items) do
-    setmetatable(v, { __index = function(table, key)
-      return ''
-    end})
-    t[#t+1] = '%#' .. (symbols[k][1] or 'Normal') .. '#' ..
-              (symbols[k][2] or '') ..
-              '%#' .. (symbols[k][3] or 'Normal') .. '#' ..
-              (v.name or '')
-    if next(items,k) ~= nil then
-      t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' .. (symbols[k][5] or '')
-    end
-  end
-  return table.concat(t)
-end
-
-require("lualine").setup {
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {{'filename', path = 1}},
-    lualine_x = {'searchcount'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {{'filename', path = 1}},
-    lualine_x = {},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  tabline = {},
-  winbar = {},
-  -- winbar = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {'filetype'},
-  --   lualine_y = {'filename'},
-  --   lualine_z = {breadcrumbs}
-  -- },
-  inactive_winbar = {},
-}
-
 EOF
+
+" ---------- END OF LUA CONF -----------
+
 
 function! s:DiagnosticNotify() abort
   let l:info = get(b:, 'coc_diagnostic_info', {})
