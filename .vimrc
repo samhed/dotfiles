@@ -235,6 +235,12 @@ endif
 " endif
 autocmd BufRead *term* execute "normal G$"|startinsert!
 
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 " Enable file type detection and set matching indent rules
 if has("autocmd")
     filetype plugin indent on
