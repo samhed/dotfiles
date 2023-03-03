@@ -224,9 +224,6 @@ if ! has('gui_running')
 endif
 
 " Enter append mode for :term
-" if has("nvim")
-"     autocmd TermOpen * startinsert
-" endif
 autocmd BufRead *term* execute "normal G$"|startinsert!
 
 " Return to last edit position when opening files (You want this!)
@@ -338,23 +335,6 @@ endfunction "}}}
 " Always start on the first line of git commit message
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
-" " Fold untracked files in git commit messages
-" autocmd FileType gitcommit call FoldUntrackedGitFiles()
-" function FoldUntrackedGitFiles()
-"     " Find the line that starts with '# Untracked files'
-"     let startLine=search("# Untracked files:", "nw")
-
-"     " Find the line that starts with '# ---------------'
-"     let endLine=search("# ----------------", "nw")
-
-"     " change foldmethod to manual
-"     setlocal foldenable
-"     setlocal foldmethod=manual
-
-"     " fold between startLine and endLine
-"     exe startLine . ',' . endLine . 'fo'
-" endfunction
-
 if exists('g:plugs["vim-fugitive"]')
   " Delete hidden fugitive buffers
   autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -362,9 +342,6 @@ if exists('g:plugs["vim-fugitive"]')
     \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
     \   nnoremap <buffer> .. :edit %:h<CR> |
     \ endif
-
-  " Don't highlight leading whitespace in Git windows
-  " autocmd user FugitiveObject * call RemoveWhitespaceHighlightForGit()
 
   function! RemoveWhitespaceHighlightForGit()
     hi link ExtraWhitespace NONE
