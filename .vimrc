@@ -104,6 +104,9 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
     " Fancy inputs and selects
     " Plug 'stevearc/dressing.nvim'
 
+    " Highlight indentations
+    Plug 'lukas-reineke/indent-blankline.nvim'
+
     " Required by noice
     Plug 'MunifTanjim/nui.nvim'
 
@@ -830,6 +833,13 @@ require("lualine").setup {
 ------ noice ------
 
 require("noice").setup()
+
+------ blankline ------
+
+require("indent_blankline").setup {
+  use_treesitter = true,
+  show_first_indent_level = false,
+}
 
 ------ notify ------
 
