@@ -36,6 +36,9 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
   Plug 'dstein64/vim-startuptime'
 
   if (has("nvim"))
+    " Faster startup and file association
+    Plug 'nathom/filetype.nvim'
+
     " CoC for LSP support & Tab completion
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocUpdate' }
 
@@ -570,6 +573,10 @@ endif
 
 if (has("nvim"))
 lua << EOF
+
+----- filetype ------
+
+require('filetype').setup {}
 
 ----- treesitter -------
 
