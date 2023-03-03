@@ -349,28 +349,27 @@ if exists('g:plugs["vim-fugitive"]')
 
   " Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
   function GitFugitiveToggle(buffer_name, pretty_name, cmd)
-      let l:buf_nr = -1
-      for buf in getbufinfo()
-          " if buffer name includes what we're looking for
-          if stridx(buf.name, a:buffer_name) >= 0
-              let l:buf_nr = buf.bufnr
-          endif
-      endfor
-      if l:buf_nr >= 0
-          " buffer exists
-          if bufwinnr(l:buf_nr) >= 0
-              " it's active, wipe the buffer
-              execute "bw! " . l:buf_nr
-              call v:lua.git_notify(a:cmd, "Closed " . a:pretty_name)
-          else
-              " it's not active, switch to it
-              execute "vert sb" . l:buf_nr
-              call v:lua.git_notify(a:cmd, "Switched to " . a:pretty_name)
-          endif
-      else
-          execute a:cmd
-          call v:lua.git_notify(a:cmd, "Opened " . a:pretty_name)
+    let l:buf_nr = -1
+    for buf in getbufinfo()
+      " if buffer name includes what we're looking for
+      if stridx(buf.name, a:buffer_name) >= 0
+        let l:buf_nr = buf.bufnr
       endif
+    endfor
+    if l:buf_nr > 0
+      if bufwinnr(l:buf_nr) > 0
+        " it is an active window, close and we're done
+        execute "bw! " . l:buf_nr
+        call v:lua.git_notify(a:cmd, "Closed " . a:pretty_name)
+        return
+      else
+        " the window wasn't active, close and then open a new one
+        execute "bw! " . l:buf_nr
+      endif
+    endif
+    " open a new one
+    execute a:cmd
+    call v:lua.git_notify(a:cmd, "Opened " . a:pretty_name)
   endfunction
 
   " Toggle git blame current file (Ctrl+b)
