@@ -104,6 +104,12 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
     " Fancy inputs and selects
     " Plug 'stevearc/dressing.nvim'
 
+    " Required by noice
+    Plug 'MunifTanjim/nui.nvim'
+
+    " New GUI for messages, cmdline and popupmenu
+    Plug 'folke/noice.nvim'
+
     endif
   call plug#end()
 endif
@@ -820,6 +826,10 @@ require("lualine").setup {
   -- },
   inactive_winbar = {},
 }
+
+------ noice ------
+
+require("noice").setup()
 
 ------ notify ------
 
