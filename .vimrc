@@ -605,11 +605,11 @@ lua << EOF
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-      "c", "cpp", "python",
-      "css", "html", "javascript", "json",
-      "bash", "make", "markdown", "rst", "diff",
-      "git_rebase", "gitattributes", "gitcommit", "gitignore",
-      "lua", "vim", -- "help",
+    "c", "cpp", "python",
+    "css", "html", "javascript", "json",
+    "bash", "make", "markdown", "rst", "diff",
+    "git_rebase", "gitattributes", "gitcommit", "gitignore",
+    "lua", "vim", -- "help",
   },
   sync_install = false,
   auto_install = true,
@@ -665,8 +665,8 @@ require('telescope').setup {
     -- `hidden = true` is not supported in text grep commands.
     vimgrep_arguments = vimgrep_arguments,
     file_ignore_patterns = {
-        'node_modules',
-        'buildarea',
+      'node_modules',
+      'buildarea',
     },
     history = {
       path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
@@ -763,9 +763,9 @@ vim.cmd "highlight bc3_m guifg=#56b6c2 guibg=#1a212e"
 vim.cmd "highlight bc3_e guifg=#1a212e guibg=#1a212e"
 
 local symbols = {
-    { 'bc1_s', '  ', 'bc1_m', 'bc1_e', '' },
-    { 'bc2_s', ' 󰊕 ', 'bc2_m', 'bc2_e', ' %##%#bc2_e#' },
-    { 'bc3_s', '  ', 'bc3_m', 'bc3_e', '%##%#bc3_e#' },
+  { 'bc1_s', '  ', 'bc1_m', 'bc1_e', '' },
+  { 'bc2_s', ' 󰊕 ', 'bc2_m', 'bc2_e', ' %##%#bc2_e#' },
+  { 'bc3_s', '  ', 'bc3_m', 'bc3_e', '%##%#bc3_e#' },
 }
 
 -- show breadcrumbs if available
