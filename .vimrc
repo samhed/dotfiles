@@ -651,6 +651,7 @@ require('telescope').setup {
     file_ignore_patterns = {
         'node_modules',
         'buildarea',
+        '.git'
     },
     history = {
       path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
