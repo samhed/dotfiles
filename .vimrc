@@ -121,15 +121,7 @@ if (empty($TMUX))
   endif
 endif
 
-" let g:nvcode_termcolors=256
-" syntax on
-" colorscheme onedark
-
-" if exists('g:plugs["nvcode-color-schemes.vim"]')
 if exists('g:plugs["onedark.nvim"]')
-  " let g:onedark_hide_endofbuffer=1
-  " let g:onedark_terminal_italics=1
-  " colorscheme onenord
 
   let g:onedark_config = {
     \ 'style': 'deep',
