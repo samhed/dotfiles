@@ -333,7 +333,7 @@ endfunction "}}}
 " ----------------------------
 
 " Always start on the first line of git commit message
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 
 if exists('g:plugs["vim-fugitive"]')
   " Delete hidden fugitive buffers
