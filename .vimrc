@@ -652,12 +652,21 @@ require('gitsigns').setup()
 
 ------ telescope -------
 
+local telescopeConfig = require("telescope.config")
+
+-- Clone the default Telescope configuration
+local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
+table.insert(vimgrep_arguments, "--glob") -- Don't search in the '.git' directory
+table.insert(vimgrep_arguments, "!**/.git/*")
+
 require('telescope').setup {
   defaults = {
+    -- `hidden = true` is not supported in text grep commands.
+    vimgrep_arguments = vimgrep_arguments,
     file_ignore_patterns = {
         'node_modules',
         'buildarea',
-        '.git'
     },
     history = {
       path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
@@ -679,7 +688,8 @@ require('telescope').setup {
       },
     },
     find_files = {
-        hidden = true,
+      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
     },
   },
   extensions = {
