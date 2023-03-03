@@ -93,9 +93,6 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
     " Fancy notifications
     Plug 'rcarriga/nvim-notify'
 
-    " Fancy inputs and selects
-    " Plug 'stevearc/dressing.nvim'
-
     " Highlight indentations
     Plug 'lukas-reineke/indent-blankline.nvim'
 
