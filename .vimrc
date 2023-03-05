@@ -4,7 +4,7 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
   " for pycodestyle is found here: ~/.config/pycodestyle
 
   " Auto close parens & brackets etc.
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
 
   " Javascript syntax
   Plug 'jelera/vim-javascript-syntax'
