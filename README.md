@@ -6,6 +6,7 @@
 sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel
 
 ln -sf ~/devel/dotfiles/.config/nvim ~/.config/nvim
+ln -sf ~/devel/dotfiles/.config/pycodestyle ~/.config/pycodestyle
 ln -sf ~/devel/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/devel/dotfiles/.gitignore ~/.gitignore
 ln -sf ~/devel/dotfiles/.gitconfig ~/.gitconfig
