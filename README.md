@@ -3,7 +3,7 @@
 ### Bootstrapping
 
 ```
-sudo dnf install neovim nodejs gcc-c++ golang
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel
 
 ln -sf ~/devel/dotfiles/.vimrc .vimrc
 ln -sf ~/devel/dotfiles/.gitignore .gitignore
