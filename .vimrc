@@ -117,16 +117,6 @@ endif
 "  ColorScheme stuff
 " -------------------
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
 if exists('g:plugs["onedark.nvim"]')
 
   let g:onedark_config = {
@@ -576,6 +566,8 @@ endif
 
 if (has("nvim"))
 lua << EOF
+
+vim.opt.termguicolors = true
 
 ----- filetype ------
 
