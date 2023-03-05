@@ -17,8 +17,8 @@ if ! empty(globpath(&rtp, 'autoload/plug.vim'))
   " rhubarb for connecting to github
   Plug 'tpope/vim-rhubarb'
 
-  " tagbar shows the current function etc.
-  Plug 'majutsushi/tagbar'
+  " symbols outline shows the current function etc.
+  Plug 'simrat39/symbols-outline.nvim'
 
   " comment out stuff with g-c-c
   Plug 'tpope/vim-commentary'
