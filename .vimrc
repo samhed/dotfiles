@@ -893,7 +893,7 @@ function! s:DiagnosticNotify() abort
   if empty(l:info) | return '' | endif
   let l:msgs = []
   let l:level = 'info'
-   if get(l:info, 'warning', 0)
+  if get(l:info, 'warning', 0)
     let l:level = 'warn'
   endif
   if get(l:info, 'error', 0)
