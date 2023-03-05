@@ -855,6 +855,7 @@ function coc_status_notify(msg, level)
   -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
   if coc_status_record ~= {} then
     notify_opts["replace"] = coc_status_record.id
+    msg = "id " .. coc_staus_record.id .. " : " ..msg
   end
   coc_status_record = vim.notify(msg, level, notify_opts)
 end
@@ -870,6 +871,7 @@ function coc_diag_notify(msg, level)
   -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
   if coc_diag_record ~= {} then
     notify_opts["replace"] = coc_diag_record.id
+    msg = "id " .. coc_staus_record.id .. " : " ..msg
   end
   coc_diag_record = vim.notify(msg, level, notify_opts)
 end
