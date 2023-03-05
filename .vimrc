@@ -819,7 +819,6 @@ require("indent_blankline").setup {
 vim.notify = require("notify")
 require('notify').setup()
 
--- local git_record = {}
 function git_notify(cmd, text)
   local notify_opts = {
     title = text,
@@ -827,18 +826,9 @@ function git_notify(cmd, text)
     render = 'compact',
     hide_from_history = true,
     timeout = 1,
-    -- on_close = reset_git_record,
   }
-  -- if git_record ~= {} then
-  --   notify_opts['replace'] = git_record.id
-  -- end
-  -- git_record = vim.notify(cmd, 'warn', notify_opts)
   vim.notify(cmd, 'warn', notify_opts)
 end
-
--- function reset_git_record(window)
---   git_record = {}
--- end
 
 function notify_output(command, opts)
   local output = ""
