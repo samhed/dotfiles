@@ -1,133 +1,6 @@
-if ! empty(globpath(&rtp, 'autoload/plug.vim'))
-  call plug#begin('~/.vim/plugged')
-  " Coc will use pycodestyle as a py-linter, exceptions or other config
-  " for pycodestyle is found here: ~/.config/pycodestyle
-
-  " Auto close parens & brackets etc.
-  Plug 'windwp/nvim-autopairs'
-
-  " Javascript syntax
-  Plug 'jelera/vim-javascript-syntax'
-
-  " Makes word motions work for CamelCase and snake_case
-  Plug 'chaoren/vim-wordmotion'
-
-  " fugitive is a git plugin
-  Plug 'tpope/vim-fugitive'
-  " rhubarb for connecting to github
-  Plug 'tpope/vim-rhubarb'
-
-  " symbols outline shows the current function etc.
-  Plug 'simrat39/symbols-outline.nvim'
-
-  " comment out stuff with g-c-c
-  Plug 'tpope/vim-commentary'
-
-  " Auto detect indentation
-  Plug 'tpope/vim-sleuth'
-
-  " UNIX shell commands from vim
-  Plug 'tpope/vim-eunuch'
-
-  " Colorify color-hex codes
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-  " measure startup time :StartupTime
-  Plug 'dstein64/vim-startuptime'
-
-  if (has("nvim"))
-    " Faster startup and file association
-    Plug 'nathom/filetype.nvim'
-
-    " CoC for LSP support & Tab completion
-    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocUpdate' }
-
-    " gitsigns shows git diffs in the sign column
-    Plug 'lewis6991/gitsigns.nvim'
-
-    " Merge conflicts
-    Plug 'akinsho/git-conflict.nvim'
-
-    " Required by UFO
-    Plug 'kevinhwang91/promise-async'
-
-    " Better folding
-    Plug 'kevinhwang91/nvim-ufo'
-
-    " required by Lualine
-    Plug 'nvim-tree/nvim-web-devicons'
-
-    " Statusline
-    Plug 'nvim-lualine/lualine.nvim'
-
-    " Nice colorscheme (no proper highligts for Python)
-    Plug 'navarasu/onedark.nvim'
-
-    " Treesitter colorscheme
-    " Plug 'rmehri01/onenord.nvim'
-
-    " treesitter colorscheme (css not working in onedark)
-    " Plug 'christianchiarulli/nvcode-color-schemes.vim'
-
-    " Better syntax highlighting possibilities
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-    " Utility Lue functions (dependency of telescope)
-    Plug 'nvim-lua/plenary.nvim'
-
-    " fuzzy finder for telescope
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-
-    " file finder
-    Plug 'nvim-telescope/telescope.nvim'
-
-    " Required for telescope smart history
-    Plug 'kkharji/sqlite.lua', { 'do': 'mkdir -p ~/.local/share/nvim/databases' }
-
-    " Smart history for telescope
-    Plug 'nvim-telescope/telescope-smart-history.nvim'
-
-    " Smart history for telescope
-    Plug 'nvim-telescope/telescope-ui-select.nvim'
-
-    " Required by toggleterm
-    Plug 'nvim-lua/popup.nvim'
-
-    " Toggle terminal
-    Plug 'akinsho/nvim-toggleterm.lua'
-
-    " Fancy notifications
-    Plug 'rcarriga/nvim-notify'
-
-    " Highlight indentations
-    Plug 'lukas-reineke/indent-blankline.nvim'
-
-    " Required by noice
-    Plug 'MunifTanjim/nui.nvim'
-
-    " New GUI for messages, cmdline and popupmenu
-    Plug 'folke/noice.nvim'
-
-    endif
-  call plug#end()
-endif
-
-
 " -------------------
 "  ColorScheme stuff
 " -------------------
-
-if exists('g:plugs["onedark.nvim"]')
-
-  let g:onedark_config = {
-    \ 'style': 'deep',
-  \}
-  colorscheme onedark
-endif
-
-if exists('g:plugs["vim-hexokinase"]')
-  let g:Hexokinase_highlighters = [ 'virtual' ]
-endif
 
 " Dark gray vertical split  line (with space char)
 " set fillchars=vert:\ 
@@ -331,7 +204,7 @@ endfunction "}}}
 " Always start on the first line of git commit message
 autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 
-if exists('g:plugs["vim-fugitive"]')
+"if fugitive installed:
   " Delete hidden fugitive buffers
   autocmd BufReadPost fugitive://* set bufhidden=delete
   autocmd User fugitive
@@ -383,13 +256,13 @@ if exists('g:plugs["vim-fugitive"]')
   " Toggle git log for current file (Ctrl+k)
   nnoremap <silent> <C-k> :call
     \ GitFugitiveToggle("tmp/nvim.", "git log for current file", "vert Git log --decorate %")<CR>
-endif
+"end if fugitive
 
 " -----------
 "  CoC stuff
 " -----------
 
-if exists('g:plugs["coc.nvim"]') && has("nvim")
+"if coc installed:
 
   " Don't make the cursor transparent
   let g:coc_disable_transparent_cursor = 1
@@ -408,8 +281,8 @@ if exists('g:plugs["coc.nvim"]') && has("nvim")
 
   " Make <CR> to accept selected completion item or notify coc.nvim to format
   " <C-g>u breaks current undo, please make your own choice.
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+  "                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   function! CheckBackspace() abort
     let col = col('.') - 1
@@ -557,7 +430,7 @@ if exists('g:plugs["coc.nvim"]') && has("nvim")
   " nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
   " Resume latest coc list.
   " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-endif
+"end if coc
 
 " ---------------
 "  lua config
@@ -569,38 +442,273 @@ lua << EOF
 
 vim.opt.termguicolors = true
 
------ filetype ------
+require("lazy").setup({
 
-require('filetype').setup {}
-
------ treesitter -------
-
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "c", "cpp", "python",
-    "css", "html", "javascript", "json",
-    "bash", "make", "markdown", "rst", "diff",
-    "git_rebase", "gitattributes", "gitcommit", "gitignore",
-    "lua", "vim", -- "help",
+  -- Auto close parens & brackets etc.
+  { "windwp/nvim-autopairs",
+    opts = { check_ts = true },
   },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    disable = { "help" },
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true,
-    disable = { "css" }
-  }
-}
 
----------- UFO ---------
+  -- Javascript syntax
+  { "jelera/vim-javascript-syntax",
+    ft = "JavaScript",
+  },
+
+  -- symbols outline shows the current function etc.
+  { "simrat39/symbols-outline.nvim",
+    config = true,
+  },
+
+  -- Makes word motions work for CamelCase and snake_case
+  { "chaoren/vim-wordmotion" },
+
+  -- fugitive is a git plugin
+  { "tpope/vim-fugitive" },
+
+  -- rhubarb for connecting to github
+  { "tpope/vim-rhubarb" },
+
+  -- comment out stuff with g-c-c
+  { "tpope/vim-commentary" },
+
+  -- Auto detect indentation
+  { "tpope/vim-sleuth" },
+
+  -- UNIX shell commands from vim
+  { "tpope/vim-eunuch" },
+
+  -- Colorify color-hex codes
+  { "rrethy/vim-hexokinase",
+    build = "make hexokinase",
+  },
+
+  -- Faster startup and file association
+  { "nathom/filetype.nvim",
+    config = true,
+  },
+
+  -- CoC for LSP support & Tab completion
+  { "neoclide/coc.nvim",
+    branch = "release",
+    build = ":CocUpdate",
+    -- Coc will use pycodestyle as a py-linter, exceptions or other config
+    -- for pycodestyle is found here: ~/.config/pycodestyle
+  },
+
+  -- gitsigns shows git diffs in the sign column
+  { "lewis6991/gitsigns.nvim",
+    config = true,
+  },
+
+  -- Merge conflicts
+  { "akinsho/git-conflict.nvim",
+    opts = { disable_diagnostics = true },
+  },
+
+  -- Better folding
+  { "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      "nvim-treesitter",
+    },
+    config = function()
+      require('ufo').setup()
+    end,
+  },
+
+  -- Statusline
+  { "nvim-lualine/lualine.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = {
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filetype', {'filename', path = 1}},
+        lualine_x = {'searchcount'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {{'filename', path = 1}},
+        lualine_x = {},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+      tabline = {},
+      winbar = {}, -- winbar buggy with fugitive (see https://github.com/nvim-lualine/lualine.nvim/issues/948)
+      -- winbar = {
+      --   lualine_a = {},
+      --   lualine_b = {},
+      --   lualine_c = {},
+      --   lualine_x = {'filetype'},
+      --   lualine_y = {'filename'},
+      --   lualine_z = {breadcrumbs}
+      -- },
+      inactive_winbar = {},
+    },
+  },
+
+  -- Nice colorscheme (no proper highligts for Python)
+  { "navarasu/onedark.nvim",
+    config = function()
+      require("onedark").setup({
+        style = "deep",
+      })
+      vim.cmd([[colorscheme onedark]])
+    end,
+  },
+
+  -- Better syntax highlighting possibilities
+  { "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    opts = {
+      ensure_installed = {
+        "c", "cpp", "python",
+        "css", "html", "javascript", "json",
+        "bash", "make", "markdown", "markdown_inline", "rst",
+        "git_rebase", "gitattributes", "gitcommit", "gitignore",
+        "diff", "regex", "lua", "vim", -- "help",
+      },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        disable = { "help" },
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+      },
+      indent = {
+        enable = true,
+        disable = { "css" }
+      }
+    },
+  },
+
+  -- fuzzy finder for telescope
+  { "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+  },
+
+  -- file / code finder
+  { "nvim-telescope/telescope.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      -- Clone the default Telescope configuration
+      local telescopeConfig = require("telescope.config")
+      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
+      table.insert(vimgrep_arguments, "--glob") -- Don't search in the '.git' directory
+      table.insert(vimgrep_arguments, "!**/.git/*")
+
+      require('telescope').setup {
+        defaults = {
+          -- `hidden = true` is not supported in text grep commands.
+          vimgrep_arguments = vimgrep_arguments,
+          file_ignore_patterns = {
+            'node_modules',
+            'buildarea',
+          },
+          history = {
+            path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+            limit = 100,
+          },
+          mappings = {
+            i = {
+              ["<esc>"] = require('telescope.actions').close,
+              ["<C-w>"] = 'which_key',
+              ["<C-Down>"] = require('telescope.actions').cycle_history_next,
+              ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+            },
+          },
+        },
+        pickers = {
+          live_grep = {
+            mappings = {
+              i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
+            },
+          },
+          find_files = {
+            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                             -- the default case_mode is "smart_case"
+          },
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {}
+          },
+        },
+      }
+      require('telescope').load_extension('smart_history')
+      require('telescope').load_extension('fzf')
+      require("telescope").load_extension("ui-select")
+    end,
+  },
+
+  -- Smart history for telescope
+  { "nvim-telescope/telescope-smart-history.nvim",
+    dependencies = {
+      { "kkharji/sqlite.lua",
+        build = "mkdir -p ~/.local/share/nvim/databases",
+      },
+    },
+  },
+
+  -- Use telescope UI for select
+  { "nvim-telescope/telescope-ui-select.nvim" },
+
+  -- Toggle terminal
+  { "akinsho/nvim-toggleterm.lua",
+    dependencies = "nvim-lua/popup.nvim",
+    opts = {
+      open_mapping = [[<c-t>]], -- toggle terminal with Ctrl-t
+      insert_mappings = true, -- open mapping applies in insert mode
+      terminal_mappings = true, -- open mapping applies in the opened terminals
+      direction = 'float',
+      float_opts = {
+        border = 'curved',
+        width = function()
+          return math.floor(vim.o.columns * 0.7)
+        end,
+        height = 50,
+        winblend = 10,
+      },
+    },
+  },
+
+  -- Fancy notifications
+  { "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require("notify")
+      require('notify').setup()
+    end,
+  },
+
+  -- Highlight indentations
+  { "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      use_treesitter = true,
+      show_first_indent_level = false,
+    },
+  },
+
+  -- New GUI for messages, cmdline and popupmenu
+  { "folke/noice.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    config = true
+  },
+})
 
 vim.o.foldcolumn = '0' -- '0' is not bad
 vim.o.foldnestmax = 1 -- same number as foldcolumn to hide numbers
@@ -611,84 +719,7 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
-require('ufo').setup()
-
--------- theme ---------
-
-require('onedark').setup()
-
------- gitsigns --------
-
-require('gitsigns').setup()
-
------- git-conflict --------
-
-require('git-conflict').setup {
-  disable_diagnostics = true,
-}
-
------- telescope -------
-
-local telescopeConfig = require("telescope.config")
-
--- Clone the default Telescope configuration
-local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
-table.insert(vimgrep_arguments, "--glob") -- Don't search in the '.git' directory
-table.insert(vimgrep_arguments, "!**/.git/*")
-
-require('telescope').setup {
-  defaults = {
-    -- `hidden = true` is not supported in text grep commands.
-    vimgrep_arguments = vimgrep_arguments,
-    file_ignore_patterns = {
-      'node_modules',
-      'buildarea',
-    },
-    history = {
-      path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
-      limit = 100,
-    },
-    mappings = {
-      i = {
-        ["<esc>"] = require('telescope.actions').close,
-        ["<C-w>"] = 'which_key',
-        ["<C-Down>"] = require('telescope.actions').cycle_history_next,
-        ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
-      },
-    },
-  },
-  pickers = {
-    live_grep = {
-      mappings = {
-        i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
-      },
-    },
-    find_files = {
-      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-    },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    },
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown {}
-    },
-  },
-}
-require('telescope').load_extension('smart_history')
-require('telescope').load_extension('fzf')
-require("telescope").load_extension("ui-select")
-
 local telescope = require('telescope.builtin')
-
 local project_files = function()
   local opts = {} -- define here if you want to define something
   vim.fn.system('git rev-parse --is-inside-work-tree')
@@ -698,7 +729,6 @@ local project_files = function()
     telescope.find_files(opts)
   end
 end
-
 vim.keymap.set('n', '<leader>ff', project_files, {})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {})
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {})
@@ -706,24 +736,7 @@ vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
 vim.keymap.set('n', '<F5>', telescope.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
 
------- toggleterm ------
-
-require("toggleterm").setup {
-  open_mapping = [[<c-t>]], -- toggle terminal with Ctrl-t
-  insert_mappings = true, -- open mapping applies in insert mode
-  terminal_mappings = true, -- open mapping applies in the opened terminals
-  direction = 'float',
-  float_opts = {
-    border = 'curved',
-    width = function()
-        return math.floor(vim.o.columns * 0.7)
-    end,
-    height = 50,
-    winblend = 10,
-  },
-}
-
------- lualine -----
+---- breadcrumbs in lualine ------
 
 -- onedark 'deep' bg1 & orange
 vim.cmd "highlight bc1_s guifg=#abb2bf guibg=#21283b"
@@ -765,51 +778,16 @@ local function breadcrumbs()
   return table.concat(t)
 end
 
-require("lualine").setup {
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filetype', {'filename', path = 1}},
-    lualine_x = {'searchcount'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {{'filename', path = 1}},
-    lualine_x = {},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  tabline = {},
-  winbar = {},
-  -- winbar = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {'filetype'},
-  --   lualine_y = {'filename'},
-  --   lualine_z = {breadcrumbs}
-  -- },
-  inactive_winbar = {},
-}
+------ CoC config -------
 
------- noice ------
+-- FIXME
 
-require("noice").setup()
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+-- Make <CR> to accept selected completion item or notify coc.nvim to format
+-- <C-g>u breaks current undo, please make your own choice.
+vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
------- blankline ------
-
-require("indent_blankline").setup {
-  use_treesitter = true,
-  show_first_indent_level = false,
-}
-
------- notify ------
-
-vim.notify = require("notify")
-require('notify').setup()
+------ notify functions ------
 
 function git_notify(cmd, text)
   local notify_opts = {
