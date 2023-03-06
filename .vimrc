@@ -494,6 +494,17 @@ require("lazy").setup({
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
   },
+  { "neoclide/coc-tsserver",         dependencies = "neoclide/coc.nvim" },
+  { "neoclide/coc-json",             dependencies = "neoclide/coc.nvim" },
+  { "neoclide/coc-css",              dependencies = "neoclide/coc.nvim" },
+  { "neoclide/coc-eslint",           dependencies = "neoclide/coc.nvim" },
+  { "neoclide/coc-html",             dependencies = "neoclide/coc.nvim" },
+  { "yaegassy/coc-html-css-support", dependencies = "neoclide/coc.nvim" },
+  { "fannheyward/coc-pyright",       dependencies = "neoclide/coc.nvim" },
+  { "clangd/coc-clangd",             dependencies = "neoclide/coc.nvim" },
+  { "yuki-yano/coc-nav",             dependencies = "neoclide/coc.nvim" },
+  { "josa42/coc-lua",                dependencies = "neoclide/coc.nvim" },
+  { "iamcco/coc-svg",                dependencies = "neoclide/coc.nvim" },
 
   -- gitsigns shows git diffs in the sign column
   { "lewis6991/gitsigns.nvim",
