@@ -10,12 +10,6 @@
 set cursorline
 :highlight CursorLine cterm=underline guibg='#1c2330'
 
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd BufEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
 " ---------------------------
 "  Changed standard settings
 " ---------------------------
@@ -211,10 +205,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
     \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
     \   nnoremap <buffer> .. :edit %:h<CR> |
     \ endif
-
-  function! RemoveWhitespaceHighlightForGit()
-    hi link ExtraWhitespace NONE
-  endfunction
 
   " Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
   function GitFugitiveToggle(buffer_name, pretty_name, cmd)
