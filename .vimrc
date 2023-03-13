@@ -323,21 +323,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
     endif
   endfunction
 
-  " Use K to show documentation in preview window.
-  nnoremap <silent> K :call ShowDocumentation()<CR>
-
-  function! ShowDocumentation()
-    if CocAction('hasProvider', 'hover')
-      call CocActionAsync('doHover')
-    else
-      call feedkeys('K', 'in')
-    endif
-  endfunction
-
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
-
   " --- Use Coc (backslash+r+n) when language server supports it
   " Search and replace under cursor: backslash+r+Enter (\r)
   " nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
@@ -483,6 +468,30 @@ require("lazy").setup({
     build = ":CocUpdate",
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
+    config = function ()
+      local keyset = vim.keymap.set
+
+      -- Use K to show documentation in preview window
+      function _G.show_docs()
+        local cw = vim.fn.expand('<cword>')
+        if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+          vim.api.nvim_command('h ' .. cw)
+        elseif vim.api.nvim_eval('coc#rpc#ready()') then
+          vim.fn.CocActionAsync('doHover')
+        else
+          vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+        end
+      end
+      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+      -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
+      vim.api.nvim_create_augroup("CocGroup", {})
+      vim.api.nvim_create_autocmd("CursorHold", {
+        group = "CocGroup",
+        command = "silent call CocActionAsync('highlight')",
+        desc = "Highlight symbol under cursor on CursorHold"
+      })
+    end,
   },
   { "neoclide/coc-json",
     dependencies = "neoclide/coc.nvim",
