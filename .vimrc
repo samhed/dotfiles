@@ -672,6 +672,10 @@ require("lazy").setup({
               i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
             },
           },
+          buffers = {
+            ignore_current_buffer = true,
+            sort_mru = true,
+          },
           find_files = {
             -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
             find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
