@@ -426,7 +426,7 @@ require("lazy").setup({
 
   -- Javascript syntax
   { "jelera/vim-javascript-syntax",
-    ft = "JavaScript",
+    ft = "javascript",
   },
 
   -- symbols outline shows the current function etc.
