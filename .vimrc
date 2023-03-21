@@ -6,9 +6,14 @@
 " set fillchars=vert:\ 
 :highlight VertSplit guifg='#444444' guibg='#282C34' ctermfg=236 ctermbg=238
 
-" Show a very faint highlight on the line with the cursor
-set cursorline
+" Show a very faint highlight on the line with the cursor,
+" only on active window
 :highlight CursorLine cterm=underline guibg='#1c2330'
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 " ---------------------------
 "  Changed standard settings
