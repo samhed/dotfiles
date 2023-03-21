@@ -759,7 +759,7 @@ require("lazy").setup({
   -- New GUI for messages, cmdline and popupmenu
   { "folke/noice.nvim",
     dependencies = "MunifTanjim/nui.nvim",
-    config = true
+    config = true,
   },
 })
 
