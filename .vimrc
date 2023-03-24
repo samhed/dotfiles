@@ -503,11 +503,14 @@ require("lazy").setup({
     lazy = false,
     build = "yarn install --frozen-lockfile",
   },
-  { "neoclide/coc-git",
-    dependencies = "neoclide/coc.nvim",
-    lazy = false,
-    build = "yarn install --frozen-lockfile",
-  },
+
+  -- its highlighting for git diffs in the signcolumn conflicts with gitsigns
+
+  -- { "neoclide/coc-git",
+  --   dependencies = "neoclide/coc.nvim",
+  --   lazy = false,
+  --   build = "yarn install --frozen-lockfile",
+  -- },
   { "neoclide/coc-css",
     dependencies = "neoclide/coc.nvim",
     build = "yarn install --frozen-lockfile",
