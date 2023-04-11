@@ -14,8 +14,9 @@ ln -sf ~/devel/dotfiles/.bashrc ~/.bashrc
 ```
 ### Fonts
 
-Download SourceCodePro:
+Install SourceCodePro:
 
-https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCodePro.zip
-
-unpack in ~/.local/share/fonts/
+```
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCodePro.zip
+unzip SourceCodePro.zip -d ~/.local/share/fonts/
+```
