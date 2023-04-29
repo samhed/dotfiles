@@ -648,6 +648,11 @@ require("lazy").setup({
           },
         },
         extensions = {
+          file_browser = {
+            auto_depth = true,
+            hidden = true,
+            hijack_netrw = true,
+          },
           fzf = {
             fuzzy = true,                    -- false will only do exact matching
             override_generic_sorter = true,  -- override the generic sorter
@@ -663,6 +668,7 @@ require("lazy").setup({
       require('telescope').load_extension('smart_history')
       require('telescope').load_extension('fzf')
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("file_browser")
     end,
   },
 
@@ -673,6 +679,13 @@ require("lazy").setup({
         build = "mkdir -p ~/.local/share/nvim/databases",
       },
     },
+  },
+
+  { "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    }
   },
 
   -- Use telescope UI for select
@@ -757,7 +770,7 @@ end
 vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
-vim.keymap.set('n', '<leader>fb', telescope.buffers, {desc = 'list buffers'})
+vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>", {noremap = true, desc = 'browse files'})
 vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help page'})
 
