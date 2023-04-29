@@ -732,7 +732,7 @@ require("lazy").setup({
     config = true,
   },
 
-  -- which key
+  -- keybinding helper
   { "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
