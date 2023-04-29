@@ -488,7 +488,7 @@ require("lazy").setup({
           vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
         end
       end
-      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true, desc = 'show documentation'})
 
       -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
       vim.api.nvim_create_augroup("CocGroup", {})
@@ -718,6 +718,19 @@ require("lazy").setup({
     dependencies = "MunifTanjim/nui.nvim",
     config = true,
   },
+
+  -- which key
+  { "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  },
 })
 
 vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
@@ -729,8 +742,8 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = 'open all folds'})
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = 'close all folds'})
 local telescope = require('telescope.builtin')
 local project_files = function()
   local opts = {} -- define here if you want to define something
@@ -741,12 +754,12 @@ local project_files = function()
     telescope.find_files(opts)
   end
 end
-vim.keymap.set('n', '<leader>ff', project_files, {})
-vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {})
-vim.keymap.set('n', '<leader>g', telescope.live_grep, {})
-vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
-vim.keymap.set('n', '<F5>', telescope.buffers, {})
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
+vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
+vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
+vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
+vim.keymap.set('n', '<leader>fb', telescope.buffers, {desc = 'list buffers'})
+vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help page'})
 
 ---- breadcrumbs in lualine ------
 
