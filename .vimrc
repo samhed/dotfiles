@@ -741,7 +741,7 @@ end
 vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
-vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>", {noremap = true, desc = 'browse files'})
+vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>", {silent = true, noremap = true, desc = 'browse files'})
 vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help page'})
 
