@@ -263,60 +263,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
   let g:coc_disable_transparent_cursor = 1
   let b:coc_nav = 1
 
-  " TAB is the same as Ctrl-i, we need a way to move back in the jump list
-  nnoremap <C-p> <C-i>
-
-  " Insert current completion on TAB or ENTER
-  inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#pum#insert():
-        \ CheckBackspace() ? "\<Tab>" :
-        \ coc#refresh()
-  " Cycle back to previous completion suggest on Shift+Tab
-  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-  " Make <CR> to accept selected completion item or notify coc.nvim to format
-  " <C-g>u breaks current undo, please make your own choice.
-  " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-  "                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-  function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-
-  " Use <c-space> to trigger completion.
-  if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
-  else
-    inoremap <silent><expr> <c-@> coc#refresh()
-  endif
-
-  " Toggle inlay hints (Ctrl+h)
-  nnoremap <C-h> :CocCommand document.toggleInlayHint<CR>
-
-  " Use F7 and F8 to navigate diagnostics
-  " Use `:CocDiagnostics` to get all diagnostics of current buffer in
-  " location list.
-  nmap <silent> <F7> <Plug>(coc-diagnostic-prev)
-  nmap <silent> <F8> <Plug>(coc-diagnostic-next)
-
-  " Toggle diagnostics with F9
-  nnoremap <F9> :call ToggleSigns()<CR>
-  function! ToggleSigns ()
-    call CocAction('diagnosticToggle')
-    if &signcolumn ==# "yes"
-      set signcolumn=no
-    else
-      set signcolumn=yes
-    endif
-  endfunction
-
-  " GoTo code navigation.
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-
   " <Tab> in normal mode for hover
   "     - expands chunks in fugitive
   nnoremap <silent> <Tab> :call HoverAction()<CR>
@@ -327,22 +273,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
       call CocActionAsync('doHover')
     endif
   endfunction
-
-  " --- Use Coc (backslash+r+n) when language server supports it
-  " Search and replace under cursor: backslash+r+Enter (\r)
-  " nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
-  function! Rename()
-    if CocAction('hasProvider', 'rename')
-      call CocActionAsync('rename')
-    else
-      call feedkeys(":%s/\<C-r>\<C-w>//gc\<left>\<left>\<left>")
-    endif
-  endfunction
-
-  " Symbol renaming.
-  " nmap <leader>rn <Plug>(coc-rename)
-  nmap <silent> <leader>r :call Rename()<CR>
-  nmap <silent> <F6> :call Rename()<CR>
 
   " Formatting selected code.
   " xmap <leader>f  <Plug>(coc-format-selected)
@@ -477,6 +407,58 @@ require("lazy").setup({
     config = function ()
       local keyset = vim.keymap.set
 
+      -- Autocomplete
+      function _G.check_back_space()
+          local col = vim.fn.col('.') - 1
+          return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+      end
+
+      -- TAB is the same as Ctrl-i, we need a way to move back in the jump list
+      keyset("n", "<C-p>", "<C-i>", {desc = 'back in jump list'})
+
+      -- Insert current completion on TAB or ENTER
+      -- Cycle back to previous completion suggest on Shift+Tab
+      local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false, desc="completions"}
+      keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+      keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
+      -- Use <c-j> to trigger snippets
+      keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)", {desc = 'trigger snippets'})
+      -- Use <c-space> to trigger completion.
+      keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true, desc = 'trigger completion'})
+
+      -- Toggle inlay hints (Ctrl+h)
+      keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>", {silent = true, desc = 'toggle inlay hints'})
+
+      -- Use F7 and F8 to navigate diagnostics
+      -- Use `:CocDiagnostics` to get all diagnostics of current buffer in
+      -- location list.
+      keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)", {silent = true})
+      keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)", {silent = true})
+
+      -- Toggle diagnostics with F9
+      function _G.toggleSigns()
+        vim.fn.CocAction('diagnosticToggle')
+        if vim.o.signcolumn == "yes" then
+          vim.o.signcolumn = "no"
+        else
+          vim.o.signcolumn = "yes"
+        end
+      end
+      keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>')
+
+      -- GoTo code navigation
+      keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+      keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
+      keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+      keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+
+      -- Multiple cursors
+      keyset("n", "<leader>a", "<Plug>(coc-cursors-position)", {silent = true})
+      keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)", {silent = true})
+      keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)", {silent = true})
+      keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)", {silent = true})
+
       -- Use K to show documentation in preview window
       function _G.show_docs()
         local cw = vim.fn.expand('<cword>')
@@ -497,6 +479,20 @@ require("lazy").setup({
         command = "silent call CocActionAsync('highlight')",
         desc = "Highlight symbol under cursor on CursorHold"
       })
+
+      -- Search and replace under cursor, use CoC's rename when available
+      function _G.rename()
+        if vim.fn.CocHasProvider('rename') then
+          vim.fn.CocActionAsync('rename')
+        else
+          local keys = vim.api.nvim_replace_termcodes(':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
+          vim.api.nvim_feedkeys(keys, "n", {})
+        end
+      end
+
+      -- Symbol renaming
+      keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", {silent = true})
+      keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", {silent = true})
     end,
   },
 
