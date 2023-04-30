@@ -380,10 +380,10 @@ require("lazy").setup({
       keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
       keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
-      -- Use <c-j> to trigger snippets
-      keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)", {desc = 'trigger snippets'})
-      -- Use <c-space> to trigger completion.
-      keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true, desc = 'trigger completion'})
+      -- Use Ctrl+j to trigger snippets
+      keyset("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {desc = 'trigger snippets'})
+      -- Use Ctrl+SPACE to trigger completion.
+      keyset("i", "<C-space>", "coc#refresh()", {silent = true, expr = true, desc = 'trigger completion'})
 
       -- Toggle inlay hints (Ctrl+h)
       keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>", {silent = true, desc = 'toggle inlay hints'})
