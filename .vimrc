@@ -15,14 +15,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" Disable delay after leaving Insert mode
-set ttimeoutlen=10
-augroup FastEscape
-  autocmd!
-  au InsertEnter * set timeoutlen=0
-  au InsertLeave * set timeoutlen=1000
-augroup END
-
 " Enter append mode for :term
 autocmd BufRead *term* execute "normal G$"|startinsert!
 
