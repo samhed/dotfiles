@@ -15,72 +15,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" ---------------------------
-"  Changed standard settings
-" ---------------------------
-
-" Change leader key to SPACE
-nnoremap <SPACE> <Nop>
-let mapleader = " "
-
-" Autoload file changes
-set autoread
-
-" Case insensitive search when only lower case
-set ignorecase
-set smartcase
-
-" Don't wrap lines
-set nowrap
-
-" visual bell instead of sounds
-set visualbell t_vb=[?5h$<100/>[?5l
-
-" visually break and indent smartly
-" set breakindent
-
-" automatically use the indent of the previous line when starting a new one
-set autoindent
-" set smartindent
-
-" open browser for urls (need to start with http:// or https://)
-let g:netrw_browsex_viewer='xdg-open'
-
-" Use the new regular expression engine
-set re=0
-
-" Switch buffers and resize stuff with mouse
-set mouse=a
-
-" Some servers have issues with backup files, see CoC issue #649.
-set nobackup
-set nowritebackup
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-"
-" Also see ToggleSigns()
-set signcolumn=yes
-" set number
-" set signcolumn=number
-
-" Show trailing whitespace, tabs, nbsp etc.
-set list listchars=tab:→\ ,nbsp:␣,trail:·,extends:▶,precedes:◀
-" By default, use spaced tabs.
-set expandtab
-" Display tabs as 4 spaces wide. When expandtab is set, use 8 spaces.
-set shiftwidth=4
-set tabstop=8
-" Edit files as if the tab stop size is 0 some other value.
-set softtabstop=0
-" Insert indentation according to shiftwidth at the beginning
-" of the line when pressing the <TAB> key
-set smarttab
-
 " Disable delay after leaving Insert mode
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -259,10 +193,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 
 "if coc installed:
 
-  " Don't make the cursor transparent
-  let g:coc_disable_transparent_cursor = 1
-  let b:coc_nav = 1
-
   " <Tab> in normal mode for hover
   "     - expands chunks in fugitive
   nnoremap <silent> <Tab> :call HoverAction()<CR>
@@ -308,7 +238,54 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 if (has("nvim"))
 lua << EOF
 
-vim.opt.termguicolors = true
+
+------------------------------------------
+-- General
+------------------------------------------
+
+vim.o.mouse = 'a' -- Switch buffers and resize stuff with mouse
+vim.o.autoread = true -- Autoload file changes
+vim.o.backup = false      -- Some servers have issues with backup
+vim.o.writebackup = false -- files, see CoC issue #649
+vim.g.netrw_browsex_viewer = 'xdg-open' -- open urls (start /w http://)
+vim.g.mapleader = " " -- Change leader key to SPACE
+
+------------------------------------------
+-- Memory, CPU
+------------------------------------------
+
+vim.o.updatetime = 300 -- ms to wait for an event to trigger, (default=4s)
+vim.o.synmaxcol = 240 -- Max column for syntax highlight
+
+------------------------------------------
+-- Neovim UI
+------------------------------------------
+
+vim.o.termguicolors = true
+vim.o.visualbell = true -- visual bell instead of sounds
+vim.o.wrap = false -- Don't wrap lines
+vim.o.signcolumn = 'yes' -- Always show to avoid shifts due to diagnostics
+-- vim.o.number = true
+-- vim.o.signcolumn = number
+vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
+
+------------------------------------------
+-- Tabs, indent
+------------------------------------------
+
+vim.o.list = true
+vim.o.listchars = "tab:→ ,nbsp:␣,trail:·,extends:▶,precedes:◀"
+vim.o.expandtab = true -- By default, use spaced tabs
+vim.o.shiftwidth = 4 -- Display tabs as 4 spaces wide
+vim.o.tabstop = 8 -- Count <Tab> as 8 spaces
+vim.o.softtabstop = 0 -- Edit files as if the tab size is some other value
+vim.o.smarttab = true -- Insert indent at beginning of line when pressing <Tab>
+vim.o.autoindent = true -- automatically indent next row
+-- vim.o.smartindent = true
+
+------------------------------------------
+-- Plugins
+------------------------------------------
 
 require("lazy").setup({
 
@@ -363,6 +340,9 @@ require("lazy").setup({
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
     config = function ()
+      vim.g.coc_disable_transparent_cursor = '1' -- prevent transparent cursor
+      vim.b.coc_nav = '1'
+
       local keyset = vim.keymap.set
 
       -- Autocomplete
@@ -717,7 +697,9 @@ require("lazy").setup({
   },
 })
 
-vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
+------------------------------------------
+-- Folding
+------------------------------------------
 
 vim.o.foldcolumn = '0' -- '0' is not bad
 vim.o.foldnestmax = 1 -- same number as foldcolumn to hide numbers
@@ -728,6 +710,15 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = 'open all folds'})
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = 'close all folds'})
+
+------------------------------------------
+-- Search
+------------------------------------------
+
+vim.o.re = 0 -- Use the new regular expression engine
+vim.o.ignorecase = true
+vim.o.smartcase = true -- Case insensitive search when only lower case
+
 local telescope = require('telescope.builtin')
 local project_files = function()
   local opts = {} -- define here if you want to define something
