@@ -37,57 +37,6 @@ inoremap <silent> <C-s> <Esc>:update<CR>
 noremap <silent> <leader>w :update<CR>
 vnoremap <silent> <leader>w <C-C>:update<CR>
 
-" -------------------
-"  Usefull functions
-" -------------------
-
-" Output the current syntax highlight groups
-nnoremap <f10> :call SynStack()<CR>
-function! SynStack ()
-    let dict = {}
-    for i1 in synstack(line("."), col("."))
-        let i2 = synIDtrans(i1)
-        let n1 = synIDattr(i1, "name")
-        let n2 = synIDattr(i2, "name")
-        let dict[n1] = "->" . n2
-    endfor
-    echo dict
-endfunction
-
-" Print details of highlight group
-" Use like this ':echo GetHighlight("Normal")'
-function! GetHighlight(group)
-  let output = execute('hi ' . a:group)
-  let list = split(output, '\s\+')
-  let dict = {}
-  for item in list
-    if match(item, '=') > 0
-      let splitted = split(item, '=')
-      let dict[splitted[0]] = splitted[1]
-    endif
-  endfor
-  return dict
-endfunction
-
-" Merge Highlights
-command! -nargs=+ -complete=highlight MergeHighlight
-    \ call s:MergeHighlight(<q-args>)
-function! s:MergeHighlight(args) abort "{{{
-  let l:args = split(a:args)
-  if len(l:args) < 2
-    echoerr '[MergeHighlight] At least 2 arguments are required.'
-    echoerr 'New highlight name and source highlight names.'
-    return
-  endif
-
-  " skip 'links' and 'cleared'
-  execute 'highlight' l:args[0] l:args[1:]
-      \ ->map({_, val -> substitute(execute('highlight ' . val),
-      \                                     '^\S\+\s\+xxx\s', '', '')})
-      \ ->filter({_, val -> val !~? '^links to' && val !=? 'cleared'})
-      \ ->join()
-endfunction "}}}
-
 " ----------------------------
 "  GIT and vim-fugitive stuff
 " ----------------------------
