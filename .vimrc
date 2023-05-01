@@ -265,8 +265,7 @@ vim.o.termguicolors = true
 vim.o.visualbell = true -- visual bell instead of sounds
 vim.o.wrap = false -- Don't wrap lines
 vim.o.signcolumn = 'yes' -- Always show to avoid shifts due to diagnostics
--- vim.o.number = true
--- vim.o.signcolumn = number
+vim.o.number = true
 vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
 
 ------------------------------------------
