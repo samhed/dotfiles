@@ -5,15 +5,8 @@
 " Dark gray vertical split  line (with space char)
 " set fillchars=vert:\ 
 :highlight VertSplit guifg='#444444' guibg='#282C34' ctermfg=236 ctermbg=238
-
-" Show a very faint highlight on the line with the cursor,
-" only on active window
+" Show a very faint highlight on the line with the cursor
 :highlight CursorLine cterm=underline guibg='#1c2330'
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
 
 " Fix memory leak issue with the above calls to 'match'
 if version >= 702
@@ -254,6 +247,15 @@ vim.o.wrap = false -- Don't wrap lines
 -- Wrap location list and quickfix windows
 api.nvim_create_autocmd('FileType', {
   pattern = 'qf', callback = 'setlocal wrap',
+})
+
+-- Only show cursorline in current buffer
+local cursorGrp = api.nvim_create_augroup('CursorLine', { clear = true })
+api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
+  pattern = '*', command = 'setlocal cursorline', group = cursorGrp,
+})
+api.nvim_create_autocmd({ 'WinLeave' }, {
+  pattern = '*', command = 'setlocal nocursorline', group = cursorGrp,
 })
 
 ------------------------------------------
