@@ -8,11 +8,6 @@
 " Show a very faint highlight on the line with the cursor
 :highlight CursorLine cterm=underline guibg='#1c2330'
 
-" Fix memory leak issue with the above calls to 'match'
-if version >= 702
-    autocmd BufWinLeave * call clearmatches()
-endif
-
 " --------------
 "  Key bindings
 " --------------
@@ -232,6 +227,11 @@ api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
 
 vim.o.updatetime = 300 -- ms to wait for an event to trigger, (default=4s)
 vim.o.synmaxcol = 240 -- Max column for syntax highlight
+
+-- Fix memory leak issue with calls to 'match'
+api.nvim_create_autocmd('BufWinLeave', {
+  pattern = '*', command = 'call clearmatches()',
+})
 
 ------------------------------------------
 -- Neovim UI
