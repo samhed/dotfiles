@@ -15,11 +15,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" Enable file type detection and set matching indent rules
-if has("autocmd")
-    filetype plugin indent on
-endif
-
 " Fix memory leak issue with the above calls to 'match'
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
