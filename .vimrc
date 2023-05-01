@@ -15,9 +15,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" Enter append mode for :term
-autocmd BufRead *term* execute "normal G$"|startinsert!
-
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
