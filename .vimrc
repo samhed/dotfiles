@@ -15,12 +15,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
 " Enable file type detection and set matching indent rules
 if has("autocmd")
     filetype plugin indent on
@@ -225,6 +219,7 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 if (has("nvim"))
 lua << EOF
 
+local api = vim.api
 
 ------------------------------------------
 -- General
@@ -236,6 +231,18 @@ vim.o.backup = false      -- Some servers have issues with backup
 vim.o.writebackup = false -- files, see CoC issue #649
 vim.g.netrw_browsex_viewer = 'xdg-open' -- open urls (start /w http://)
 vim.g.mapleader = " " -- Change leader key to SPACE
+
+-- Return to last edit positon when opening files
+api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
+  callback = function()
+    local row, column = unpack(api.nvim_buf_get_mark(0, '"'))
+    local buf_line_count = api.nvim_buf_line_count(0)
+
+    if row >= 1 and row <= buf_line_count then
+      api.nvim_win_set_cursor(0, {row, column})
+    end
+  end,
+})
 
 ------------------------------------------
 -- Memory, CPU
