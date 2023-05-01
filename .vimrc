@@ -8,35 +8,6 @@
 " Show a very faint highlight on the line with the cursor
 :highlight CursorLine cterm=underline guibg='#1c2330'
 
-" --------------
-"  Key bindings
-" --------------
-
-" Use <Ctrl+Up> or <Ctrl+Down> to move lines up or down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-nnoremap <A-Down> :m .+1<CR>==
-nnoremap <A-Up> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-inoremap <A-Down> <Esc>:m .+1<CR>==gi
-inoremap <A-Up> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-vnoremap <A-Down> :m '>+1<CR>gv=gv
-vnoremap <A-Up> :m '<-2<CR>gv=gv
-
-" Copy selected text with Ctrl+c
-:vmap <C-C> "+y
-
-" Save using Ctrl-s
-noremap <silent> <C-s> :update<CR>
-vnoremap <silent> <C-s> <C-C>:update<CR>
-inoremap <silent> <C-s> <Esc>:update<CR>
-" Save using leader-w
-noremap <silent> <leader>w :update<CR>
-vnoremap <silent> <leader>w <C-C>:update<CR>
-
 " ----------------------------
 "  GIT and vim-fugitive stuff
 " ----------------------------
@@ -220,6 +191,35 @@ vim.o.softtabstop = 0 -- Edit files as if the tab size is some other value
 vim.o.smarttab = true -- Insert indent at beginning of line when pressing <Tab>
 vim.o.autoindent = true -- automatically indent next row
 -- vim.o.smartindent = true
+
+------------------------------------------
+-- General keymaps
+------------------------------------------
+
+-- Copy selected text with <Ctrl+c>
+vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
+
+-- Save using <Ctrl+s>
+vim.keymap.set('n', '<C-s>', ':update<CR>', { silent = true, desc = 'Save'} )
+vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', { silent = true, desc = 'Save'} )
+vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', { silent = true, desc = 'Save'} )
+-- Save using <leader+w>
+vim.keymap.set('n', '<leader>w', ':update<CR>', { silent = true, desc = 'Save'} )
+vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', { silent = true, desc = 'Save'} )
+
+-- Use <Ctrl+Up> or <Ctrl+Down> to move lines up or down
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = 'move line down'} )
+vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { desc = 'move line down'} )
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { desc = 'move line up'} )
+vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { desc = 'move line up'} )
+vim.keymap.set('i', '<A-j>', '<Esc>:m .+2<CR>==gi', { desc = 'move line down'} )
+vim.keymap.set('i', '<A-Down>', '<Esc>:m .+1<CR>==gi', { desc = 'move line down'} )
+vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { desc = 'move line up'} )
+vim.keymap.set('i', '<A-Up>', '<Esc>:m .-2<CR>==gi', { desc = 'move line up'} )
+vim.keymap.set('v', '<A-j>', ':m .+1<CR>gv=gv', { desc = 'move line down'} )
+vim.keymap.set('v', '<A-Down>', ':m .+1<CR>gv=gv', { desc = 'move line down'} )
+vim.keymap.set('v', '<A-k>', ':m .-2<CR>gv=gv', { desc = 'move line up'} )
+vim.keymap.set('v', '<A-Up>', ':m .-2<CR>gv=gv', { desc = 'move line up'} )
 
 ------------------------------------------
 -- Plugins
