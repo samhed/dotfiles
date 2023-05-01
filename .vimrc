@@ -25,12 +25,6 @@ if version >= 702
     autocmd BufWinLeave * call clearmatches()
 endif
 
-" Wrap location list and quickfix windows
-augroup wrap_loclist
-    autocmd!
-    autocmd FileType qf setlocal wrap
-augroup END
-
 " --------------
 "  Key bindings
 " --------------
@@ -257,10 +251,15 @@ vim.o.synmaxcol = 240 -- Max column for syntax highlight
 
 vim.o.termguicolors = true
 vim.o.visualbell = true -- visual bell instead of sounds
-vim.o.wrap = false -- Don't wrap lines
 vim.o.signcolumn = 'yes' -- Always show to avoid shifts due to diagnostics
 vim.o.number = true
 vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
+vim.o.wrap = false -- Don't wrap lines
+
+-- Wrap location list and quickfix windows
+api.nvim_create_autocmd('FileType', {
+  pattern = 'qf', callback = 'setlocal wrap',
+})
 
 ------------------------------------------
 -- Tabs, indent
