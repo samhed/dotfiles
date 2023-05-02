@@ -1,10 +1,3 @@
-" -------------------
-"  ColorScheme stuff
-" -------------------
-
-" Show a very faint highlight on the line with the cursor
-:highlight CursorLine guibg='#1c2330'
-
 " ----------------------------
 "  GIT and vim-fugitive stuff
 " ----------------------------
@@ -138,6 +131,13 @@ api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
     end
   end,
 })
+
+------------------------------------------
+-- Highlights
+------------------------------------------
+
+-- Show a very faint highlight on the line with the cursor
+api.nvim_set_hl(0, 'CursorLine', { bg = '#1c2330' })
 
 ------------------------------------------
 -- Memory, CPU
