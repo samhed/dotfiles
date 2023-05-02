@@ -193,26 +193,29 @@ vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
 vim.keymap.set('n', '<leader>c', ':nohl<CR>', { silent = true, desc = 'Clear search highlight' })
 
 -- Save using <Ctrl+s>
-vim.keymap.set('n', '<C-s>', ':update<CR>', { silent = true, desc = 'Save'} )
-vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', { silent = true, desc = 'Save'} )
-vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', { silent = true, desc = 'Save'} )
+local opts = { silent = true, desc = 'Save'}
+vim.keymap.set('n', '<C-s>', ':update<CR>', opts)
+vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', opts)
+vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', opts)
 -- Save using <leader+w>
-vim.keymap.set('n', '<leader>w', ':update<CR>', { silent = true, desc = 'Save'} )
-vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', { silent = true, desc = 'Save'} )
+vim.keymap.set('n', '<leader>w', ':update<CR>', opts)
+vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', opts)
 
 -- Use <Ctrl+Up> or <Ctrl+Down> to move lines up or down
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = 'move line down'} )
-vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { desc = 'move line down'} )
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { desc = 'move line up'} )
-vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { desc = 'move line up'} )
-vim.keymap.set('i', '<A-j>', '<Esc>:m .+2<CR>==gi', { desc = 'move line down'} )
-vim.keymap.set('i', '<A-Down>', '<Esc>:m .+1<CR>==gi', { desc = 'move line down'} )
-vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { desc = 'move line up'} )
-vim.keymap.set('i', '<A-Up>', '<Esc>:m .-2<CR>==gi', { desc = 'move line up'} )
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>gv=gv', { desc = 'move line down'} )
-vim.keymap.set('v', '<A-Down>', ':m .+1<CR>gv=gv', { desc = 'move line down'} )
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>gv=gv', { desc = 'move line up'} )
-vim.keymap.set('v', '<A-Up>', ':m .-2<CR>gv=gv', { desc = 'move line up'} )
+local optsDown = { desc = 'Move line down' }
+local optsUp = { desc = 'Move line up' }
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', optsDown)
+vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', optsDown)
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', optsUp)
+vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', optsUp)
+vim.keymap.set('i', '<A-j>', '<Esc>:m .+2<CR>==gi', optsDown)
+vim.keymap.set('i', '<A-Down>', '<Esc>:m .+1<CR>==gi', optsDown)
+vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi', optsUp)
+vim.keymap.set('i', '<A-Up>', '<Esc>:m .-2<CR>==gi', optsUp)
+vim.keymap.set('v', '<A-j>', ':m .+1<CR>gv=gv', optsDown)
+vim.keymap.set('v', '<A-Down>', ':m .+1<CR>gv=gv', optsDown)
+vim.keymap.set('v', '<A-k>', ':m .-2<CR>gv=gv', optsUp)
+vim.keymap.set('v', '<A-Up>', ':m .-2<CR>gv=gv', optsUp)
 
 ------------------------------------------
 -- Plugins
