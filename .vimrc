@@ -52,38 +52,6 @@
     \ GitFugitiveToggle("tmp/nvim.", "git log for current file", "vert Git log --decorate %")<CR>
 "end if fugitive
 
-" -----------
-"  CoC stuff
-" -----------
-
-"if coc installed:
-
-  augroup mygroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl
-      \ formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder.
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  augroup end
-
-  " Add `:Format` command to format current buffer.
-  command! -nargs=0 Format :call CocActionAsync('format')
-
-  " Add `:Fold` command to fold current buffer.
-  command! -nargs=? Fold   :call CocAction('fold', <f-args>)
-
-  " Add `:OR` command for organize imports of the current buffer.
-  command! -nargs=0 OR :call
-    \ CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-  " Mappings for CoCList
-  " Show all diagnostics.
-  nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
-  " Search workspace symbols.
-  nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
-"end if coc
-
 " ---------------
 "  lua config
 "  --------------
@@ -377,6 +345,36 @@ require("lazy").setup({
       local opts = { silent = true, desc = 'Rename symbol' }
       keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", opts)
       keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", opts)
+
+      -- Setup formatexpr specified filetype(s)
+      vim.api.nvim_create_autocmd("FileType", {
+        group = "CocGroup",
+        pattern = "typescript,json",
+        command = "setl formatexpr=CocAction('formatSelected')",
+        desc = "Setup formatexpr specified filetype(s)."
+      })
+
+      -- Update signature help on jump placeholder
+      vim.api.nvim_create_autocmd("User", {
+        group = "CocGroup",
+        pattern = "CocJumpPlaceholder",
+        command = "call CocActionAsync('showSignatureHelp')",
+        desc = "Update signature help on jump placeholder"
+      })
+
+      -- Add `:Format` command to format current buffer
+      vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+
+      -- " Add `:Fold` command to fold current buffer
+      vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
+
+      -- Add `:OR` command for organize imports of the current buffer
+      vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+
+      -- <leader>+d to show all diagnostics
+      keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", { silent = true, nowait = true, desc = 'Show all diagnostics' })
+      -- <leader>+s to search workspace symbols
+      keyset("n", "<leader>s", ":<C-u>CocList -I symbols<cr>", { silent = true, nowait = true, desc = 'Search workspace symbols' })
     end,
   },
 
