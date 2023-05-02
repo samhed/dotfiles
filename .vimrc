@@ -316,8 +316,8 @@ require("lazy").setup({
       -- Use F7 and F8 to navigate diagnostics
       -- Use `:CocDiagnostics` to get all diagnostics of current buffer in
       -- location list.
-      keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)", {silent = true})
-      keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)", {silent = true})
+      keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = 'Go to previous diagnostic'})
+      keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)", { silent = true, desc = 'Go to next diagnostic'})
 
       -- Toggle diagnostics with F9
       function _G.toggleSigns()
@@ -328,19 +328,19 @@ require("lazy").setup({
           vim.o.signcolumn = "yes"
         end
       end
-      keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>')
+      keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>', { desc = 'Toggle sign column' })
 
       -- GoTo code navigation
-      keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
-      keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
-      keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
-      keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+      keyset("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = 'GoTo definition' })
+      keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = 'GoTo type definition' })
+      keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = 'GoTo implementation' })
+      keyset("n", "gr", "<Plug>(coc-references)", { silent = true, desc = 'List references' })
 
       -- Multiple cursors
-      keyset("n", "<leader>a", "<Plug>(coc-cursors-position)", {silent = true})
-      keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)", {silent = true})
-      keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)", {silent = true})
-      keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)", {silent = true})
+      keyset("n", "<leader>a", "<Plug>(coc-cursors-position)", { silent = true, desc = 'Start multi-cursor at position' })
+      keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)", { silent = true, desc = 'Start multi-cursor at word' })
+      keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)", { silent = true, desc = 'Start multi-cursor from selected range' })
+      keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)", { silent = true, desc = 'Start multi-cursor from next move' })
 
       -- Use K to show documentation in preview window
       function _G.show_docs()
@@ -373,9 +373,10 @@ require("lazy").setup({
         end
       end
 
-      -- Symbol renaming
-      keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", {silent = true})
-      keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", {silent = true})
+      -- <leader>+r or <F6> for symbol renaming
+      local opts = { silent = true, desc = 'Rename symbol' }
+      keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", opts)
+      keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", opts)
     end,
   },
 
@@ -725,10 +726,10 @@ end
 
 ------ CoC config -------
 
--- Can't be in LAZY config since it always needs to be mapped
 -- Make ENTER to accept selected completion item or notify coc.nvim to format
+-- Can't be in LAZY config since it always needs to be mapped
 -- <C-g>u breaks current undo, please make your own choice.
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false, desc = 'Select current completion' }
 vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 ------ notify functions ------
