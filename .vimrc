@@ -290,11 +290,12 @@ require("lazy").setup({
         return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
       end
 
-      -- TAB is the same as Ctrl-i, we need a way to move back in the jump list
+      -- <Ctrl+p> to move back in the jump list, we need to remap since
+      -- TAB is the same as Ctrl-i
       keyset("n", "<C-p>", "<C-i>", {desc = 'back in jump list'})
 
-      -- Insert current completion on TAB or ENTER
-      -- Cycle back to previous completion suggest on Shift+Tab
+      -- <Tab> in Insert-mode adds current completion
+      -- <Shift+Tab> cycles back to previous completion suggest
       local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false, desc="completions"}
       keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
       keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
