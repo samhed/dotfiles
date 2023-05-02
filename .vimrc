@@ -677,19 +677,19 @@ vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help page'}
 ---- breadcrumbs in lualine ------
 
 -- onedark 'deep' bg1 & orange
-vim.cmd "highlight bc1_s guifg=#abb2bf guibg=#21283b"
-vim.cmd "highlight bc1_m guifg=#dd9046 guibg=#21283b"
-vim.cmd "highlight bc1_e guifg=#1a212e guibg=#21283b"
+api.nvim_set_hl(0, 'bc1_s', { fg = '#abb2bf', bg = '#21283b' })
+api.nvim_set_hl(0, 'bc1_m', { fg = '#dd9046', bg = '#21283b' })
+api.nvim_set_hl(0, 'bc1_e', { fg = '#1a212e', bg = '#21283b' })
 
 -- onedark 'deep' bg0 & blue
-vim.cmd "highlight bc2_s guifg=#abb2bf guibg=#1a212e"
-vim.cmd "highlight bc2_m guifg=#61afef guibg=#1a212e"
-vim.cmd "highlight bc2_e guifg=#1a212e guibg=#1a212e"
+api.nvim_set_hl(0, 'bc2_s', { fg = '#abb2bf', bg = '#1a212e' })
+api.nvim_set_hl(0, 'bc2_m', { fg = '#61afef', bg = '#1a212e' })
+api.nvim_set_hl(0, 'bc2_e', { fg = '#1a212e', bg = '#1a212e' })
 
 -- onedark 'deep' bg0 & cyan
-vim.cmd "highlight bc3_s guifg=#abb2bf guibg=#1a212e"
-vim.cmd "highlight bc3_m guifg=#56b6c2 guibg=#1a212e"
-vim.cmd "highlight bc3_e guifg=#1a212e guibg=#1a212e"
+api.nvim_set_hl(0, 'bc3_s', { fg = '#abb2bf', bg = '#1a212e' })
+api.nvim_set_hl(0, 'bc3_m', { fg = '#56b6c2', bg = '#1a212e' })
+api.nvim_set_hl(0, 'bc3_e', { fg = '#1a212e', bg = '#1a212e' })
 
 local symbols = {
   { 'bc1_s', '  ', 'bc1_m', 'bc1_e', '' },
