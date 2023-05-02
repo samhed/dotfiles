@@ -126,6 +126,7 @@ vim.o.mouse = 'a' -- Switch buffers and resize stuff with mouse
 vim.o.autoread = true -- Autoload file changes
 vim.o.backup = false      -- Some servers have issues with backup
 vim.o.writebackup = false -- files, see CoC issue #649
+vim.o.undofile = true
 vim.g.netrw_browsex_viewer = 'xdg-open' -- open urls (start /w http://)
 vim.g.mapleader = " " -- Change leader key to SPACE
 
