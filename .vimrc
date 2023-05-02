@@ -189,7 +189,7 @@ vim.o.autoindent = true -- automatically indent next row
 -- Copy selected text with <Ctrl+c>
 vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
 
--- Clear search highlight with <leader+c>
+-- Clear search highlight with <leader>+c
 vim.keymap.set('n', '<leader>c', ':nohl<CR>', { silent = true, desc = 'Clear search highlight' })
 
 -- Save using <Ctrl+s>
@@ -197,7 +197,7 @@ local opts = { silent = true, desc = 'Save'}
 vim.keymap.set('n', '<C-s>', ':update<CR>', opts)
 vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', opts)
 vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', opts)
--- Save using <leader+w>
+-- Save using <leader>+w
 vim.keymap.set('n', '<leader>w', ':update<CR>', opts)
 vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', opts)
 
