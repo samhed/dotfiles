@@ -2,9 +2,6 @@
 "  GIT and vim-fugitive stuff
 " ----------------------------
 
-" Always start on the first line of git commit message
-autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
-
 "if fugitive installed:
   " Delete hidden fugitive buffers
   autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -119,6 +116,12 @@ api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
       api.nvim_win_set_cursor(0, {row, column})
     end
   end,
+})
+
+-- Always start on the first line of git commit message
+api.nvim_create_autocmd('FileType', {
+  pattern = { 'gitcommit', 'fugitive' },
+  command = "call setpos('.', [0, 1, 1, 0])",
 })
 
 ------------------------------------------
