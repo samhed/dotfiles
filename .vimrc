@@ -61,17 +61,6 @@ autocmd FileType gitcommit,fugitive call setpos('.', [0, 1, 1, 0])
 
 "if coc installed:
 
-  " <Tab> in normal mode for hover
-  "     - expands chunks in fugitive
-  nnoremap <silent> <Tab> :call HoverAction()<CR>
-  function! HoverAction()
-    if stridx(@%, "fugitive") >= 0
-      call feedkeys('=')
-    else
-      call CocActionAsync('doHover')
-    endif
-  endfunction
-
   augroup mygroup
     autocmd!
     " Setup formatexpr specified filetype(s).
@@ -299,6 +288,16 @@ require("lazy").setup({
       local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false, desc="completions"}
       keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
       keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
+      -- <Tab> in Normal-mode, show hover
+      -- <Tab> in fugitive buffers expands chunks
+      keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>", { silent = true, desc = 'hover info' })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = { "FugitiveObject", "FugitiveIndex" },
+        callback = function()
+          keyset("n", "<TAB>", "<Plug>fugitive:=", { desc = "expand chunk" })
+        end,
+      })
 
       -- Use Ctrl+j to trigger snippets
       keyset("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {desc = 'trigger snippets'})
