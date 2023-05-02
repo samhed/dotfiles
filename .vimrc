@@ -283,8 +283,8 @@ require("lazy").setup({
 
       -- Autocomplete
       function _G.check_back_space()
-          local col = vim.fn.col('.') - 1
-          return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+        local col = vim.fn.col('.') - 1
+        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
       end
 
       -- TAB is the same as Ctrl-i, we need a way to move back in the jump list
