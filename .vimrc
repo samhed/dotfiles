@@ -2,9 +2,6 @@
 "  ColorScheme stuff
 " -------------------
 
-" Dark gray vertical split  line (with space char)
-" set fillchars=vert:\ 
-:highlight VertSplit guifg='#444444' guibg='#282C34' ctermfg=236 ctermbg=238
 " Show a very faint highlight on the line with the cursor
 :highlight CursorLine guibg='#1c2330'
 
