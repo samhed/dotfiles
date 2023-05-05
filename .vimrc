@@ -315,6 +315,10 @@ require("lazy").setup({
       end
       keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>', { desc = 'Toggle sign column' })
 
+      -- <leader>+<d> --> show all diagnostics
+      keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>",
+             { silent = true, nowait = true, desc = 'Show all diagnostics' })
+
       -- <g>+[d/y/i/r] --> GoTo code navigation
       keyset("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = 'GoTo definition' })
       keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = 'GoTo type definition' })
@@ -387,8 +391,6 @@ require("lazy").setup({
 
       -- Add `:OR` command for organize imports of the current buffer
       vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
-      -- <leader>+<d> --> show all diagnostics
-      keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", { silent = true, nowait = true, desc = 'Show all diagnostics' })
     end,
   },
 
