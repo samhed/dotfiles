@@ -286,7 +286,8 @@ require("lazy").setup({
       vim.api.nvim_create_autocmd("User", {
         pattern = { "FugitiveObject", "FugitiveIndex" },
         callback = function()
-          keyset("n", "<TAB>", "<Plug>fugitive:=", { desc = "expand chunk" })
+          keyset("n", "<TAB>", "<Plug>fugitive:=",
+                 { buffer = true, desc = "expand chunk" })
         end,
       })
 
