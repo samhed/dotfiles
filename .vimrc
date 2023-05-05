@@ -389,8 +389,6 @@ require("lazy").setup({
       vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
       -- <leader>+<d> --> show all diagnostics
       keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", { silent = true, nowait = true, desc = 'Show all diagnostics' })
-      -- <leader>+<s> --> search workspace symbols
-      keyset("n", "<leader>s", ":<C-u>CocList -I symbols<cr>", { silent = true, nowait = true, desc = 'Search workspace symbols' })
     end,
   },
 
