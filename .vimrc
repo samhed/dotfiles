@@ -5,10 +5,6 @@
 "if fugitive installed:
   " Delete hidden fugitive buffers
   autocmd BufReadPost fugitive://* set bufhidden=delete
-  autocmd User fugitive
-    \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-    \   nnoremap <buffer> .. :edit %:h<CR> |
-    \ endif
 
   " Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
   function GitFugitiveToggle(buffer_name, pretty_name, cmd)
