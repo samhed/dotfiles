@@ -95,22 +95,22 @@ vim.o.autoindent = true -- automatically indent next row
 -- General keymaps
 ------------------------------------------
 
--- Copy selected text with <Ctrl+c>
+-- <Ctrl+c> --> copy selected text with
 vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
 
--- Clear search highlight with <leader>+c
+-- <leader>+<c> --> clear search highlight with
 vim.keymap.set('n', '<leader>c', ':nohl<CR>', { silent = true, desc = 'Clear search highlight' })
 
--- Save using <Ctrl+s>
+-- <Ctrl+s> --> save file (works in INSERT as well)
 local opts = { silent = true, desc = 'Save'}
 vim.keymap.set('n', '<C-s>', ':update<CR>', opts)
 vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', opts)
 vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', opts)
--- Save using <leader>+w
+-- <leader>+<w> --> save file
 vim.keymap.set('n', '<leader>w', ':update<CR>', opts)
 vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', opts)
 
--- Use <Ctrl+Up> or <Ctrl+Down> to move lines up or down
+-- <Alt+Up> or <Alt+Down> --> move lines up or down
 local optsDown = { desc = 'Move line down' }
 local optsUp = { desc = 'Move line up' }
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', optsDown)
@@ -171,7 +171,7 @@ require("lazy").setup({
         vim.notify(cmd, 'warn', notify_opts)
       end
 
-      -- Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
+      -- Use <Ctrl+o> to cycle back to the fugitive git log after viewing a commit
       function GitFugitiveToggle(buffer_name, pretty_name, cmd)
         local buf_to_toggle = -1
         for buf = 1, vim.fn.bufnr('$') do
@@ -197,28 +197,28 @@ require("lazy").setup({
         git_notify(cmd, "Opened " .. pretty_name)
       end
 
-      -- <Ctrl+b> Toggle git blame on current file
+      -- <Ctrl+b> --> Toggle git blame on current file
       vim.keymap.set('n', '<C-b>', '', {
         callback = function()
           GitFugitiveToggle('.fugitiveblame', 'git blame', 'G blame')
         end,
         silent = true, desc = 'Toggle git blame on current file',
       })
-      -- <Ctrl+g> Toggle git overview
+      -- <Ctrl+g> --> Toggle git overview
       vim.keymap.set('n', '<C-g>', '', {
         callback = function()
           GitFugitiveToggle('fugitive:', 'git overview', ':vert Git')
         end,
         silent = true, desc = 'Toggle git overview',
       })
-      -- <Ctrl+l> Toggle git log
+      -- <Ctrl+l> --> Toggle git log
       vim.keymap.set('n', '<C-l>', '', {
         callback = function()
           GitFugitiveToggle('tmp/nvim.', 'git log', 'vert Git log --decorate')
         end,
         silent = true, desc = 'Toggle git log',
       })
-      -- <Ctrl+k> Toggle git log for current file
+      -- <Ctrl+k> --> Toggle git log for current file
       vim.keymap.set('n', '<C-k>', '', {
         callback = function()
           GitFugitiveToggle('tmp/nvim.', 'git log current file',
@@ -270,18 +270,18 @@ require("lazy").setup({
         return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
       end
 
-      -- <Ctrl+p> to move back in the jump list, we need to remap since
-      -- TAB is the same as Ctrl-i
+      -- <Ctrl+p> --> move back in the jump list, we need to remap since
+      --              TAB is the same as Ctrl-i
       keyset("n", "<C-p>", "<C-i>", {desc = 'back in jump list'})
 
-      -- <Tab> in Insert-mode adds current completion
-      -- <Shift+Tab> cycles back to previous completion suggest
+      -- <Tab> --> adds current completion (in Insert-mode)
+      -- <Shift+Tab> --> cycle back to previous completion suggest
       local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false, desc="completions"}
       keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
       keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
-      -- <Tab> in Normal-mode, show hover
-      -- <Tab> in fugitive buffers expands chunks
+      -- <Tab> --> in Normal-mode, show hover
+      -- <Tab> --> in fugitive buffers expands chunks
       keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>", { silent = true, desc = 'hover info' })
       vim.api.nvim_create_autocmd("User", {
         pattern = { "FugitiveObject", "FugitiveIndex" },
@@ -290,21 +290,21 @@ require("lazy").setup({
         end,
       })
 
-      -- Use Ctrl+j to trigger snippets
+      -- <Ctrl+j> --> trigger snippets
       keyset("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {desc = 'trigger snippets'})
-      -- Use Ctrl+SPACE to trigger completion.
+      -- <Ctrl+SPACE> --> trigger completion.
       keyset("i", "<C-space>", "coc#refresh()", {silent = true, expr = true, desc = 'trigger completion'})
 
-      -- Toggle inlay hints (Ctrl+h)
+      -- <Ctrl+h> --> toggle inlay hints
       keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>", {silent = true, desc = 'toggle inlay hints'})
 
-      -- Use F7 and F8 to navigate diagnostics
+      -- <F7> and <F8> --> navigate diagnostics
       -- Use `:CocDiagnostics` to get all diagnostics of current buffer in
       -- location list.
       keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = 'Go to previous diagnostic'})
       keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)", { silent = true, desc = 'Go to next diagnostic'})
 
-      -- Toggle diagnostics with F9
+      -- <F9> --> Toggle diagnostics
       function _G.toggleSigns()
         vim.fn.CocAction('diagnosticToggle')
         if vim.o.signcolumn == "yes" then
@@ -315,19 +315,19 @@ require("lazy").setup({
       end
       keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>', { desc = 'Toggle sign column' })
 
-      -- GoTo code navigation
+      -- <g>+[d/y/i/r] --> GoTo code navigation
       keyset("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = 'GoTo definition' })
       keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = 'GoTo type definition' })
       keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = 'GoTo implementation' })
       keyset("n", "gr", "<Plug>(coc-references)", { silent = true, desc = 'List references' })
 
-      -- Multiple cursors
+      -- <leader>+<a> --> Multiple cursors
       keyset("n", "<leader>a", "<Plug>(coc-cursors-position)", { silent = true, desc = 'Start multi-cursor at position' })
       keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)", { silent = true, desc = 'Start multi-cursor at word' })
       keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)", { silent = true, desc = 'Start multi-cursor from selected range' })
       keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)", { silent = true, desc = 'Start multi-cursor from next move' })
 
-      -- Use K to show documentation in preview window
+      -- <Shift+k> --> show documentation in preview window
       function _G.show_docs()
         local cw = vim.fn.expand('<cword>')
         if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
@@ -358,7 +358,7 @@ require("lazy").setup({
         end
       end
 
-      -- <leader>+r or <F6> for symbol renaming
+      -- <leader>+<r> or <F6> --> symbol renaming
       local opts = { silent = true, desc = 'Rename symbol' }
       keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", opts)
       keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", opts)
@@ -387,10 +387,9 @@ require("lazy").setup({
 
       -- Add `:OR` command for organize imports of the current buffer
       vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
-
-      -- <leader>+d to show all diagnostics
+      -- <leader>+<d> --> show all diagnostics
       keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", { silent = true, nowait = true, desc = 'Show all diagnostics' })
-      -- <leader>+s to search workspace symbols
+      -- <leader>+<s> --> search workspace symbols
       keyset("n", "<leader>s", ":<C-u>CocList -I symbols<cr>", { silent = true, nowait = true, desc = 'Search workspace symbols' })
     end,
   },
@@ -669,6 +668,7 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
+-- <z>+<Shift+[r/m]> --> open/close all folds
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = 'open all folds'})
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = 'close all folds'})
 
@@ -690,12 +690,15 @@ local project_files = function()
     telescope.find_files(opts)
   end
 end
+-- <leader>+<f>+[f/r/h/b] --> find files/recent/buffers/help/browse
 vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
-vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help tag'})
 vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>", {silent = true, noremap = true, desc = 'browse files'})
+-- <leader>+<g> --> live grep
+vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
+-- <F5> --> list buffers
 vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help page'})
 
 ---- breadcrumbs in lualine ------
 
@@ -741,9 +744,9 @@ end
 
 ------ CoC config -------
 
--- Make ENTER to accept selected completion item or notify coc.nvim to format
--- Can't be in LAZY config since it always needs to be mapped
--- <C-g>u breaks current undo, please make your own choice.
+-- <ENTER> --> accept selected completion item or notify coc.nvim to format
+--             Can't be in LAZY config since it always needs to be mapped
+--             <C-g>u breaks current undo, please make your own choice.
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false, desc = 'Select current completion' }
 vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
