@@ -1,55 +1,3 @@
-" ----------------------------
-"  GIT and vim-fugitive stuff
-" ----------------------------
-
-"if fugitive installed:
-  " Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
-  function GitFugitiveToggle(buffer_name, pretty_name, cmd)
-    let l:buf_nr = -1
-    for buf in getbufinfo()
-      " if buffer name includes what we're looking for
-      if stridx(buf.name, a:buffer_name) >= 0
-        let l:buf_nr = buf.bufnr
-      endif
-    endfor
-    if l:buf_nr > 0
-      if bufwinnr(l:buf_nr) > 0
-        " it is an active window, close and we're done
-        execute "bw! " . l:buf_nr
-        call v:lua.git_notify(a:cmd, "Closed " . a:pretty_name)
-        return
-      else
-        " the window wasn't active, close and then open a new one
-        execute "bw! " . l:buf_nr
-      endif
-    endif
-    " open a new one
-    execute a:cmd
-    call v:lua.git_notify(a:cmd, "Opened " . a:pretty_name)
-  endfunction
-
-  " Toggle git blame current file (Ctrl+b)
-  nnoremap <silent> <C-b> :call
-    \ GitFugitiveToggle(".fugitiveblame", "git blame", "G blame")<CR>
-
-  " Open Git options (Ctrl+g)
-  nnoremap <silent> <C-g> :call
-    \ GitFugitiveToggle("fugitive:", "git overview", ":vert Git")<CR>
-
-  " Open Git log (Ctrl+l)
-  nnoremap <silent> <C-l> :call
-    \ GitFugitiveToggle("tmp/nvim.", "git log", "vert Git log --decorate")<CR>
-
-  " Toggle git log for current file (Ctrl+k)
-  nnoremap <silent> <C-k> :call
-    \ GitFugitiveToggle("tmp/nvim.", "git log for current file", "vert Git log --decorate %")<CR>
-"end if fugitive
-
-" ---------------
-"  lua config
-"  --------------
-
-
 if (has("nvim"))
 lua << EOF
 
@@ -209,6 +157,74 @@ require("lazy").setup({
       api.nvim_create_autocmd('BufReadPost', {
         pattern = 'fugitive://*',
         command = 'set bufhidden=delete',
+      })
+
+      -- Show notifications for git stuff
+      function git_notify(cmd, text)
+        local notify_opts = {
+          title = text,
+          icon = ' ',
+          render = 'compact',
+          hide_from_history = true,
+          timeout = 1,
+        }
+        vim.notify(cmd, 'warn', notify_opts)
+      end
+
+      -- Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
+      function GitFugitiveToggle(buffer_name, pretty_name, cmd)
+        local buf_to_toggle = -1
+        for buf = 1, vim.fn.bufnr('$') do
+          -- if buffer name includes what we're looking for
+          if api.nvim_buf_is_valid(buf) and
+             string.find(api.nvim_buf_get_name(buf), buffer_name) then
+            buf_to_toggle = buf
+          end
+        end
+        if buf_to_toggle > 0 then
+          if vim.fn.bufwinnr(buf_to_toggle) > 0 then
+            -- it is an active window, close and we're done
+            vim.cmd("bw! " .. buf_to_toggle)
+            git_notify(cmd, "Closed " .. pretty_name)
+            return
+          else
+            -- the window wasn't active, close and then open a new one
+            vim.cmd("bw! " .. buf_to_toggle)
+          end
+        end
+        -- open a new one
+        vim.cmd(cmd)
+        git_notify(cmd, "Opened " .. pretty_name)
+      end
+
+      -- <Ctrl+b> Toggle git blame on current file
+      vim.keymap.set('n', '<C-b>', '', {
+        callback = function()
+          GitFugitiveToggle('.fugitiveblame', 'git blame', 'G blame')
+        end,
+        silent = true, desc = 'Toggle git blame on current file',
+      })
+      -- <Ctrl+g> Toggle git overview
+      vim.keymap.set('n', '<C-g>', '', {
+        callback = function()
+          GitFugitiveToggle('fugitive:', 'git overview', ':vert Git')
+        end,
+        silent = true, desc = 'Toggle git overview',
+      })
+      -- <Ctrl+l> Toggle git log
+      vim.keymap.set('n', '<C-l>', '', {
+        callback = function()
+          GitFugitiveToggle('tmp/nvim.', 'git log', 'vert Git log --decorate')
+        end,
+        silent = true, desc = 'Toggle git log',
+      })
+      -- <Ctrl+k> Toggle git log for current file
+      vim.keymap.set('n', '<C-k>', '', {
+        callback = function()
+          GitFugitiveToggle('tmp/nvim.', 'git log current file',
+                            'vert Git log --decorate %')
+        end,
+        silent = true, desc = 'Toggle git log',
       })
     end,
   },
@@ -732,17 +748,6 @@ local opts = { silent = true, noremap = true, expr = true, replace_keycodes = fa
 vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 ------ notify functions ------
-
-function git_notify(cmd, text)
-  local notify_opts = {
-    title = text,
-    icon = ' ',
-    render = 'compact',
-    hide_from_history = true,
-    timeout = 1,
-  }
-  vim.notify(cmd, 'warn', notify_opts)
-end
 
 function notify_output(command, opts)
   local output = ""
