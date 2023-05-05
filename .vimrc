@@ -3,9 +3,6 @@
 " ----------------------------
 
 "if fugitive installed:
-  " Delete hidden fugitive buffers
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-
   " Use Ctrl+o to cycle back to the fugitive git log after viewing a commit
   function GitFugitiveToggle(buffer_name, pretty_name, cmd)
     let l:buf_nr = -1
@@ -206,7 +203,15 @@ require("lazy").setup({
   { "chaoren/vim-wordmotion" },
 
   -- fugitive is a git plugin
-  { "tpope/vim-fugitive" },
+  { "tpope/vim-fugitive",
+    config = function ()
+      -- Delete hidden fugitive buffers
+      api.nvim_create_autocmd('BufReadPost', {
+        pattern = 'fugitive://*',
+        command = 'set bufhidden=delete',
+      })
+    end,
+  },
 
   -- rhubarb for connecting to github
   { "tpope/vim-rhubarb" },
