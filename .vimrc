@@ -254,7 +254,8 @@ require("lazy").setup({
   -- CoC for LSP support & Tab completion
   { "neoclide/coc.nvim",
     branch = "release",
-    build = {":CocInstall coc-json coc-css coc-tsserver coc-eslint coc-html coc-html-css-support coc-pyright coc-clangd coc-nav coc-ltex",
+    build = {":CocInstall coc-json coc-css coc-tsserver coc-eslint coc-html " ..
+             "coc-html-css-support coc-pyright coc-clangd coc-nav coc-ltex",
              ":CocUpdate"},
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
@@ -276,13 +277,17 @@ require("lazy").setup({
 
       -- <Tab> --> adds current completion (in Insert-mode)
       -- <Shift+Tab> --> cycle back to previous completion suggest
-      local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false, desc="completions"}
-      keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-      keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+      local opts = { silent = true, noremap = true, expr = true,
+                     replace_keycodes = false, desc="completions" }
+      keyset("i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : ]] ..
+             [[v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]], opts)
+      keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]],
+             opts)
 
       -- <Tab> --> in Normal-mode, show hover
       -- <Tab> --> in fugitive buffers expands chunks
-      keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>", { silent = true, desc = 'hover info' })
+      keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>",
+             { silent = true, desc = 'hover info' })
       vim.api.nvim_create_autocmd("User", {
         pattern = { "FugitiveObject", "FugitiveIndex" },
         callback = function()
@@ -292,16 +297,20 @@ require("lazy").setup({
       })
 
       -- <Ctrl+SPACE> --> trigger completion.
-      keyset("i", "<C-space>", "coc#refresh()", {silent = true, expr = true, desc = 'trigger completion'})
+      keyset("i", "<C-space>", "coc#refresh()",
+             { silent = true, expr = true, desc = 'trigger completion' })
 
       -- <Ctrl+h> --> toggle inlay hints
-      keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>", {silent = true, desc = 'toggle inlay hints'})
+      keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>",
+             { silent = true, desc = 'toggle inlay hints' })
 
       -- <F7> and <F8> --> navigate diagnostics
       -- Use `:CocDiagnostics` to get all diagnostics of current buffer in
       -- location list.
-      keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = 'Go to previous diagnostic'})
-      keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)", { silent = true, desc = 'Go to next diagnostic'})
+      keyset("n", "<F7>", "<Plug>(coc-diagnostic-prev)",
+             { silent = true, desc = 'Go to previous diagnostic'})
+      keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)",
+             { silent = true, desc = 'Go to next diagnostic'})
 
       -- <F9> --> Toggle diagnostics
       function _G.toggleSigns()
@@ -312,23 +321,32 @@ require("lazy").setup({
           vim.o.signcolumn = "yes"
         end
       end
-      keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>', { desc = 'Toggle sign column' })
+      keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>',
+             { desc = 'Toggle sign column' })
 
       -- <leader>+<d> --> show all diagnostics
       keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>",
              { silent = true, nowait = true, desc = 'Show all diagnostics' })
 
       -- <g>+[d/y/i/r] --> GoTo code navigation
-      keyset("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = 'GoTo definition' })
-      keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = 'GoTo type definition' })
-      keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = 'GoTo implementation' })
-      keyset("n", "gr", "<Plug>(coc-references)", { silent = true, desc = 'List references' })
+      keyset("n", "gd", "<Plug>(coc-definition)",
+             { silent = true, desc = 'GoTo definition' })
+      keyset("n", "gy", "<Plug>(coc-type-definition)",
+             { silent = true, desc = 'GoTo type definition' })
+      keyset("n", "gi", "<Plug>(coc-implementation)",
+             { silent = true, desc = 'GoTo implementation' })
+      keyset("n", "gr", "<Plug>(coc-references)",
+             { silent = true, desc = 'List references' })
 
       -- <leader>+<a> --> Multiple cursors
-      keyset("n", "<leader>a", "<Plug>(coc-cursors-position)", { silent = true, desc = 'Start multi-cursor at position' })
-      keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)", { silent = true, desc = 'Start multi-cursor at word' })
-      keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)", { silent = true, desc = 'Start multi-cursor from selected range' })
-      keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)", { silent = true, desc = 'Start multi-cursor from next move' })
+      keyset("n", "<leader>a", "<Plug>(coc-cursors-position)",
+             { silent = true, desc = 'Start multi-cursor at position' })
+      keyset("n", "<leader>aw", "<Plug>(coc-cursors-word)",
+             { silent = true, desc = 'Start multi-cursor at word' })
+      keyset("x", "<leader>ar", "<Plug>(coc-cursors-range)",
+             { silent = true, desc = 'Start multi-cursor from selected range' })
+      keyset("n", "<leader>x", "<Plug>(coc-cursors-operator)",
+             { silent = true, desc = 'Start multi-cursor from next move' })
 
       -- <Shift+k> --> show documentation in preview window
       function _G.show_docs()
@@ -341,7 +359,8 @@ require("lazy").setup({
           vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
         end
       end
-      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true, desc = 'show documentation'})
+      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>',
+             { silent = true, desc = 'show documentation' })
 
       -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
       vim.api.nvim_create_augroup("CocGroup", {})
@@ -356,7 +375,8 @@ require("lazy").setup({
         if vim.fn.CocHasProvider('rename') then
           vim.fn.CocActionAsync('rename')
         else
-          local keys = vim.api.nvim_replace_termcodes(':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
+          local keys = vim.api.nvim_replace_termcodes(
+            ':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
           vim.api.nvim_feedkeys(keys, "n", {})
         end
       end
@@ -386,10 +406,14 @@ require("lazy").setup({
       vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
 
       -- " Add `:Fold` command to fold current buffer
-      vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
+      vim.api.nvim_create_user_command("Fold",
+                                       "call CocAction('fold', <f-args>)",
+                                       { nargs = '?' })
 
       -- Add `:OR` command for organize imports of the current buffer
-      vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+      vim.api.nvim_create_user_command("OR",
+                                       "call CocActionAsync('runCommand', " ..
+                                       "'editor.action.organizeImport')", {})
     end,
   },
 
@@ -436,7 +460,9 @@ require("lazy").setup({
         lualine_z = {'location'}
       },
       tabline = {},
-      winbar = {}, -- winbar buggy with fugitive (see https://github.com/nvim-lualine/lualine.nvim/issues/948)
+      winbar = {},
+      -- winbar buggy with fugitive
+      -- (see https://github.com/nvim-lualine/lualine.nvim/issues/948)
       -- winbar = {
       --   lualine_a = {},
       --   lualine_b = {},
@@ -475,10 +501,11 @@ require("lazy").setup({
       highlight = {
         enable = true,
         disable = { "help" },
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
+        -- Setting this to true will run `:h syntax` and tree-sitter at the
+        -- same time. Set this to `true` if you depend on 'syntax' being
+        -- enabled (like for indentation). Using this option may slow down
+        -- your editor, and you may see some duplicate highlights. Instead of
+        -- true it can also be a list of languages
         additional_vim_regex_highlighting = false,
       },
       indent = {
@@ -499,9 +526,11 @@ require("lazy").setup({
     config = function()
       -- Clone the default Telescope configuration
       local telescopeConfig = require("telescope.config")
-      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      local vimgrep_arguments = {
+        unpack(telescopeConfig.values.vimgrep_arguments)
+      }
       table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
-      table.insert(vimgrep_arguments, "--glob") -- Don't search in the '.git' directory
+      table.insert(vimgrep_arguments, "--glob") -- Don't search in '.git' dir.
       table.insert(vimgrep_arguments, "!**/.git/*")
 
       require('telescope').setup {
@@ -536,8 +565,11 @@ require("lazy").setup({
             sort_mru = true,
           },
           find_files = {
-            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+            -- `hidden = true` will still show the inside of `.git/`
+            -- as it's not `.gitignore`d.
+            find_command = {
+              "rg", "--files", "--hidden", "--glob", "!**/.git/*"
+            },
           },
         },
         extensions = {
@@ -547,11 +579,10 @@ require("lazy").setup({
             hijack_netrw = true,
           },
           fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                             -- the default case_mode is "smart_case"
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",
           },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown {}
@@ -662,14 +693,16 @@ require("lazy").setup({
 
 vim.o.foldcolumn = '0' -- '0' is not bad
 vim.o.foldnestmax = 1 -- same number as foldcolumn to hide numbers
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, can be decreased
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
 -- <z>+<Shift+[r/m]> --> open/close all folds
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = 'open all folds'})
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = 'close all folds'})
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds,
+               { desc = 'open all folds' })
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds,
+               { desc = 'close all folds' })
 
 ------------------------------------------
 -- Search
@@ -693,7 +726,8 @@ end
 vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
 vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help tag'})
-vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>", {silent = true, noremap = true, desc = 'browse files'})
+vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>",
+               { silent = true, noremap = true, desc = 'browse files'})
 -- <leader>+<g> --> live grep
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
 -- <F5> --> list buffers
@@ -735,7 +769,8 @@ local function breadcrumbs()
               '%#' .. (symbols[k][3] or 'Normal') .. '#' ..
               (v.name or '')
     if next(items,k) ~= nil then
-      t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' .. (symbols[k][5] or '')
+      t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' ..
+                (symbols[k][5] or '')
     end
   end
   return table.concat(t)
@@ -746,8 +781,11 @@ end
 -- <ENTER> --> accept selected completion item or notify coc.nvim to format
 --             Can't be in LAZY config since it always needs to be mapped
 --             <C-g>u breaks current undo, please make your own choice.
-local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false, desc = 'Select current completion' }
-vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+local opts = { silent = true, noremap = true, expr = true,
+               replace_keycodes = false, desc = 'Select current completion' }
+vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
+               [["\<C-g>u\<CR><c-r>=coc#on_enter()\<CR>"]],
+               opts)
 
 ------ notify functions ------
 
