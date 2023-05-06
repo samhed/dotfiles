@@ -756,6 +756,8 @@ vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>",
                { silent = true, noremap = true, desc = 'browse files'})
 -- <leader>+<g> --> live grep
 vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
+-- <leader>+<v> --> list registers (delete history)
+vim.keymap.set('n', '<leader>v', telescope.registers, {desc = 'list registers'})
 -- <F5> --> list buffers
 vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
 
