@@ -371,20 +371,26 @@ require("lazy").setup({
       })
 
       -- Search and replace under cursor, use CoC's rename when available
+      function _G.basic_rename()
+        local keys = vim.api.nvim_replace_termcodes(
+          ':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
+        vim.api.nvim_feedkeys(keys, "n", {})
+      end
       function _G.rename()
         if vim.fn.CocHasProvider('rename') then
           vim.fn.CocActionAsync('rename')
         else
-          local keys = vim.api.nvim_replace_termcodes(
-            ':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
-          vim.api.nvim_feedkeys(keys, "n", {})
+          _G.basic_rename()
         end
       end
 
-      -- <leader>+<r> or <F6> --> symbol renaming
-      local opts = { silent = true, desc = 'Rename symbol' }
-      keyset("n", "<leader>r", "<CMD>lua _G.rename()<CR>", opts)
-      keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>", opts)
+      -- <leader>+<r> --> basic renaming under cursor
+      keyset("n", "<leader>r", "<CMD>lua _G.basic_rename()<CR>",
+             { silent = true, desc = 'Basic rename under cursor' })
+
+      -- <F6> --> symbol renaming if available
+      keyset("n", "<F6>", "<CMD>lua _G.rename()<CR>",
+             { silent = true, desc = 'Rename symbol' })
 
       -- Setup formatexpr specified filetype(s)
       vim.api.nvim_create_autocmd("FileType", {
