@@ -686,9 +686,11 @@ require("lazy").setup({
       vim.o.timeout = true
       vim.o.timeoutlen = 300
       require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
+        window = {
+          border = "single",
+          margin = { 0.05, 0.06, 0.05, 0.06 },
+          winblend = 15,
+        },
       })
     end,
   },
