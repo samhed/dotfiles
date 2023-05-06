@@ -661,7 +661,13 @@ require("lazy").setup({
   -- New GUI for messages, cmdline and popupmenu
   { "folke/noice.nvim",
     dependencies = "MunifTanjim/nui.nvim",
-    config = true,
+    config = function()
+      require("noice").setup({
+        presets = {
+          long_message_to_split = true,
+        },
+      })
+    end,
   },
 
   -- keybinding helper
