@@ -660,7 +660,10 @@ require("lazy").setup({
 
   -- New GUI for messages, cmdline and popupmenu
   { "folke/noice.nvim",
-    dependencies = "MunifTanjim/nui.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
     config = function()
       require("noice").setup({
         lsp = {
