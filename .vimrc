@@ -829,7 +829,7 @@ function notify_output(command, opts)
     notification = vim.notify(msg, level, notify_opts)
   end
   local on_data = function(_, data)
-    output = output .. table.concat(data, "\n")
+    output = output .. table.concat(data, "\n"):gsub("\", "\n")
     notify(output, "info")
   end
   vim.fn.jobstart(command, {
