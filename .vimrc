@@ -233,7 +233,9 @@ require("lazy").setup({
   { "tpope/vim-rhubarb" },
 
   -- comment out stuff with g-c-c
-  { "tpope/vim-commentary" },
+  { "numToStr/Comment.nvim",
+    config = true,
+  },
 
   -- Auto detect indentation
   { "tpope/vim-sleuth" },
