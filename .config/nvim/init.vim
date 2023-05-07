@@ -664,10 +664,9 @@ require("lazy").setup({
         minimum_width = 30,
         render = function(bufnr, notif, highlights, config)
           local message = {}
-          for i=1, #notif.message do
-            line = notif.message[i]
+          for _,line in pairs(notif.message) do
             if string.find(line, "\r") then
-              for split in string.gmatch(notif.message[i], "([^\r]+)") do
+              for split in string.gmatch(line, "([^\r]+)") do
                 table.insert(message, split)
               end
             else
