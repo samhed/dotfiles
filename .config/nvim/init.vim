@@ -959,54 +959,58 @@ function coc_notify(msg, level)
   vim.notify(msg, level, notify_opts)
 end
 
+function DiagnosticNotify()
+  local info = vim.b.coc_diagnostic_info or {}
+  if info == {} then return '' end
+  local msgs = {}
+  local level = 'info'
+  if info['warning'] > 0 then
+    level = 'warn'
+  end
+  if info['error'] > 0 then
+    level = 'error'
+  end
+
+  if info['error'] > 0 then
+    table.insert(msgs, ' Errors: ' .. info['error'])
+  end
+  if info['warning'] > 0 then
+    table.insert(msgs, ' Warnings: ' .. info['warning'])
+  end
+  if info['information'] > 0 then
+    table.insert(msgs, ' Infos: ' .. info['information'])
+  end
+  if info['hint'] > 0 then
+    table.insert(msgs, ' Hints: ' .. info['hint'])
+  end
+  local msg = table.concat(msgs, " ")
+  if msg == "" then msg = ' All OK' end
+  coc_diag_notify(msg, level)
+end
+
+function StatusNotify()
+  local status = vim.g.coc_status or ''
+  local level = 'info'
+  if status == '' then return '' end
+  coc_status_notify(status, level)
+end
+
+function InitCoc()
+  vim.cmd('runtime! autoload/coc/ui.vim')
+  vim.notify('Initialized coc.nvim for LSP support', 'info',
+             { title = 'LSP Status' })
+end
+
+api.nvim_create_autocmd("User", {
+  pattern = "CocNvimInit",
+  callback = function() InitCoc() end,
+})
+api.nvim_create_autocmd("User", {
+  pattern = "CocDiagnosticChange",
+  callback = function() DiagnosticNotify() end,
+})
+api.nvim_create_autocmd("User", {
+  pattern = "CocStatusChange",
+  callback = function() StatusNotify() end,
+})
 EOF
-
-" ---------- END OF LUA CONF -----------
-
-
-function! s:DiagnosticNotify() abort
-  let l:info = get(b:, 'coc_diagnostic_info', {})
-  if empty(l:info) | return '' | endif
-  let l:msgs = []
-  let l:level = 'info'
-  if get(l:info, 'warning', 0)
-    let l:level = 'warn'
-  endif
-  if get(l:info, 'error', 0)
-    let l:level = 'error'
-  endif
- 
-  if get(l:info, 'error', 0)
-    call add(l:msgs, ' Errors: ' . l:info['error'])
-  endif
-  if get(l:info, 'warning', 0)
-    call add(l:msgs, ' Warnings: ' . l:info['warning'])
-  endif
-  if get(l:info, 'information', 0)
-    call add(l:msgs, ' Infos: ' . l:info['information'])
-  endif
-  if get(l:info, 'hint', 0)
-    call add(l:msgs, ' Hints: ' . l:info['hint'])
-  endif
-  let l:msg = join(l:msgs, "\n")
-  if empty(l:msg) | let l:msg = ' All OK' | endif
-  call v:lua.coc_diag_notify(l:msg, l:level)
-endfunction
-
-function! s:StatusNotify() abort
-  let l:status = get(g:, 'coc_status', '')
-  let l:level = 'info'
-  if empty(l:status) | return '' | endif
-  call v:lua.coc_status_notify(l:status, l:level)
-endfunction
-
-function! s:InitCoc() abort
-  " load overrides
-  runtime! autoload/coc/ui.vim
-  execute "lua vim.notify('Initialized coc.nvim for LSP support', 'info', { title = 'LSP Status' })"
-endfunction
-
-" notifications
-autocmd User CocNvimInit call s:InitCoc()
-autocmd User CocDiagnosticChange call s:DiagnosticNotify()
-autocmd User CocStatusChange call s:StatusNotify()
