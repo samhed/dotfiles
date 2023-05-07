@@ -304,7 +304,7 @@ require("lazy").setup({
       -- <Tab> --> in fugitive buffers expands chunks
       keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>",
              { silent = true, desc = 'hover info' })
-      vim.api.nvim_create_autocmd("User", {
+      api.nvim_create_autocmd("User", {
         pattern = { "FugitiveObject", "FugitiveIndex" },
         callback = function()
           keyset("n", "<TAB>", "<Plug>fugitive:=",
@@ -368,19 +368,19 @@ require("lazy").setup({
       function _G.show_docs()
         local cw = vim.fn.expand('<cword>')
         if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
-          vim.api.nvim_command('h ' .. cw)
-        elseif vim.api.nvim_eval('coc#rpc#ready()') then
+          api.nvim_command('h ' .. cw)
+        elseif api.nvim_eval('coc#rpc#ready()') then
           vim.fn.CocActionAsync('doHover')
         else
-          vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+          api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
         end
       end
       keyset("n", "K", '<CMD>lua _G.show_docs()<CR>',
              { silent = true, desc = 'show documentation' })
 
       -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
-      vim.api.nvim_create_augroup("CocGroup", {})
-      vim.api.nvim_create_autocmd("CursorHold", {
+      api.nvim_create_augroup("CocGroup", {})
+      api.nvim_create_autocmd("CursorHold", {
         group = "CocGroup",
         command = "silent call CocActionAsync('highlight')",
         desc = "Highlight symbol under cursor on CursorHold"
@@ -388,9 +388,9 @@ require("lazy").setup({
 
       -- Search and replace under cursor, use CoC's rename when available
       function _G.basic_rename()
-        local keys = vim.api.nvim_replace_termcodes(
+        local keys = api.nvim_replace_termcodes(
           ':%s/<C-r><C-w>//gc<left><left><left>', false, false, true)
-        vim.api.nvim_feedkeys(keys, "n", {})
+        api.nvim_feedkeys(keys, "n", {})
       end
       function _G.rename()
         if vim.fn.CocHasProvider('rename') then
@@ -409,7 +409,7 @@ require("lazy").setup({
              { silent = true, desc = 'Rename symbol' })
 
       -- Setup formatexpr specified filetype(s)
-      vim.api.nvim_create_autocmd("FileType", {
+      api.nvim_create_autocmd("FileType", {
         group = "CocGroup",
         pattern = "typescript,json",
         command = "setl formatexpr=CocAction('formatSelected')",
@@ -417,7 +417,7 @@ require("lazy").setup({
       })
 
       -- Update signature help on jump placeholder
-      vim.api.nvim_create_autocmd("User", {
+      api.nvim_create_autocmd("User", {
         group = "CocGroup",
         pattern = "CocJumpPlaceholder",
         command = "call CocActionAsync('showSignatureHelp')",
@@ -425,17 +425,17 @@ require("lazy").setup({
       })
 
       -- Add `:Format` command to format current buffer
-      vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+      api.nvim_create_user_command("Format", "call CocAction('format')", {})
 
       -- " Add `:Fold` command to fold current buffer
-      vim.api.nvim_create_user_command("Fold",
-                                       "call CocAction('fold', <f-args>)",
-                                       { nargs = '?' })
+      api.nvim_create_user_command("Fold",
+                                   "call CocAction('fold', <f-args>)",
+                                   { nargs = '?' })
 
       -- Add `:OR` command for organize imports of the current buffer
-      vim.api.nvim_create_user_command("OR",
-                                       "call CocActionAsync('runCommand', " ..
-                                       "'editor.action.organizeImport')", {})
+      api.nvim_create_user_command("OR",
+                                   "call CocActionAsync('runCommand', " ..
+                                   "'editor.action.organizeImport')", {})
     end,
   },
 
@@ -778,8 +778,8 @@ require("lazy").setup({
   { "atusy/tsnode-marker.nvim",
     lazy = true,
     init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("tsnode-marker-markdown", {}),
+      api.nvim_create_autocmd("FileType", {
+        group = api.nvim_create_augroup("tsnode-marker-markdown", {}),
         pattern = "markdown",
         callback = function(ctx)
           require("tsnode-marker").set_automark(ctx.buf, {
