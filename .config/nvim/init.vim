@@ -925,8 +925,12 @@ end
 local coc_status_record = {}
 
 function coc_status_notify(msg, level)
-  local notify_opts = { title = "LSP Status", timeout = 500, hide_from_history = true, on_close = reset_coc_status_record }
-  -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
+  local notify_opts = {
+    title = "LSP Status", timeout = 500, hide_from_history = true,
+    on_close = reset_coc_status_record,
+  }
+  -- if coc_status_record is not {} then add it to notify_opts to
+  -- key called "replace"
   if coc_status_record ~= {} then
     notify_opts["replace"] = coc_status_record.id
     msg = "id " .. coc_staus_record.id .. " : " ..msg
@@ -941,8 +945,11 @@ end
 local coc_diag_record = {}
 
 function coc_diag_notify(msg, level)
-  local notify_opts = { title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record }
-  -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
+  local notify_opts = {
+    title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record,
+  }
+  -- if coc_diag_record is not {} then add it to notify_opts to
+  -- key called "replace"
   if coc_diag_record ~= {} then
     notify_opts["replace"] = coc_diag_record.id
     msg = "id " .. coc_staus_record.id .. " : " ..msg
