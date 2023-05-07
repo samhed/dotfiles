@@ -1,4 +1,3 @@
-lua << EOF
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -956,4 +955,3 @@ api.nvim_create_autocmd("User", {
   pattern = "CocStatusChange",
   callback = function() StatusNotify() end,
 })
-EOF
