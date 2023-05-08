@@ -290,14 +290,18 @@ require("lazy").setup({
       --              TAB is the same as Ctrl-i
       keyset("n", "<C-p>", "<C-i>", {desc = 'back in jump list'})
 
+      local tab_opts = { silent = true, noremap = true, expr = true,
+                         replace_keycodes = false }
+
       -- <Tab> --> adds current completion (in Insert-mode)
-      -- <Shift+Tab> --> cycle back to previous completion suggest
-      local opts = { silent = true, noremap = true, expr = true,
-                     replace_keycodes = false, desc="completions" }
+      tab_opts["desc"] = "Add next completion"
       keyset("i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : ]] ..
-             [[v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]], opts)
+             [[v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]], tab_opts)
+
+      -- <Shift+Tab> --> cycle back to previous completion suggest
+      tab_opts["desc"] = "Add previous completion"
       keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]],
-             opts)
+             tab_opts)
 
       -- <Tab> --> in Normal-mode, show hover
       -- <Tab> --> in fugitive buffers expands chunks
