@@ -828,11 +828,10 @@ end
 -- <ENTER> --> accept selected completion item or notify coc.nvim to format
 --             Can't be in LAZY config since it always needs to be mapped
 --             <C-g>u breaks current undo, please make your own choice.
-local opts = { silent = true, noremap = true, expr = true,
-               replace_keycodes = false, desc = 'Select current completion' }
 vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
                [["\<C-g>u\<CR><c-r>=coc#on_enter()\<CR>"]],
-               opts)
+               { silent = true, noremap = true, expr = true,
+                 replace_keycodes = false, desc = 'Select current completion' })
 
 ------ notify functions ------
 
