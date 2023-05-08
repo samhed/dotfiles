@@ -14,44 +14,10 @@ vim.opt.rtp:append(vim.fn.stdpath("config") .. "/after")
 
 require("settings")
 require("autocmd")
+require("keymap")
 -- require("lazy").setup("plugins")
 
 local api = vim.api
-
-------------------------------------------
--- General keymaps
-------------------------------------------
-
--- <Ctrl+c> --> copy selected text with
-vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
-
--- <leader>+<c> --> clear search highlight with
-vim.keymap.set('n', '<leader>c', ':nohl<CR>', { silent = true, desc = 'Clear search highlight' })
-
--- <Ctrl+s> --> save file (works in INSERT as well)
-local opts = { silent = true, desc = 'Save'}
-vim.keymap.set('n', '<C-s>', ':update<CR>', opts)
-vim.keymap.set('v', '<C-s>', '<C-c>:update<CR>', opts)
-vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>', opts)
--- <leader>+<w> --> save file
-vim.keymap.set('n', '<leader>w', ':update<CR>', opts)
-vim.keymap.set('v', '<leader>w', '<C-c>:update<CR>', opts)
-
--- <Alt+Up> or <Alt+Down> --> move lines up or down
-local optsDown = { desc = 'Move line down' }
-local optsUp = { desc = 'Move line up' }
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', optsDown)
-vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', optsDown)
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', optsUp)
-vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', optsUp)
-vim.keymap.set('i', '<A-j>', '<Esc>:m .+2<CR>==gi', optsDown)
-vim.keymap.set('i', '<A-Down>', '<Esc>:m .+1<CR>==gi', optsDown)
-vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi', optsUp)
-vim.keymap.set('i', '<A-Up>', '<Esc>:m .-2<CR>==gi', optsUp)
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>gv=gv', optsDown)
-vim.keymap.set('v', '<A-Down>', ':m .+1<CR>gv=gv', optsDown)
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>gv=gv', optsUp)
-vim.keymap.set('v', '<A-Up>', ':m .-2<CR>gv=gv', optsUp)
 
 ------------------------------------------
 -- Plugins
