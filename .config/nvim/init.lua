@@ -760,12 +760,11 @@ vim.o.smartcase = true -- Case insensitive search when only lower case
 
 local telescope = require('telescope.builtin')
 local project_files = function()
-  local opts = {} -- define here if you want to define something
   vim.fn.system('git rev-parse --is-inside-work-tree')
   if vim.v.shell_error == 0 then
-    telescope.git_files(opts)
+    telescope.git_files({})
   else
-    telescope.find_files(opts)
+    telescope.find_files({})
   end
 end
 -- <leader>+<f>+[f/r/h/b] --> find files/recent/buffers/help/browse
