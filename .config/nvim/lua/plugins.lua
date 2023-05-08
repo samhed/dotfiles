@@ -168,7 +168,7 @@ return {
   { "nvim-lualine/lualine.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      -- require("breadcrumbs")
+      -- require("custom.breadcrumbs")
       require("lualine").setup({
         sections = {
           lualine_a = {'mode'},
@@ -392,7 +392,7 @@ return {
     config = function()
       require('notify').setup({
         minimum_width = 30,
-        render = require("notifyrender")
+        render = require("custom.notifyrender")
       })
       vim.notify = require("notify")
     end,
