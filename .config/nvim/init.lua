@@ -61,7 +61,10 @@ require("lazy").setup({
 
   -- Auto close parens & brackets etc.
   { "windwp/nvim-autopairs",
-    opts = { check_ts = true },
+    opts = {
+      check_ts = true,
+      map_cr = false,
+    },
   },
 
   -- Javascript syntax
@@ -232,6 +235,12 @@ require("lazy").setup({
       -- <Ctrl+SPACE> --> trigger completion.
       keyset("i", "<C-space>", "coc#refresh()",
              { silent = true, expr = true, desc = 'Trigger completion' })
+
+      -- <ENTER> --> accept selected completion item or notify coc.nvim to format
+      keyset("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
+             [["\<C-g>u\<CR><c-r>=coc#on_enter()\<CR>"]],
+             { silent = true, noremap = true, expr = true,
+               replace_keycodes = false, desc = 'Select current completion' })
 
       -- <Ctrl+h> --> toggle inlay hints
       keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>",
@@ -817,13 +826,3 @@ local function breadcrumbs()
   end
   return table.concat(t)
 end
-
------- CoC config -------
-
--- <ENTER> --> accept selected completion item or notify coc.nvim to format
---             Can't be in LAZY config since it always needs to be mapped
---             <C-g>u breaks current undo, please make your own choice.
-vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
-               [["\<C-g>u\<CR><c-r>=coc#on_enter()\<CR>"]],
-               { silent = true, noremap = true, expr = true,
-                 replace_keycodes = false, desc = 'Select current completion' })
