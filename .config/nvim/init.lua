@@ -695,6 +695,7 @@ require("lazy").setup({
         },
         presets = {
           long_message_to_split = true,
+          command_palette = true,
         },
       })
     end,
