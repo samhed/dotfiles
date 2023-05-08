@@ -48,7 +48,8 @@ return {
         vim.notify(cmd, 'warn', notify_opts)
       end
 
-      -- Use <Ctrl+o> to cycle back to the fugitive git log after viewing a commit
+      -- <p> --> view previous (parent) commit
+      -- <Ctrl+o> --> go back
       function GitFugitiveToggle(buffer_name, pretty_name, cmd)
         local buf_to_toggle = -1
         for buf = 1, vim.fn.bufnr('$') do
