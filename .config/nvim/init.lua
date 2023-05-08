@@ -173,7 +173,7 @@ require("lazy").setup({
       })
 
       -- Show notifications for git stuff
-      function git_notify(cmd, text)
+      local function git_notify(cmd, text)
         local notify_opts = {
           title = text,
           icon = ' ',
@@ -839,7 +839,7 @@ vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
 
 local coc_status_record = {}
 
-function coc_status_notify(msg, level)
+local function coc_status_notify(msg, level)
   local notify_opts = {
     title = "LSP Status", timeout = 500, hide_from_history = true,
     on_close = reset_coc_status_record,
@@ -858,7 +858,7 @@ end
 
 local coc_diag_record = {}
 
-function coc_diag_notify(msg, level)
+local function coc_diag_notify(msg, level)
   local notify_opts = {
     title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record,
   }
