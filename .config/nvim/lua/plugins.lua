@@ -19,11 +19,6 @@ return {
     ft = "javascript",
   },
 
-  -- symbols outline shows the current function etc.
-  { "simrat39/symbols-outline.nvim",
-    config = true,
-  },
-
   -- Makes word motions work for CamelCase and snake_case
   { "chaoren/vim-wordmotion" },
 
@@ -217,6 +212,18 @@ return {
       -- <leader>+<d> --> show all diagnostics
       keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>",
              { silent = true, nowait = true, desc = 'Show all diagnostics' })
+
+      -- <leader>+<o> --> Toggle file outline
+      function _G.toggleOutline()
+        local winid = api.nvim_eval('coc#window#find("cocViewId", "OUTLINE")')
+        if winid == -1 then
+          vim.fn.CocActionAsync('showOutline', 1)
+        else
+          vim.fn.CocActionAsync('hideOutline', 1)
+        end
+      end
+      keyset("n", "<leader>o", "<CMD>lua _G.toggleOutline()<CR>",
+             { silent = true, desc = 'Show file outline' })
 
       -- <g>+[d/y/i/r] --> GoTo code navigation
       keyset("n", "gd", "<Plug>(coc-definition)",
