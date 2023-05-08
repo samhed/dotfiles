@@ -31,7 +31,7 @@ vim.g.mapleader = " " -- Change leader key to SPACE
 -- Return to last edit positon when opening files
 api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
   callback = function()
-    local row, column = unpack(api.nvim_buf_get_mark(0, '"'))
+    local row, column = table.unpack(api.nvim_buf_get_mark(0, '"'))
     local buf_line_count = api.nvim_buf_line_count(0)
 
     if row >= 1 and row <= buf_line_count then
@@ -548,7 +548,7 @@ require("lazy").setup({
       -- Clone the default Telescope configuration
       local telescopeConfig = require("telescope.config")
       local vimgrep_arguments = {
-        unpack(telescopeConfig.values.vimgrep_arguments)
+        table.unpack(telescopeConfig.values.vimgrep_arguments)
       }
       table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
       table.insert(vimgrep_arguments, "--glob") -- Don't search in '.git' dir.
