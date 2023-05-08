@@ -567,6 +567,9 @@ return {
           buffers = {
             ignore_current_buffer = true,
             sort_mru = true,
+            mappings = {
+              i = { ["d"] = require('telescope.actions').delete_buffer },
+            },
           },
           find_files = {
             -- `hidden = true` will still show the inside of `.git/`
