@@ -288,7 +288,7 @@ require("lazy").setup({
 
       -- <Ctrl+p> --> move back in the jump list, we need to remap since
       --              TAB is the same as Ctrl-i
-      keyset("n", "<C-p>", "<C-i>", {desc = 'back in jump list'})
+      keyset("n", "<C-p>", "<C-i>", { desc = 'Back in jump list' })
 
       local tab_opts = { silent = true, noremap = true, expr = true,
                          replace_keycodes = false }
@@ -306,22 +306,22 @@ require("lazy").setup({
       -- <Tab> --> in Normal-mode, show hover
       -- <Tab> --> in fugitive buffers expands chunks
       keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>",
-             { silent = true, desc = 'hover info' })
+             { silent = true, desc = 'Hover info' })
       api.nvim_create_autocmd("User", {
         pattern = { "FugitiveObject", "FugitiveIndex" },
         callback = function()
           keyset("n", "<TAB>", "<Plug>fugitive:=",
-                 { buffer = true, desc = "expand chunk" })
+                 { buffer = true, desc = "Expand chunk" })
         end,
       })
 
       -- <Ctrl+SPACE> --> trigger completion.
       keyset("i", "<C-space>", "coc#refresh()",
-             { silent = true, expr = true, desc = 'trigger completion' })
+             { silent = true, expr = true, desc = 'Trigger completion' })
 
       -- <Ctrl+h> --> toggle inlay hints
       keyset("n", "<C-h>", ":CocCommand document.toggleInlayHint<CR>",
-             { silent = true, desc = 'toggle inlay hints' })
+             { silent = true, desc = 'Toggle inlay hints' })
 
       -- <F7> and <F8> --> navigate diagnostics
       -- Use `:CocDiagnostics` to get all diagnostics of current buffer in
@@ -379,7 +379,7 @@ require("lazy").setup({
         end
       end
       keyset("n", "K", '<CMD>lua _G.show_docs()<CR>',
-             { silent = true, desc = 'show documentation' })
+             { silent = true, desc = 'Show documentation' })
 
       -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
       api.nvim_create_augroup("CocGroup", {})
@@ -769,17 +769,17 @@ local project_files = function()
   end
 end
 -- <leader>+<f>+[f/r/h/b] --> find files/recent/buffers/help/browse
-vim.keymap.set('n', '<leader>ff', project_files, {desc = 'find files'})
-vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'recent files'})
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'find help tag'})
+vim.keymap.set('n', '<leader>ff', project_files, {desc = 'Find files'})
+vim.keymap.set('n', '<leader>fr', telescope.oldfiles, {desc = 'Recent files'})
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, {desc = 'Find help tag'})
 vim.keymap.set('n', '<leader>fb', ":Telescope file_browser<CR>",
-               { silent = true, noremap = true, desc = 'browse files'})
+               { silent = true, noremap = true, desc = 'Browse files' })
 -- <leader>+<g> --> live grep
-vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'live grep'})
+vim.keymap.set('n', '<leader>g', telescope.live_grep, {desc = 'Live grep'})
 -- <leader>+<v> --> list registers (delete history)
-vim.keymap.set('n', '<leader>v', telescope.registers, {desc = 'list registers'})
+vim.keymap.set('n', '<leader>v', telescope.registers, {desc = 'List registers'})
 -- <F5> --> list buffers
-vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'list buffers'})
+vim.keymap.set('n', '<F5>', telescope.buffers, {desc = 'List buffers'})
 
 ---- breadcrumbs in lualine ------
 
