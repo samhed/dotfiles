@@ -21,11 +21,11 @@ if has("nvim")
       let level = 'warn'
     endif
     let msg = join(msgs, '\n')
-    call v:lua.coc_notify(msg, level)
+    call v:lua.CoC_notify(msg, level)
   endfunction
 
   function! coc#ui#echo_lines(lines)
     let msg = join(a:lines, "\n")
-    call v:lua.coc_notify(msg, 'info')
+    call v:lua.CoC_notify(msg, 'info')
   endfunction
 endif
