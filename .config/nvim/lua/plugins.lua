@@ -155,13 +155,7 @@ return {
 
   -- Fancy notifications
   { "rcarriga/nvim-notify",
-    config = function()
-      require('notify').setup({
-        minimum_width = 30,
-        render = require("custom.notifyrender")
-      })
-      vim.notify = require("notify")
-    end,
+    config = require("setup.notify"),
   },
 
   -- Highlight indentations
