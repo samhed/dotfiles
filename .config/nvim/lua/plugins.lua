@@ -90,12 +90,7 @@ return {
 
   -- Nice colorscheme (no proper highligts for Python)
   { "navarasu/onedark.nvim",
-    config = function()
-      require("onedark").setup({
-        style = "deep",
-      })
-      vim.cmd([[colorscheme onedark]])
-    end,
+    config = require("setup.onedark"),
   },
 
   -- Better syntax highlighting possibilities
