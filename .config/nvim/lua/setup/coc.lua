@@ -64,16 +64,18 @@ return function ()
          { silent = true, desc = 'Go to next diagnostic'})
 
   -- <F9> --> Toggle diagnostics
-  function _G.toggleSigns()
-    vim.fn.CocAction('diagnosticToggle')
-    if vim.o.signcolumn == "yes" then
-      vim.o.signcolumn = "no"
+  function _G.toggleColumns()
+    vim.fn.CocAction('diagnosticToggleBuffer')
+    if vim.o.number then
+      vim.o.number = false
+      vim.o.foldcolumn = "1"
     else
-      vim.o.signcolumn = "yes"
+      vim.o.number = true
+      vim.o.foldcolumn = "0"
     end
   end
-  keyset("n", "<F9>", '<CMD>lua _G.toggleSigns()<CR>',
-         { desc = 'Toggle sign column' })
+  keyset("n", "<F9>", '<CMD>lua _G.toggleColumns()<CR>',
+         { desc = 'Toggle diagnostics, fold & number columns' })
 
   -- <leader>+<d> --> show all diagnostics
   keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>",
