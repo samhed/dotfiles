@@ -1,4 +1,6 @@
-return function()
+local toggleterm = {}
+
+function toggleterm.config()
   require("toggleterm").setup({
     open_mapping = [[<c-t>]], -- toggle terminal with Ctrl-t
     insert_mappings = true, -- open mapping applies in insert mode
@@ -14,3 +16,9 @@ return function()
     },
   })
 end
+
+toggleterm.keys = {
+  { '<C-t>', "<cmd>ToggleTerm<CR>", desc = "Toggle terminal window" },
+}
+
+return toggleterm

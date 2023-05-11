@@ -134,7 +134,8 @@ return {
   -- Toggle terminal
   { "akinsho/toggleterm.nvim",
     dependencies = "nvim-lua/popup.nvim",
-    config = require("setup.toggleterm"),
+    config = require("setup.toggleterm").config,
+    keys = require("setup.toggleterm").keys,
   },
 
   -- Fancy notifications
