@@ -2,9 +2,10 @@ local telescope = {}
 
 function telescope.config()
   -- Clone the default Telescope configuration
-  local telescopeConfig = require("telescope.config")
+  local config = require("telescope.config")
+  local actions = require('telescope.actions')
   local vimgrep_arguments = {
-    table.unpack(telescopeConfig.values.vimgrep_arguments)
+    table.unpack(config.values.vimgrep_arguments)
   }
   table.insert(vimgrep_arguments, "--hidden") -- Search in hidden/dot files.
   table.insert(vimgrep_arguments, "--glob") -- Don't search in '.git' dir.
@@ -24,24 +25,24 @@ function telescope.config()
       },
       mappings = {
         i = {
-          ["<esc>"] = require('telescope.actions').close,
+          ["<esc>"] = actions.close,
           ["<C-w>"] = 'which_key',
-          ["<C-Down>"] = require('telescope.actions').cycle_history_next,
-          ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+          ["<C-Down>"] = actions.cycle_history_next,
+          ["<C-Up>"] = actions.cycle_history_prev,
         },
       },
     },
     pickers = {
       live_grep = {
         mappings = {
-          i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
+          i = { ["<c-f>"] = actions.to_fuzzy_refine },
         },
       },
       buffers = {
         ignore_current_buffer = true,
         sort_mru = true,
         mappings = {
-          i = { ["d"] = require('telescope.actions').delete_buffer },
+          i = { ["d"] = actions.delete_buffer },
         },
       },
       find_files = {
