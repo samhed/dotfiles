@@ -62,7 +62,7 @@ return {
 
   -- gitsigns shows git diffs in the sign column
   { "lewis6991/gitsigns.nvim",
-    config = true,
+    config = require("setup.gitsigns"),
   },
 
   -- Merge conflicts
@@ -76,8 +76,13 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
       "nvim-treesitter",
+      "luukvbaal/statuscol.nvim"
     },
     config = require("setup.ufo"),
+  },
+
+  { "luukvbaal/statuscol.nvim",
+    config = require("setup.statuscol"),
   },
 
   -- Statusline

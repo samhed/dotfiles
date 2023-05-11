@@ -24,7 +24,6 @@ vim.o.synmaxcol = 240 -- Max column for syntax highlight
 
 vim.o.termguicolors = true
 vim.o.visualbell = true -- visual bell instead of sounds
-vim.o.signcolumn = 'yes' -- Always show to avoid shifts due to diagnostics
 vim.o.number = true
 vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
 vim.o.wrap = false -- Don't wrap lines
@@ -47,7 +46,6 @@ vim.o.autoindent = true -- automatically indent next row
 -- Folding
 ------------------------------------------
 
-vim.o.foldcolumn = '0' -- '0' is not bad
 vim.o.foldnestmax = 1 -- same number as foldcolumn to hide numbers
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, can be decreased
 vim.o.foldlevelstart = 99
