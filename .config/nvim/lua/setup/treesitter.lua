@@ -1,5 +1,5 @@
 return function()
-  require("nvim-treesitter").setup({
+  require("nvim-treesitter.configs").setup({
     ensure_installed = {
       "c", "cpp", "python",
       "css", "html", "javascript", "json",
