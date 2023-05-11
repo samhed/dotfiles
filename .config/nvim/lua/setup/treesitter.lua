@@ -5,13 +5,12 @@ return function()
       "css", "html", "javascript", "json",
       "bash", "make", "markdown", "markdown_inline", "rst",
       "git_rebase", "gitattributes", "gitcommit", "gitignore",
-      "comment", "diff", "regex", "lua", "vim", -- "help",
+      "comment", "diff", "regex", "lua", "vim",
     },
     sync_install = false,
     auto_install = true,
     highlight = {
       enable = true,
-      disable = { "help" },
       -- Setting this to true will run `:h syntax` and tree-sitter at the
       -- same time. Set this to `true` if you depend on 'syntax' being
       -- enabled (like for indentation). Using this option may slow down
