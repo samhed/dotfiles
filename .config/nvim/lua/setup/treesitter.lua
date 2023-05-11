@@ -5,7 +5,7 @@ return function()
       "css", "html", "javascript", "json",
       "bash", "make", "markdown", "markdown_inline", "rst",
       "git_rebase", "gitattributes", "gitcommit", "gitignore",
-      "diff", "regex", "lua", "vim", -- "help",
+      "comment", "diff", "regex", "lua", "vim", -- "help",
     },
     sync_install = false,
     auto_install = true,
