@@ -107,7 +107,8 @@ return {
   -- file / code finder
   { "nvim-telescope/telescope.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = require("setup.telescope"),
+    keys = require("setup.telescope").keys,
+    config = require("setup.telescope").config,
   },
 
   -- Smart history for telescope
@@ -123,7 +124,8 @@ return {
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim",
-    }
+    },
+    keys = require("setup.telescope").fb_keys,
   },
 
   -- Use telescope UI for select
