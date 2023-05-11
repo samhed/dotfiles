@@ -13,13 +13,6 @@ vim.g.netrw_browsex_viewer = 'xdg-open' -- open urls (start /w http://)
 vim.g.mapleader = " " -- Change leader key to SPACE
 
 ------------------------------------------
--- Highlights
-------------------------------------------
-
--- Show a very faint highlight on the line with the cursor
-api.nvim_set_hl(0, 'CursorLine', { bg = '#1c2330' })
-
-------------------------------------------
 -- Memory, CPU
 ------------------------------------------
 
