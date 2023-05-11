@@ -81,6 +81,7 @@ return {
     config = require("setup.ufo"),
   },
 
+  -- Status column for signs, numbers and fold
   { "luukvbaal/statuscol.nvim",
     config = require("setup.statuscol"),
   },
@@ -123,6 +124,7 @@ return {
     },
   },
 
+  -- Filebrowsing
   { "nvim-telescope/telescope-file-browser.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
