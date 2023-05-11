@@ -4,6 +4,12 @@
 
 return {
 
+  -- Greeting screen
+  { "goolord/alpha-nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = require("setup.alpha"),
+  },
+
   -- Auto close parens & brackets etc.
   { "windwp/nvim-autopairs",
     opts = {
