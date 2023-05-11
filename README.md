@@ -25,4 +25,9 @@ ln -sf ~/devel/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/devel/dotfiles/.bashrc ~/.bashrc
 ```
 
+## Neovim usage
 
+* Lazy plugin manager `:lazy`, `U`
+* Treesitter update `:TSUpdate`
+* LSP update `:CocUpdate`
+* Keybindings `:WhichKey`
