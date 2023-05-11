@@ -7,6 +7,7 @@ return function()
     dashboard.button("SPC f r", "  Recent files"),
     dashboard.button("SPC g", "󰈬  Live grep"),
     dashboard.button("CTRL + g", "  Show git overview", "<C-g>"),
+    dashboard.button("Lazy", "  Plugin manager", ":Lazy<CR>"),
     dashboard.button("q", "  Quit NVIM" , ":qa<CR>"),
   }
   alpha.setup(dashboard.config)
