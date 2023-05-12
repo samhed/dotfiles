@@ -4,9 +4,6 @@
   "diagnostic.hintSign": "‼",
   "python.linting.pylintEnabled": true,
   "python.linting.pycodestyleEnabled": true,
-  "colors.filetypes": [
-    "*"
-  ],
   "clangd.path": "~/.local/share/nvim/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
   "Lua.diagnostics.globals": ["vim"],
   "outline.autoPreview": true,
