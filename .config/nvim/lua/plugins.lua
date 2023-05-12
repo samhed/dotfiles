@@ -98,7 +98,7 @@ return {
     config = require("setup.lualine"),
   },
 
-  -- Nice colorscheme (no proper highligts for Python)
+  -- Nice colorscheme (no proper highlights for Python)
   { "navarasu/onedark.nvim",
     config = require("setup.onedark"),
   },
