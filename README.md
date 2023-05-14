@@ -18,11 +18,11 @@ Setup symlinks to deploy dotfiles:
 ```
 rm -r ~/.config/nvim ~/.config/pycodestyle ~/.vimrc ~/.gitignore ~/.gitconfig ~/.bashrc
 
-ln -sf ~/devel/dotfiles/.config/nvim ~/.config/nvim
-ln -sf ~/devel/dotfiles/.config/pycodestyle ~/.config/pycodestyle
-ln -sf ~/devel/dotfiles/.gitignore ~/.gitignore
-ln -sf ~/devel/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/devel/dotfiles/.bashrc ~/.bashrc
+ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
+ln -sf ~/devel/dotfiles/config/pycodestyle ~/.config/pycodestyle
+ln -sf ~/devel/dotfiles/gitignore ~/.gitignore
+ln -sf ~/devel/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/devel/dotfiles/bashrc ~/.bashrc
 ```
 
 ## Neovim usage
