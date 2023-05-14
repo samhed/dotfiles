@@ -16,7 +16,7 @@ unzip SourceCodePro.zip -d ~/.local/share/fonts/
 
 Setup symlinks to deploy dotfiles:
 ```
-rm -r ~/.config/nvim ~/.config/pycodestyle ~/.vimrc ~/.gitignore ~/.gitconfig ~/.bashrc
+rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc
 
 ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/devel/dotfiles/config/pycodestyle ~/.config/pycodestyle
