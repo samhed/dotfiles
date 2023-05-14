@@ -1,5 +1,8 @@
 return function()
-  local alpha = require("alpha")
+  local status_ok, alpha = pcall(require, "alpha")
+  if not status_ok then
+    return
+  end
 
   -- Needs to be italic to appear as intended
   local logoLines  = {
