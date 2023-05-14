@@ -4,7 +4,8 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip
+pip install pynvim
 ```
 
 Install font SourceCodePro:
