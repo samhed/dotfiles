@@ -4,12 +4,6 @@
 
 return {
 
-  -- Greeting screen
-  { "goolord/alpha-nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = require("setup.alpha"),
-  },
-
   -- Auto close parens & brackets etc.
   { "windwp/nvim-autopairs",
     opts = {
@@ -101,6 +95,15 @@ return {
   -- Nice colorscheme (no proper highlights for Python)
   { "navarasu/onedark.nvim",
     config = require("setup.onedark"),
+  },
+
+  -- Greeting screen
+  { "goolord/alpha-nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "navarasu/onedark.nvim",
+    },
+    config = require("setup.alpha"),
   },
 
   -- Better syntax highlighting possibilities
