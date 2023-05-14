@@ -6,6 +6,7 @@
    - vertical overview
    - launch new instance
  * gnome tweaks
+ * color picker
  * epiphany
  * microsoft edge
  * cronie
