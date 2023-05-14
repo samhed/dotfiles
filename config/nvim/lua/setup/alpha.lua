@@ -63,11 +63,14 @@ return function()
     return output
   end
 
-  local theme = require("alpha.themes.dashboard")
+  local theme = require("alpha.themes.theta")
   local config = theme.config
+  local dashboard = require("alpha.themes.dashboard")
   local buttons = {
     type = "group",
     val = {
+      { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+      { type = "padding", val = 1 },
       dashboard.button("e", "  New file" , ":ene <BAR> startinsert <CR>"),
       dashboard.button("SPC f f", "󰈞  Find file"),
       dashboard.button("SPC f r", "  Recent files"),
@@ -80,6 +83,7 @@ return function()
   }
 
   config.layout[2] = coloredHeader()
-  config.layout[4] = buttons
+    print(config.layout[2])
+  config.layout[6] = buttons
   alpha.setup(config)
 end
