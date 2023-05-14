@@ -250,10 +250,10 @@ return function ()
       table.insert(msgs, ' Warnings: ' .. info['warning'])
     end
     if info['information'] > 0 then
-      table.insert(msgs, ' Infos: ' .. info['information'])
+      table.insert(msgs, '󰋼 Infos: ' .. info['information'])
     end
     if info['hint'] > 0 then
-      table.insert(msgs, ' Hints: ' .. info['hint'])
+      table.insert(msgs, '󰌵 Hints: ' .. info['hint'])
     end
     local msg = table.concat(msgs, " ")
     if msg == "" then msg = ' All OK' end
