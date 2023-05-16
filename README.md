@@ -4,7 +4,7 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip alacritty
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip
 pip install pynvim
 ```
 
@@ -17,14 +17,13 @@ unzip SourceCodePro.zip -d ~/.local/share/fonts/
 
 Setup symlinks to deploy dotfiles:
 ```
-rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc ~/.alacritty.yml
+rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc
 
 ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/devel/dotfiles/config/pycodestyle ~/.config/pycodestyle
 ln -sf ~/devel/dotfiles/gitignore ~/.gitignore
 ln -sf ~/devel/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/devel/dotfiles/bashrc ~/.bashrc
-ln -sf ~/devel/dotfiles/alacritty.yml ~/.alacritty.yml
 ```
 
 ## Neovim usage
