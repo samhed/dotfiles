@@ -16,23 +16,35 @@ return function()
     [[██████  █████████████████████ ████ █████ █████ ████ ██████]],
   }
   -- Create some nice Highlight colors to use for the logo
+  colorLetters = { 'A', 'B', 'C', 'D', 'E' }
   for i,_ in ipairs(logoLines) do
-    vim.api.nvim_set_hl(0, 'logo'..i, {
-      -- Red/Pink
-      --italic = true, fg = string.format('#ff%02x%02x', i * 5, i * 26)
-      -- Pink/Yellow
-      --italic = true, fg = string.format('#ff%02x%02x', i * 25, (255 - i * 25))
-      -- LightBlue/Yellow
-      --italic = true, fg = string.format('#%02xaf%02x', i * 31, (255 - i * 25))
-      -- Green/Blue
-      --italic = true, fg = string.format('#30%02x%02x', (255 - i * 22), i * 26)
-      -- Purple/Blue
+    -- Purple/Blue
+    vim.api.nvim_set_hl(0, 'logo'..colorLetters[1]..i, {
       italic = true, fg = string.format('#%02x%02xff', (255 - i * 20), i * 20)
     })
+    -- Green/Blue
+    vim.api.nvim_set_hl(0, 'logo'..colorLetters[2]..i, {
+      italic = true, fg = string.format('#30%02x%02x', (255 - i * 22), i * 26)
+    })
+    -- LightBlue/Yellow
+    vim.api.nvim_set_hl(0, 'logo'..colorLetters[3]..i, {
+      italic = true, fg = string.format('#%02xaf%02x', i * 31, (255 - i * 25))
+    })
+    -- Pink/Yellow
+    vim.api.nvim_set_hl(0, 'logo'..colorLetters[4]..i, {
+      italic = true, fg = string.format('#ff%02x%02x', i * 25, (255 - i * 25))
+    })
+    -- Red/Pink
+    vim.api.nvim_set_hl(0, 'logo'..colorLetters[5]..i, {
+      italic = true, fg = string.format('#ff%02x%02x', i * 5, i * 26)
+    })
   end
+  math.randomseed(os.time())
+  randomColor = colorLetters[math.random(#colorLetters)]
+
   local logo = {}
   for i, line in ipairs(logoLines) do
-    table.insert(logo, { hi = "logo"..i, line = line})
+    table.insert(logo, { hi = "logo"..randomColor..i, line = line})
   end
 
   -- Map over the headers, setting a different color for each line.
