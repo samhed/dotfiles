@@ -169,4 +169,5 @@ alias cdc='cd ~/devel/ctc-git'
 # git diff for any diff
 alias diff="git diff --no-index"
 
-source /etc/profile.d/bash_completion.sh
+source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
+bind -x '"\t": fzf_bash_completion'

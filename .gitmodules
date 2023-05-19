@@ -1,0 +1,3 @@
+[submodule "fzf-tab-completion"]
+	path = fzf-tab-completion
+	url = https://github.com/lincheney/fzf-tab-completion.git
