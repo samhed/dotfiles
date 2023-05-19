@@ -1,6 +1,9 @@
 local api = vim.api
 local base = require("notify.render.base")
 
+-- This file is based on nvim-notify:s "default.lua" renderer, for diff:
+-- diff -u ~/.local/share/nvim/lazy/nvim-notify/lua/notify/render/default.lua ~/.config/nvim/lua/custom/notifyrender.lua
+
 return function(bufnr, notif, highlights, config)
   local message = {}
   for _,line in pairs(notif.message) do
