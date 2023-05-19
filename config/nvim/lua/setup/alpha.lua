@@ -95,7 +95,6 @@ return function()
   }
 
   config.layout[2] = coloredHeader()
-    print(config.layout[2])
   config.layout[6] = buttons
   alpha.setup(config)
 end
