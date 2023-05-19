@@ -8,7 +8,6 @@
     ui = true
 [github]
     user = samhed
-    token = 2de64371070e9eb3c49f9defa06a6da05668d4fd
 [credential]
     helper = cache
 [diff]
