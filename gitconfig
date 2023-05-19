@@ -24,3 +24,5 @@
     verbose = true
 [log]
     decorate = auto
+[alias]
+    st = status

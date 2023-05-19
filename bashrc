@@ -145,10 +145,6 @@ git()
 
 		/usr/bin/git show "$githash" "$@"
 		;;
-	st)
-		shift
-		/usr/bin/git status "$@"
-		;;
 	*)
 		/usr/bin/git "$@"
 		;;
