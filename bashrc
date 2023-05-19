@@ -169,24 +169,4 @@ alias cdc='cd ~/devel/ctc-git'
 # git diff for any diff
 alias diff="git diff --no-index"
 
-# User "cendio" is specified in ~/.ssh/config for any lab-* host
-lssh () {
-	HOST="${@: -1}"
-	KEY="$HOME/.ssh/lab_key"
-	if [ ! -e "$KEY" ]; then
-		ssh-keygen -t rsa -N "" -f "$KEY"
-	fi
-	sshpass -p linux99 ssh-copy-id -i "${KEY}.pub" "$HOST"
-	ssh -i "$KEY" $@
-}
-lscp () {
-	HOST=`echo "${@: -1}" | sed 's/.$//'`  # Remove trailing ':'
-	KEY="$HOME/.ssh/lab_key"
-	if [ ! -e "$KEY" ]; then
-		ssh-keygen -t rsa -N "" -f "$KEY"
-	fi
-	sshpass -p linux99 ssh-copy-id -i "${KEY}.pub" "$HOST"
-	scp -i "$KEY" $@
-}
-
 source /etc/profile.d/bash_completion.sh
