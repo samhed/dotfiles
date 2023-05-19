@@ -15,5 +15,5 @@ vim.opt.rtp:append(vim.fn.stdpath("config") .. "/after")
 require("settings")
 require("autocmd")
 require("keymap")
-
 require("lazy").setup("plugins")
+require("filetype")
