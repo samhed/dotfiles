@@ -173,4 +173,9 @@ return {
   { "folke/which-key.nvim",
     config = require("setup.whichkey"),
   },
+
+  -- Google Keep integration
+  { "stevearc/gkeep.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+  }
 }
