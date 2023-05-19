@@ -24,6 +24,8 @@
     verbose = true
 [log]
     decorate = auto
+[fetch]
+    prune = true
 [alias]
     ci = commit
     st = status
