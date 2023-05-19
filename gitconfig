@@ -26,6 +26,8 @@
     decorate = auto
 [fetch]
     prune = true
+[help]
+    autocorrect = 1
 [alias]
     ci = commit
     st = status
