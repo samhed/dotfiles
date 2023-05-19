@@ -44,11 +44,6 @@ return {
     build = "make hexokinase",
   },
 
-  -- Faster startup and file association
-  { "nathom/filetype.nvim",
-    config = true,
-  },
-
   -- CoC for LSP support & Tab completion
   { "neoclide/coc.nvim",
     branch = "release",
