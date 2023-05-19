@@ -25,4 +25,8 @@
 [log]
     decorate = auto
 [alias]
+    ci = commit
     st = status
+    co = checkout
+    oneline = log --pretty=oneline
+    br = branch
