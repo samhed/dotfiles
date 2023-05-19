@@ -49,7 +49,7 @@ return {
     branch = "release",
     build = {":CocInstall coc-json coc-css coc-tsserver coc-eslint coc-html " ..
              "coc-html-css-support coc-pyright coc-clangd coc-lua coc-ltex " ..
-             "coc-snippets coc-nav", ":CocUpdate"},
+             "coc-snippets coc-nav coc-tabnine", ":CocUpdate"},
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
     config = require("setup.coc"),
