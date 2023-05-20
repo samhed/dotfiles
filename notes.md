@@ -12,7 +12,6 @@
  * cronie
  * slack
  * screenruler
- * fzf
 
 ## crontab
 
