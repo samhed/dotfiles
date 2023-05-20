@@ -35,3 +35,16 @@ keyset('v', '<A-j>', ':m .+1<CR>gv=gv', optsDown)
 keyset('v', '<A-Down>', ':m .+1<CR>gv=gv', optsDown)
 keyset('v', '<A-k>', ':m .-2<CR>gv=gv', optsUp)
 keyset('v', '<A-Up>', ':m .-2<CR>gv=gv', optsUp)
+
+------------------------------------------
+-- Lazy
+------------------------------------------
+
+-- <Esc> --> Close Lazy panel
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lazy', callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', '<Esc>', '<cmd>close<CR>',
+                   { buffer = event.buf, silent = true })
+  end,
+})
