@@ -196,5 +196,7 @@ alias diff="git diff --no-index"
 ## Completion
 ## ---------------------
 
-source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
-bind -x '"\t": fzf_bash_completion'
+if command -v fzf >/dev/null 2>&1; then
+	source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
+	bind -x '"\t": fzf_bash_completion'
+fi
