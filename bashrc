@@ -17,6 +17,9 @@ export PAGER=less
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
 
+# append to the history file, don't overwrite
+shopt -s histappend
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
