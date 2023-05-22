@@ -10,6 +10,13 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
 
+## ---------------------
+## Shell settings
+## ---------------------
+
+# Don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
