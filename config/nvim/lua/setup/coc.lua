@@ -41,10 +41,6 @@ return function ()
     end,
   })
 
-  -- <Ctrl+SPACE> --> trigger completion.
-  keyset("i", "<C-space>", "coc#refresh()",
-         { silent = true, expr = true, desc = 'Trigger completion' })
-
   -- <ENTER> --> accept selected completion item or notify coc.nvim to format
   keyset("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..
          [["\<C-g>u\<CR><c-r>=coc#on_enter()\<CR>"]],
