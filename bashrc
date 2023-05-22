@@ -5,7 +5,6 @@ export SVN_EDITOR=nvim
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
-export FREETYPE_PROPERTIES=truetype:interpreter-version=35
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
