@@ -15,14 +15,14 @@ export PAGER=less
 ## ---------------------
 
 # Don't put duplicate lines or lines starting with space in the history
-HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite
 shopt -s histappend
 
 # Increase size of history file
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
