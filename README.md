@@ -6,7 +6,7 @@
 * Node.JS v18
 * GitHub Copilot (optional)
 
-## Bootstrapping
+## Installation
 
 Install required packages:
 ```
