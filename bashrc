@@ -1,5 +1,9 @@
 # .bashrc
 
+## ---------------------
+## Environment variables
+## ---------------------
+
 export PATH=$PATH:/home/samuel/bin/:/home/samuel/.local/bin/
 export SVN_EDITOR=nvim
 export EDITOR=nvim
@@ -43,6 +47,10 @@ fi
 #bind 'set show-all-if-ambiguous on'
 #bind 'TAB:menu-complete'
 #bind '"\e[Z":menu-complete-backwards'
+
+## ---------------------
+## Utility functions
+## ---------------------
 
 # Function to set the title of the terminal
 function set-title() {
@@ -152,7 +160,9 @@ git()
 	return $?
 }
 
-# User specific aliases and functions
+## ---------------------
+## Aliases
+## ---------------------
 
 alias vim="nvim"
 
@@ -167,6 +177,10 @@ alias cdc='cd ~/devel/ctc-git'
 
 # git diff for any diff
 alias diff="git diff --no-index"
+
+## ---------------------
+## Completion
+## ---------------------
 
 source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
