@@ -1,5 +1,11 @@
 # Samuels dotfiles
 
+## Requirements
+
+* Neovim v0.9
+* Node.JS v18
+* GitHub Copilot (optional)
+
 ## Bootstrapping
 
 Install required packages:
