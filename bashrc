@@ -14,8 +14,8 @@ export PAGER=less
 ## Shell settings
 ## ---------------------
 
-# Don't put duplicate lines or lines starting with space in the history
-export HISTCONTROL=ignoreboth
+# Don't put duplicate lines in the history
+export HISTCONTROL=ignoredups
 
 # append to the history file, don't overwrite
 shopt -s histappend
