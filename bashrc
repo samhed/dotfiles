@@ -27,6 +27,9 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_C
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 
+# Add timestamps to history
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
