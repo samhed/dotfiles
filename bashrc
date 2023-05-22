@@ -15,7 +15,7 @@ export PAGER=less
 ## ---------------------
 
 # Don't put duplicate lines in the history
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups:erasedups
 
 # append to the history file, don't overwrite
 shopt -s histappend
