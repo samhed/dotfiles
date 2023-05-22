@@ -198,5 +198,6 @@ alias diff="git diff --no-index"
 
 if command -v fzf >/dev/null 2>&1; then
 	source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
+	export FZF_DEFAULT_OPTS='--bind="tab:down,btab:up"'
 	bind -x '"\t": fzf_bash_completion'
 fi
