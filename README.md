@@ -21,7 +21,16 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCode
 unzip SourceCodePro.zip -d ~/.local/share/fonts/
 ```
 
-Setup symlinks to deploy dotfiles:
+Clone this repo and update submodules:
+```
+mkdir ~/devel/dotfiles
+git clone https://github.com/samhed/dotfiles.git ~/devel/dotfiles
+cd ~/devel/dotfiles
+git submodules update --init --recursive
+```
+
+Setup symlinks to deploy dotfiles (note that this will remove
+any pre-existing configuration covered by these dotfiles):
 ```
 rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc
 
