@@ -59,20 +59,6 @@ return function ()
   keyset("n", "<F8>", "<Plug>(coc-diagnostic-next)",
          { silent = true, desc = 'Go to next diagnostic'})
 
-  -- <F9> --> Toggle diagnostics
-  function _G.toggleColumns()
-    vim.fn.CocAction('diagnosticToggleBuffer')
-    if vim.o.number then
-      vim.o.number = false
-      vim.o.foldcolumn = "1"
-    else
-      vim.o.number = true
-      vim.o.foldcolumn = "0"
-    end
-  end
-  keyset("n", "<F9>", '<CMD>lua _G.toggleColumns()<CR>',
-         { desc = 'Toggle diagnostics, fold & number columns' })
-
   -- <leader>+<d> --> show all diagnostics
   keyset("n", "<leader>d", ":<C-u>CocList diagnostics<cr>",
          { silent = true, nowait = true, desc = 'Show all diagnostics' })

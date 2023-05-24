@@ -73,7 +73,8 @@ return {
       "nvim-treesitter",
       "luukvbaal/statuscol.nvim"
     },
-    config = require("setup.ufo"),
+    keys = require("setup.ufo").keys,
+    config = require("setup.ufo").config,
   },
 
   -- Status column for signs, numbers and fold
