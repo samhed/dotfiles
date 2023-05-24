@@ -26,7 +26,7 @@ Clone this repo and update submodules:
 mkdir ~/devel/dotfiles
 git clone https://github.com/samhed/dotfiles.git ~/devel/dotfiles
 cd ~/devel/dotfiles
-git submodules update --init --recursive
+git submodule update --init --recursive
 ```
 
 Setup symlinks to deploy dotfiles (note that this will remove
