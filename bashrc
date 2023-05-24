@@ -20,9 +20,6 @@ export HISTCONTROL=ignoredups:erasedups
 # append to the history file, don't overwrite
 shopt -s histappend
 
-# Sync history accross multiple terminal sessions
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
-
 # Increase size of history file
 export HISTSIZE=1000
 export HISTFILESIZE=2000
