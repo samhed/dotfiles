@@ -23,5 +23,8 @@ return function()
       enable = true,
       disable = { "css", "alpha" }
     },
+    playground = {
+      enable = true,
+    },
   })
 end

@@ -109,6 +109,13 @@ return {
     config = require("setup.treesitter"),
   },
 
+  -- Treesitter and highlight group information
+  { "nvim-treesitter/playground",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    cmd = "TSPlaygroundToggle",
+    module = false, -- only load on command
+  },
+
   -- fuzzy finder for telescope
   { "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
