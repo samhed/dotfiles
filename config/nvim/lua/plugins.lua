@@ -10,6 +10,7 @@ return {
       check_ts = true,
       map_cr = false,
     },
+    event = "VeryLazy",
   },
 
   -- Javascript syntax
@@ -18,7 +19,9 @@ return {
   },
 
   -- Makes word motions work for CamelCase and snake_case
-  { "chaoren/vim-wordmotion" },
+  { "chaoren/vim-wordmotion",
+    event = "VeryLazy",
+  },
 
   -- fugitive is a git plugin
   { "tpope/vim-fugitive",
@@ -27,22 +30,30 @@ return {
   },
 
   -- rhubarb for connecting to github
-  { "tpope/vim-rhubarb" },
+  { "tpope/vim-rhubarb",
+    event = "VeryLazy",
+  },
 
   -- comment out stuff with g-c-c
   { "numToStr/Comment.nvim",
     config = true,
+    event = "VeryLazy",
   },
 
   -- Auto detect indentation
-  { "tpope/vim-sleuth" },
+  { "tpope/vim-sleuth",
+    event = "VeryLazy",
+  },
 
   -- UNIX shell commands from vim
-  { "tpope/vim-eunuch" },
+  { "tpope/vim-eunuch",
+    event = "VeryLazy",
+  },
 
   -- Colorify color-hex codes
   { "rrethy/vim-hexokinase",
     build = "make hexokinase",
+    event = "VeryLazy",
   },
 
   -- CoC for LSP support & Tab completion
@@ -54,6 +65,7 @@ return {
     -- Coc will use pycodestyle as a py-linter, exceptions or other config
     -- for pycodestyle is found here: ~/.config/pycodestyle
     config = require("setup.coc"),
+    event = "VeryLazy",
   },
 
   -- gitsigns shows git diffs in the sign column
@@ -65,6 +77,7 @@ return {
   -- c+o = choose ours, c+t = theirs, ]+x = previous conflict, [+x = next
   { "akinsho/git-conflict.nvim",
     opts = { disable_diagnostics = true },
+    event = "VeryLazy",
   },
 
   -- Better folding
@@ -108,6 +121,7 @@ return {
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = require("setup.treesitter"),
+    event = "VeryLazy",
   },
 
   -- Treesitter and highlight group information
@@ -170,6 +184,7 @@ return {
       use_treesitter = true,
       show_first_indent_level = false,
     },
+    event = "VeryLazy",
   },
 
   -- New GUI for messages, cmdline and popupmenu
@@ -184,6 +199,7 @@ return {
   -- keybinding helper
   { "folke/which-key.nvim",
     config = require("setup.whichkey"),
+    event = "VeryLazy",
   },
 
   -- Google Keep integration
