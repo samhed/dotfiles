@@ -16,6 +16,7 @@ require("settings")
 require("autocmd")
 require("keymap")
 require("lazy").setup("plugins", {
+  change_detection = { enabled = false },
   ui = {
     border = "rounded",
   },
