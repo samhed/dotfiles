@@ -19,6 +19,8 @@ Configure fish shell (and set theme):
 chsh -s /usr/bin/fish
 curl -L https://get.oh-my.fish | fish
 omf install bobthefish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install rkbk60/onedark-fish
 ```
 
 Install font SourceCodePro:
