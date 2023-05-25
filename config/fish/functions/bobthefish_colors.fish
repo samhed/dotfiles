@@ -1,7 +1,7 @@
 function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
 
   # Onedark colors
-  set -l black       9c9e15
+  set -l black       0c0e15
   set -l white       d0d0ef
   set -l bg0         1a212e
   set -l bg1         21283b
@@ -38,23 +38,23 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   set -x color_path_nowrite             $bg3 $orange
   set -x color_path_nowrite_basename    $bg3 $orange --bold
 
-  set -x color_repo                     $green $fg
+  set -x color_repo                     $green $black
   set -x color_repo_work_tree           $bg3 $fg --bold
   set -x color_repo_dirty               $dark_red $white
-  set -x color_repo_staged              $orange $fg
+  set -x color_repo_staged              $orange $black
 
-  set -x color_vi_mode_default          $grey $fg --bold
-  set -x color_vi_mode_insert           $green $fg --bold
-  set -x color_vi_mode_visual           $orange $fg --bold
+  set -x color_vi_mode_default          $grey $black --bold
+  set -x color_vi_mode_insert           $green $black --bold
+  set -x color_vi_mode_visual           $orange $black --bold
 
   set -x color_vagrant                  $cyan $fg --bold
-  set -x color_k8s                      $red $fg --bold
+  set -x color_k8s                      $red $white --bold
   set -x color_aws_vault                $blue $fg --bold
   set -x color_aws_vault_expired        $blue $red --bold
   set -x color_username                 $bg3 $green --bold
   set -x color_hostname                 $bg3 $blue
-  set -x color_rvm                      $red $fg --bold
-  set -x color_nvm                      $green $fg --bold
+  set -x color_rvm                      $red $white --bold
+  set -x color_nvm                      $green $black --bold
   set -x color_virtualfish              $blue $fg --bold
   set -x color_virtualgo                $blue $fg --bold
   set -x color_desk                     $blue $fg --bold
