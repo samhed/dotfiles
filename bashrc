@@ -199,10 +199,4 @@ alias diff="git diff --no-index"
 ## Completion
 ## ---------------------
 
-if command -v fzf >/dev/null 2>&1; then
-	source /usr/share/fzf/shell/key-bindings.bash
-	source /home/samuel/devel/dotfiles/fzf-tab-completion/bash/fzf-bash-completion.sh
-	export FZF_CTRL_R_OPTS='--height="10" --reverse --tiebreak=index'
-	export FZF_DEFAULT_OPTS='--bind="tab:down,btab:up"'
-	bind -x '"\t": fzf_bash_completion'
-fi
+source /etc/profile.d/bash_completion.sh

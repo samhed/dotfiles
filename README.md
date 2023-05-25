@@ -10,7 +10,7 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep fzf pip
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip
 pip install pynvim
 ```
 
@@ -21,12 +21,10 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCode
 unzip SourceCodePro.zip -d ~/.local/share/fonts/
 ```
 
-Clone this repo and update submodules:
+Clone this repo:
 ```
 mkdir ~/devel/dotfiles
 git clone https://github.com/samhed/dotfiles.git ~/devel/dotfiles
-cd ~/devel/dotfiles
-git submodule update --init --recursive
 ```
 
 Setup symlinks to deploy dotfiles (note that this will remove
