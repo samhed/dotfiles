@@ -10,8 +10,15 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip util-linux-user fish
 pip install pynvim
+```
+
+Configure fish shell (and set theme):
+```
+chsh -s /usr/bin/fish
+curl -L https://get.oh-my.fish | fish
+omf install bobthefish
 ```
 
 Install font SourceCodePro:
@@ -33,6 +40,7 @@ any pre-existing configuration covered by these dotfiles):
 rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc ~/.bash_profile ~/.bash_logout
 
 ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
+ln -sf ~/devel/dotfiles/config/fish ~/.config/fish
 ln -sf ~/devel/dotfiles/config/pycodestyle ~/.config/pycodestyle
 ln -sf ~/devel/dotfiles/gitignore ~/.gitignore
 ln -sf ~/devel/dotfiles/gitconfig ~/.gitconfig
