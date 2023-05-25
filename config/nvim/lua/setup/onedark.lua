@@ -9,4 +9,8 @@ return function()
 
   -- Remove background from FoldColumn
   vim.api.nvim_set_hl(0, 'FoldColumn', { link='VertSplit' })
+
+  -- Remove background from Lazy window
+  vim.api.nvim_set_hl(0, 'LazyNormal', { link='Normal' })
+  vim.api.nvim_set_hl(0, 'FloatBorder', { link='NonText' })
 end
