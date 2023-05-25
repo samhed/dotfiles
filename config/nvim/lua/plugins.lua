@@ -92,6 +92,7 @@ return {
   -- Nice colorscheme (no proper highlights for Python)
   { "navarasu/onedark.nvim",
     config = require("setup.onedark"),
+    priority = 1000,
   },
 
   -- Greeting screen
