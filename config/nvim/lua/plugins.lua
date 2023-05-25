@@ -22,7 +22,8 @@ return {
 
   -- fugitive is a git plugin
   { "tpope/vim-fugitive",
-    config = require("setup.fugitive"),
+    config = require("setup.fugitive").config,
+    keys = require("setup.fugitive").keys,
   },
 
   -- rhubarb for connecting to github
