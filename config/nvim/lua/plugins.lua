@@ -120,6 +120,7 @@ return {
   -- fuzzy finder for telescope
   { "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
+    keys = require("setup.telescope").keys,
   },
 
   -- file / code finder
@@ -136,6 +137,7 @@ return {
         build = "mkdir -p ~/.local/share/nvim/databases",
       },
     },
+    keys = require("setup.telescope").keys,
   },
 
   -- Filebrowsing
