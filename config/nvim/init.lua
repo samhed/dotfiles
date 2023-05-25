@@ -17,6 +17,18 @@ require("autocmd")
 require("keymap")
 require("lazy").setup("plugins", {
   change_detection = { enabled = false },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
   ui = {
     border = "rounded",
   },
