@@ -33,8 +33,8 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   set -x color_initial_segment_su       $bg1 $green --bold
   set -x color_initial_segment_jobs     $bg1 $blue --bold
 
-  set -x color_path                     $bg3 $fg
-  set -x color_path_basename            $bg3 $fg --bold
+  set -x color_path                     $bg2 $fg
+  set -x color_path_basename            $bg2 $fg --bold
   set -x color_path_nowrite             $bg3 $orange
   set -x color_path_nowrite_basename    $bg3 $orange --bold
 
@@ -51,8 +51,8 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   set -x color_k8s                      $red $white --bold
   set -x color_aws_vault                $blue $fg --bold
   set -x color_aws_vault_expired        $blue $red --bold
-  set -x color_username                 $bg3 $green --bold
-  set -x color_hostname                 $bg3 $blue
+  set -x color_username                 $bg0 $green --bold
+  set -x color_hostname                 $bg0 $blue
   set -x color_rvm                      $red $white --bold
   set -x color_nvm                      $green $black --bold
   set -x color_virtualfish              $blue $fg --bold
