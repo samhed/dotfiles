@@ -1,4 +1,14 @@
 ####################
+# Environment vars
+####################
+
+set -x PATH $PATH /home/samuel/bin/ /home/samuel/.local/bin/
+set -x SVN_EDITOR nvim
+set -x EDITOR nvim
+set -x VISUAL nvim
+set -x PAGER less
+
+####################
 # Theme
 ####################
 
