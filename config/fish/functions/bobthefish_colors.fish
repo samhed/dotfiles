@@ -45,7 +45,7 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
 
   set -x color_vi_mode_default          $grey $black --bold
   set -x color_vi_mode_insert           $green $black --bold
-  set -x color_vi_mode_visual           $orange $black --bold
+  set -x color_vi_mode_visual           $purple $black --bold
 
   set -x color_username                 $bg0 $green --bold
   set -x color_hostname                 $bg0 $blue
