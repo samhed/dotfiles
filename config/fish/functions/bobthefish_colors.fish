@@ -47,16 +47,6 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   set -x color_vi_mode_insert           $green $black --bold
   set -x color_vi_mode_visual           $orange $black --bold
 
-  set -x color_vagrant                  $cyan $fg --bold
-  set -x color_k8s                      $red $white --bold
-  set -x color_aws_vault                $blue $fg --bold
-  set -x color_aws_vault_expired        $blue $red --bold
   set -x color_username                 $bg0 $green --bold
   set -x color_hostname                 $bg0 $blue
-  set -x color_rvm                      $red $white --bold
-  set -x color_nvm                      $green $black --bold
-  set -x color_virtualfish              $blue $fg --bold
-  set -x color_virtualgo                $blue $fg --bold
-  set -x color_desk                     $blue $fg --bold
-  set -x color_nix                      $blue $fg --bold
 end

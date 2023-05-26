@@ -13,6 +13,12 @@ set -x PAGER less
 ####################
 
 set -g theme_display_git_default_branch yes
+set -g theme_display_k8s_context no
+set -g theme_display_vagrant no
+set -g theme_display_virtualenv no
+set -g theme_display_nix no
+set -g theme_display_ruby no
+set -g theme_display_node no
 set -g theme_date_format "+%H:%M:%S"
 set -g theme_date_timezone Europe/Stockholm
 set -g theme_powerline_fonts no
