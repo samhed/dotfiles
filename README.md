@@ -10,13 +10,12 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip util-linux-user fish
+sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip fish
 pip install pynvim
 ```
 
-Configure fish shell (and set theme):
+Configure fish theme:
 ```
-chsh -s /usr/bin/fish
 curl -L https://get.oh-my.fish | fish
 omf install bobthefish
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
