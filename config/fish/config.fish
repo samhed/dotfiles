@@ -32,17 +32,17 @@ set -g default_user no
 function git
     switch $argv[1]
         case "rshow"
-            if count $argv < 2
+            if test (count $argv) -lt 2
                 echo "Usage: git rshow <revision>"
                 return 1
             end
             set -l svnrev $argv[2]
 
             if not string match 'r*' $svnrev
-                set -l svnrev (string join 'r' $svnrev)
+                set svnrev (string join '' 'r' $svnrev)
             end
 
-            set -l githash (git svn find-rev $svnrev)
+            set -l githash (command /usr/bin/git svn find-rev $svnrev)
 
             command /usr/bin/git show $githash $argv[3..-1]
         case "*"
