@@ -3,6 +3,9 @@ local api = vim.api
 return function ()
   vim.g.coc_disable_transparent_cursor = '1' -- prevent transparent cursor
   vim.b.coc_nav = '1'
+  vim.g.coc_filetype_map = {
+    text = 'latex',
+  }
 
   local keyset = vim.keymap.set
 
