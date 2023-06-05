@@ -34,3 +34,5 @@
     co = checkout
     oneline = log --pretty=oneline
     br = branch
+[filter "coc_secrets"]
+    clean = "sed -e 's/\"ltex.languageToolOrg.apiKey\":.*/\"ltex.languageToolOrg.apiKey\": --FILTERED_FROM_GIT!--,/'"
