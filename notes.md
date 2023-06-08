@@ -1,7 +1,6 @@
 ## Other packages:
 
  * google chrome
- * gnome console
  * gnome extensions
    - vertical overview
    - launch new instance
@@ -12,6 +11,7 @@
  * cronie
  * slack
  * screenruler
+ * Black Box
 
 ### Gnome settings
 
@@ -26,6 +26,10 @@
    - Top Bar, Calendar, enable "Week Numbers"
    - Windows, Window Focus, "Focus on hover"
    - Window Titlebars, Titlebar Buttons, disable "Maximize"
+
+### BlackBox
+
+See `BlackBox.gsettings`.
 
 ## crontab
 

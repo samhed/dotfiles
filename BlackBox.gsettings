@@ -1,0 +1,40 @@
+$ flatpak run --command=bash com.raggesilver.BlackBox
+$ gsettings list-recursively com.raggesilver.BlackBox
+
+com.raggesilver.BlackBox command-as-login-shell true
+com.raggesilver.BlackBox cursor-blink-mode uint32 0
+com.raggesilver.BlackBox cursor-shape uint32 2
+com.raggesilver.BlackBox custom-shell-command ''
+com.raggesilver.BlackBox delay-before-showing-floating-controls uint32 100
+com.raggesilver.BlackBox easy-copy-paste false
+com.raggesilver.BlackBox fill-tabs true
+com.raggesilver.BlackBox floating-controls true
+com.raggesilver.BlackBox floating-controls-hover-area uint32 50
+com.raggesilver.BlackBox font 'SauceCodePro Nerd Font Mono 12'
+com.raggesilver.BlackBox headerbar-drag-area true
+com.raggesilver.BlackBox headerbar-draw-line-single-tab false
+com.raggesilver.BlackBox hide-single-tab true
+com.raggesilver.BlackBox opacity uint32 90
+com.raggesilver.BlackBox pixel-scrolling false
+com.raggesilver.BlackBox pretty true
+com.raggesilver.BlackBox remember-window-size false
+com.raggesilver.BlackBox scrollback-lines uint32 1000
+com.raggesilver.BlackBox scrollback-mode uint32 0
+com.raggesilver.BlackBox show-headerbar false
+com.raggesilver.BlackBox show-menu-button true
+com.raggesilver.BlackBox show-scrollbars true
+com.raggesilver.BlackBox stealth-single-tab true
+com.raggesilver.BlackBox style-preference uint32 2
+com.raggesilver.BlackBox terminal-cell-height 1.0
+com.raggesilver.BlackBox terminal-cell-width 1.0
+com.raggesilver.BlackBox terminal-padding (uint32 2, uint32 2, uint32 2, uint32 2)
+com.raggesilver.BlackBox theme-dark 'One Dark'
+com.raggesilver.BlackBox theme-light 'Tomorrow'
+com.raggesilver.BlackBox use-custom-command false
+com.raggesilver.BlackBox use-overlay-scrolling true
+com.raggesilver.BlackBox use-sixel false
+com.raggesilver.BlackBox was-fullscreened false
+com.raggesilver.BlackBox was-maximized false
+com.raggesilver.BlackBox window-height uint32 762
+com.raggesilver.BlackBox window-show-borders false
+com.raggesilver.BlackBox window-width uint32 1197
