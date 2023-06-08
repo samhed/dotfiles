@@ -50,6 +50,19 @@ ln -sf ~/devel/dotfiles/bash_logout ~/.bash_logout
 ln -sf ~/devel/dotfiles/bash_profile ~/.bash_profile
 ```
 
+Bootstrap Copilot in Neovim, it requires a GitHub login:
+```
+:Copilot setup
+```
+
+Bootstrap LanguageTool in Neovim, the API key is not checked in:
+ * Go to https://languagetool.org/editor/settings/access-tokens
+ * Copy the API key
+ * Place it in the configuration for CoC, under "ltex.languageToolOrg.apiKey"
+ ```
+ :CocConfig
+ ```
+
 ## Neovim usage
 
 * Lazy plugin manager `:lazy`, `U`
