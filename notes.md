@@ -13,6 +13,20 @@
  * slack
  * screenruler
 
+### Gnome settings
+
+ * Keybindings
+   - Change Alt+Tab from "Switch applications" to "Switch windows"
+   - Start terminal with Ctrl+Alt+T (flatpak run com.raggesilver.BlackBox)
+ * Multitasking
+   - Workspaces on primary display only
+ * Tweaks
+   - Fonts, Monospace Text, set "Source Code Pro Regular"
+   - Top Bar, Clock, enable "Weekday", "Date", and "Seconds"
+   - Top Bar, Calendar, enable "Week Numbers"
+   - Windows, Window Focus, "Focus on hover"
+   - Window Titlebars, Titlebar Buttons, disable "Maximize"
+
 ## crontab
 
 ```
