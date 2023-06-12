@@ -38,7 +38,7 @@ git clone https://github.com/samhed/dotfiles.git ~/devel/dotfiles
 Setup symlinks to deploy dotfiles (note that this will remove
 any pre-existing configuration covered by these dotfiles):
 ```
-rm -r ~/.config/nvim ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc ~/.bash_profile ~/.bash_logout
+rm -r ~/.config/nvim ~/.config/fish ~/.config/pycodestyle ~/.gitignore ~/.gitconfig ~/.bashrc ~/.bash_profile ~/.bash_logout
 
 ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/devel/dotfiles/config/fish ~/.config/fish
