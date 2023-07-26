@@ -21,6 +21,10 @@
    - Start terminal with Ctrl+Alt+T (flatpak run com.raggesilver.BlackBox)
  * Multitasking
    - Workspaces on primary display only
+ * Nautilus
+   - Performance, Show Thumbnails, set "All locations"
+   - Performance, Search in Subfolders, set "All files"
+   - Performance, Count Number of Files in Folders, set "All folders"
  * Tweaks
    - Fonts, Monospace Text, set "Source Code Pro Regular"
    - Top Bar, Clock, enable "Weekday", "Date", and "Seconds"
