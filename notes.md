@@ -12,6 +12,7 @@
  * slack
  * screenruler
  * Black Box
+ * openssh-askpass
 
 ### Gnome settings
 

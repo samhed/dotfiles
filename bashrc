@@ -9,6 +9,7 @@ export SVN_EDITOR=nvim
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
+export SUDO_ASKPASS=/usr/libexec/openssh/ssh-askpass
 
 ## ---------------------
 ## Shell settings
