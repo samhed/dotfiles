@@ -211,4 +211,9 @@ return {
   { "github/copilot.vim",
     config = require("setup.copilot"),
   },
+
+  -- Smooth scrolling
+  { "declancm/cinnamon.nvim",
+    config = true,
+  },
 }
