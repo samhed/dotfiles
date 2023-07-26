@@ -14,6 +14,12 @@
  * Black Box
  * openssh-askpass
 
+### Disable swap
+To disable swap permanently, remove the package which generates its configuration.
+```
+sudo dnf remove zram-generator-defaults
+```
+
 ### Gnome settings
 
  * Keybindings
