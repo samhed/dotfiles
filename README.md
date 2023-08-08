@@ -4,7 +4,6 @@
 
 * Neovim v0.9
 * Node.JS v18
-* GitHub Copilot (optional)
 
 ## Installation
 
@@ -49,6 +48,8 @@ ln -sf ~/devel/dotfiles/bashrc ~/.bashrc
 ln -sf ~/devel/dotfiles/bash_logout ~/.bash_logout
 ln -sf ~/devel/dotfiles/bash_profile ~/.bash_profile
 ```
+
+### Optional steps ###
 
 Bootstrap Copilot in Neovim, it requires a GitHub login:
 ```
