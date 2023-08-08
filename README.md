@@ -57,9 +57,9 @@ Bootstrap Copilot in Neovim, it requires a GitHub login:
 ```
 
 Bootstrap LanguageTool in Neovim, the API key is not checked in:
- * Go to https://languagetool.org/editor/settings/access-tokens
- * Copy the API key
- * Place it in the configuration for CoC, under "ltex.languageToolOrg.apiKey"
+ 1. Go to https://languagetool.org/editor/settings/access-tokens
+ 2. Copy the API key
+ 3. Place it in the configuration for CoC, under "ltex.languageToolOrg.apiKey":
  ```
  :CocConfig
  ```
