@@ -2,6 +2,7 @@
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "⚠",
   "diagnostic.hintSign": "‼",
+  "inlayHint.display": false,
   "python.linting.pylintEnabled": true,
   "python.linting.pycodestyleEnabled": true,
   "clangd.path": "~/.local/share/nvim/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
