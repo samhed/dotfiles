@@ -48,5 +48,5 @@ See `BlackBox.gsettings`.
 $ crontab -l
 15 3 * * * /home/samuel/bin/gettlserver
 20 3 * * * /home/samuel/bin/gettlclient
-3 * * * * /usr/bin/rsync -r -u --delete /local/home/samuel/* /home/samuel/backup/
+3 * * * * /usr/bin/rsync --archive --update --delete /local/home/samuel/* /home/samuel/backup/
 ```
