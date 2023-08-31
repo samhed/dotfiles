@@ -88,6 +88,8 @@ return function()
       dashboard.button("SPC f r", "  Recent files"),
       dashboard.button("SPC g", "󰈬  Live grep"),
       dashboard.button("CTRL + g", "  Show git overview", "<C-g>"),
+      dashboard.button("T", "󱘎  Update Treesitter", ":TSUpdate<CR>"),
+      dashboard.button("C", "  Update Language servers", ":CocUpdate<CR>"),
       dashboard.button("L", "  Plugin manager", ":Lazy<CR>"),
       dashboard.button("q", "󰅚  Quit NVIM" , ":qa<CR>"),
     },
