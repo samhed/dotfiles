@@ -8,6 +8,7 @@
   "clangd.path": "~/.local/share/nvim/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
   "Lua.diagnostics.globals": ["vim"],
   "outline.autoPreview": true,
+  "outline.sortBy": "position",
   "ltex.languageToolHttpServerUri": "https://api.languagetoolplus.com",
   "ltex.languageToolOrg.username": "samuel.mannehed@cendio.se",
   "ltex.languageToolOrg.apiKey": --FILTERED_FROM_GIT!--,
