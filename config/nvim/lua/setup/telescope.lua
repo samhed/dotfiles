@@ -55,9 +55,12 @@ function telescope.config()
     },
     extensions = {
       file_browser = {
+        path = "%:p:h",
         auto_depth = true,
         hidden = true,
         hijack_netrw = true,
+        select_buffer = true,
+        prompt_path = true,
       },
       fzf = {
         fuzzy = true,                   -- false will only do exact matching
