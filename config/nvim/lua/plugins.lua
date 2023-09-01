@@ -214,6 +214,6 @@ return {
 
   -- Smooth scrolling
   { "declancm/cinnamon.nvim",
-    config = true,
+    config = require("setup.cinnamon"),
   },
 }
