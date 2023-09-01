@@ -71,8 +71,10 @@ return function ()
     local winid = api.nvim_eval('coc#window#find("cocViewId", "OUTLINE")')
     if winid == -1 then
       vim.fn.CocActionAsync('showOutline', 1)
+      vim.o.cursorline = false
     else
       vim.fn.CocActionAsync('hideOutline', 1)
+      vim.o.cursorline = true
     end
   end
   keyset("n", "<leader>o", "<CMD>lua _G.toggleOutline()<CR>",
