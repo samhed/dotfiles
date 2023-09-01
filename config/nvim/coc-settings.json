@@ -9,6 +9,8 @@
   "Lua.diagnostics.globals": ["vim"],
   "outline.autoPreview": true,
   "outline.sortBy": "position",
+  "outline.previewBorderRounded": true,
+  "outline.previewWinblend": 20,
   "ltex.languageToolHttpServerUri": "https://api.languagetoolplus.com",
   "ltex.languageToolOrg.username": "samuel.mannehed@cendio.se",
   "ltex.languageToolOrg.apiKey": --FILTERED_FROM_GIT!--,
