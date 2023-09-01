@@ -4,5 +4,6 @@ return function()
     scroll_limit = 500,
     max_length = 70,
     extra_keymaps = true,
+    hide_cursor = true,
   })
 end
