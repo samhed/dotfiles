@@ -1,5 +1,8 @@
 return function()
   require("ibl").setup({
+    indent = {
+      highlight = { "Ignore" },
+    },
     scope = {
       show_start = false,
       show_end = false,
