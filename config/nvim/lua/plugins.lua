@@ -180,10 +180,8 @@ return {
 
   -- Highlight indentations
   { "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      use_treesitter = true,
-      show_first_indent_level = false,
-    },
+    main = "ibl",
+    config = require("setup.ibl"),
     event = "VeryLazy",
   },
 
