@@ -14,10 +14,15 @@
  * Black Box
  * openssh-askpass
 
-### Disable swap
-To disable swap permanently, remove the package which generates its configuration.
+### Better out of memory handling
+Replace systemd-oomd with earlyoom
 ```
-sudo dnf remove zram-generator-defaults
+sudo systemctl disable systemd-oomd
+sudo systemctl stop systemd-oomd
+
+sudo dnf install
+sudo systemctl enable earlyoom
+sudo systemctl start earlyoom
 ```
 
 ### Gnome settings
