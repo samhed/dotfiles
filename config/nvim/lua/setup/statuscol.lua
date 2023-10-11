@@ -1,7 +1,7 @@
 return function()
   local builtin = require("statuscol.builtin")
   require("statuscol").setup({
-    reculright = true,
+    relculright = true, -- fix number alignment for "set relativenumber"
     segments = {
       -- Keep the signcolumn, but with maxwidth 0 to hide the signs
       -- but still allow the line numbers to be colored accordingly.
