@@ -13,6 +13,7 @@
 [diff]
     algorithm = patience
     colorMoved = true
+    noprefix = true
 [interactive]
     diffFilter = /usr/share/git-core/contrib/diff-highlight
 [pager]
