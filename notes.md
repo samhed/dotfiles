@@ -1,18 +1,18 @@
 ## Other packages:
 
  * google chrome
+ * epiphany
+ * microsoft edge
  * gnome extensions
    - vertical overview
    - launch new instance
  * gnome tweaks
- * color picker
- * epiphany
- * microsoft edge
+ * Black Box
  * cronie
  * slack
- * screenruler
- * Black Box
  * openssh-askpass
+ * color picker
+ * screenruler
 
 ### Better out of memory handling
 Replace systemd-oomd with earlyoom
