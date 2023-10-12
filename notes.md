@@ -43,7 +43,7 @@ sudo systemctl start earlyoom
    - Windows, Window Focus, "Focus on hover"
    - Window Titlebars, Titlebar Buttons, disable "Maximize"
 
-### BlackBox
+### Black Box terminal emulator
 
 See `BlackBox.gsettings`.
 
