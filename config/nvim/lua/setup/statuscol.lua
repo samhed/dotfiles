@@ -44,7 +44,7 @@ return function()
       {
         -- Git-colored bar
         sign = {
-          name = { ".*" },
+          namespace = { "gitsigns" },
           maxwidth = 1,
           colwidth = 1,
           fillchar = "│",
