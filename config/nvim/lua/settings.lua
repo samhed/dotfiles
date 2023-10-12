@@ -49,7 +49,7 @@ vim.o.foldnestmax = 1 -- same number as foldcolumn to hide numbers
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, can be decreased
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
+vim.o.fillchars = [[vert:┃,eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 
 ------------------------------------------
 -- Search
