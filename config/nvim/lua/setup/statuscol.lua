@@ -1,5 +1,23 @@
 return function()
   local builtin = require("statuscol.builtin")
+
+  -- Exclude certain filetypes from having line numbers and a statuscol
+  local exclude_filetypes = { "fugitive", "alpha", "git" }
+  local function is_excluded_buffer(args)
+    if vim.api.nvim_buf_is_valid(args.buf) then
+      for _, exclude_ft in ipairs(exclude_filetypes) do
+        if string.find(
+            vim.api.nvim_get_option_value("filetype", { buf = args.buf}),
+            exclude_ft) then
+          -- Make statuscol take up no space
+          vim.api.nvim_set_option_value("numberwidth", 1, { buf = args.buf})
+          return false
+        end
+      end
+    end
+    return true
+  end
+
   require("statuscol").setup({
     relculright = true, -- fix number alignment for "set relativenumber"
     segments = {
@@ -20,6 +38,8 @@ return function()
         -- Lnum
         text = { builtin.lnumfunc },
         click = "v:lua.ScLa",
+        condition = { is_excluded_buffer },
+        auto = true,
       },
       {
         -- Git-colored bar
@@ -31,6 +51,8 @@ return function()
           fillcharhl = 'VertSplit'
         },
         click = "v:lua.ScSa",
+        condition = { is_excluded_buffer },
+        auto = true,
       },
       {
         -- Fold arrow
