@@ -12,9 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.rtp:append(vim.fn.stdpath("config") .. "/after")
 
+-- Settings, autocmd and keymaps are always nice,
+-- load these even if lazy is not installed
 require("settings")
 require("autocmd")
 require("keymap")
+
+-- Abort if we can't load lazy
+local ok, _ = pcall(require, "lazy") if not ok then return end
+
 require("lazy").setup("plugins", {
   change_detection = { enabled = false },
   performance = {
