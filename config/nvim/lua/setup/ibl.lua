@@ -17,6 +17,7 @@ return function()
     scope = {
       show_start = false,
       show_end = false,
+      highlight = { "VertSplit" },
     },
   })
 end
