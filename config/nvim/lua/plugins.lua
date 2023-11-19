@@ -124,6 +124,12 @@ return {
     event = "VeryLazy",
   },
 
+  -- Vim movements for treesitter objects
+  { "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
+  },
+
   -- Treesitter and highlight group information
   { "nvim-treesitter/playground",
     dependencies = "nvim-treesitter/nvim-treesitter",
