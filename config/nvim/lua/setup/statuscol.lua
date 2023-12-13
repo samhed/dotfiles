@@ -48,7 +48,7 @@ return function()
           maxwidth = 1,
           colwidth = 1,
           fillchar = "│",
-          fillcharhl = 'VertSplit'
+          fillcharhl = 'WinSeparator'
         },
         click = "v:lua.ScSa",
         condition = { is_excluded_buffer },
