@@ -1,5 +1,5 @@
 return function()
-  -- require("custom.breadcrumbs")
+  require("custom.breadcrumbs")
   require("lualine").setup({
     sections = {
       lualine_a = {'mode'},
@@ -18,17 +18,27 @@ return function()
       lualine_z = {'location'}
     },
     tabline = {},
-    winbar = {},
-    -- winbar buggy with fugitive
-    -- (see https://github.com/nvim-lualine/lualine.nvim/issues/948)
-    -- winbar = {
-    --   lualine_a = {},
-    --   lualine_b = {},
-    --   lualine_c = {},
-    --   lualine_x = {'filetype'},
-    --   lualine_y = {'filename'},
-    --   lualine_z = {Breadcrumbs}
-    -- },
-    inactive_winbar = {},
+    winbar = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {
+        { 'filetype', icon_only = true, separator = ''},
+        { 'filename', symbols = { unnamed = ''}},
+      },
+      lualine_z = {Breadcrumbs},
+    },
+    inactive_winbar = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {
+        { 'filetype', icon_only = true, separator = '', colored = false },
+        { 'filename', symbols = { unnamed = ''}},
+      },
+    },
   })
 end
