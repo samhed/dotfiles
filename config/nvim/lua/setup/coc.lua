@@ -272,4 +272,19 @@ return function ()
     pattern = "CocStatusChange",
     callback = function() StatusNotify() end,
   })
+
+  -- Workaround for https://github.com/neoclide/coc-html/issues/57 --
+  api.nvim_create_augroup("CocNavToggle", { clear = true })
+  api.nvim_create_autocmd("BufEnter", {
+    group = "CocNavToggle",
+    pattern = "*.html",
+    command = "call CocActionAsync('deactivateExtension', 'coc-nav')",
+    desc = "Turn off coc-nav for html"
+  })
+  api.nvim_create_autocmd("BufLeave", {
+    group = "CocNavToggle",
+    pattern = "*.html",
+    command = "call CocActionAsync('activeExtension', 'coc-nav')",
+    desc = "Turn on coc-nav for other files"
+  })
 end
