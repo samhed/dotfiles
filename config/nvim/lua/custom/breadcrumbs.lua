@@ -27,17 +27,19 @@ local symbols = {
 function Breadcrumbs()
   local items = vim.b.coc_nav
   local t = {''}
-  for k,v in ipairs(items) do
-    setmetatable(v, { __index = function(table, key)
-      return ''
-    end})
-    t[#t+1] = '%#' .. (symbols[k][1] or 'Normal') .. '#' ..
-              (symbols[k][2] or '') ..
-              '%#' .. (symbols[k][3] or 'Normal') .. '#' ..
-              (v.name or '')
-    if next(items,k) ~= nil then
-      t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' ..
-                (symbols[k][5] or '')
+  if items then
+    for k,v in ipairs(items) do
+      setmetatable(v, { __index = function(table, key)
+        return ''
+      end})
+      t[#t+1] = '%#' .. (symbols[k][1] or 'Normal') .. '#' ..
+                (symbols[k][2] or '') ..
+                '%#' .. (symbols[k][3] or 'Normal') .. '#' ..
+                (v.name or '')
+      if next(items,k) ~= nil then
+        t[#t+1] = '%#' .. (symbols[k][4] or 'Normal') .. '#' ..
+                  (symbols[k][5] or '')
+      end
     end
   end
   return table.concat(t)
