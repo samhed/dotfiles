@@ -24,6 +24,7 @@ vim.o.synmaxcol = 240 -- Max column for syntax highlight
 vim.o.termguicolors = true
 vim.o.visualbell = true -- visual bell instead of sounds
 vim.o.number = true
+vim.o.relativenumber = true -- Show relative line numbers
 vim.o.scrolloff = 5 -- Show 5 screen lines above and below cursor
 vim.o.wrap = false -- Don't wrap lines
 
