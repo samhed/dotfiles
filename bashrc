@@ -195,6 +195,10 @@ git()
 
 alias vim="nvim"
 
+alias lf="less --follow-name +F"
+
+alias px="ps aux | grep"
+
 alias vecka='date +%V'
 alias diskspace="du -S | sort -n -r |more"
 
