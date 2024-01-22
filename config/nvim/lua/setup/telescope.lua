@@ -93,6 +93,7 @@ local function recent_files() require('telescope.builtin').oldfiles({})  end
 local function help_tags()    require('telescope.builtin').help_tags({}) end
 local function live_grep()    require('telescope.builtin').live_grep({}) end
 local function registers()    require('telescope.builtin').registers({}) end
+local function keymaps()      require('telescope.builtin').keymaps({})   end
 local function buffers()      require('telescope.builtin').buffers({})   end
 
 telescope.keys = {
@@ -104,6 +105,8 @@ telescope.keys = {
   { '<leader>g', live_grep, desc = 'Live grep' },
   -- <leader>+<v> --> list registers (delete history)
   { '<leader>v', registers, desc = 'List registers' },
+  -- <leader>+<k> --> list registers (keybinds)
+  { '<leader>k', keymaps, desc = 'List keybinds' },
   -- <F5> --> list buffers
   { '<F5>', buffers, desc = 'List buffers' },
 }
