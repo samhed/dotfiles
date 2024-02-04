@@ -12,9 +12,11 @@ local function toggleColumns()
   pcall(vim.fn.CocAction, 'diagnosticToggleBuffer')
   if vim.o.number then
     vim.o.number = false
+    vim.o.relativenumber = false
     vim.o.foldcolumn = "1"
   else
     vim.o.number = true
+    vim.o.relativenumber = true
     vim.o.foldcolumn = "0"
   end
 end
