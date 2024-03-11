@@ -89,12 +89,13 @@ local function project_files()
   end
 end
 
-local function recent_files() require('telescope.builtin').oldfiles({})  end
-local function help_tags()    require('telescope.builtin').help_tags({}) end
-local function live_grep()    require('telescope.builtin').live_grep({}) end
-local function registers()    require('telescope.builtin').registers({}) end
-local function keymaps()      require('telescope.builtin').keymaps({})   end
-local function buffers()      require('telescope.builtin').buffers({})   end
+local function recent_files() require('telescope.builtin').oldfiles({})    end
+local function help_tags()    require('telescope.builtin').help_tags({})   end
+local function live_grep()    require('telescope.builtin').live_grep({})   end
+local function registers()    require('telescope.builtin').registers({})   end
+local function keymaps()      require('telescope.builtin').keymaps({})     end
+local function buffers()      require('telescope.builtin').buffers({})     end
+local function grep_string()  require('telescope.builtin').grep_string({}) end
 
 telescope.keys = {
   -- <leader>+<f>+[f/r/h] --> find files/recent/buffers/help/browse
@@ -109,6 +110,8 @@ telescope.keys = {
   { '<leader>k', keymaps, desc = 'List keybinds' },
   -- <F5> --> list buffers
   { '<F5>', buffers, desc = 'List buffers' },
+  -- <Ctrl>+<f> --> search word under cursor
+  { '<C-f>', grep_string, desc = 'Search word under cursor' },
 }
 telescope.fb_keys = {
   -- <leader>+<f>+<b> --> browse files
