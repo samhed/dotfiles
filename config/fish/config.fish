@@ -29,6 +29,20 @@ set -g default_user no
 # Utility functions
 ####################
 
+function svn
+    switch $argv[1]
+        case "diff"
+            command /usr/bin/svn diff $argv[2..-1] | colordiff | perl /home/samuel/bin/diff-highlight | less -FR
+        case "log"
+            command /usr/bin/svn log $argv[2..-1] | less -F
+        case "blame"
+            command /usr/bin/svn blame $argv[2..-1] | less -F
+        case "*"
+            command /usr/bin/svn $argv[1..-1]
+    end
+    return $status
+end
+
 function git
     switch $argv[1]
         case "rshow"
