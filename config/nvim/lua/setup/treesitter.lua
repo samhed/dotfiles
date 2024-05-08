@@ -4,7 +4,7 @@ return function()
       "c", "cpp", "python",
       "css", "html", "javascript", "json",
       "bash", "make", "markdown", "markdown_inline", "rst",
-      "git_rebase", "gitattributes", "gitcommit", "gitignore",
+      "git_rebase", "gitattributes", "gitignore", -- "gitcommit",
       "comment", "diff", "regex", "lua", "vim",
     },
     sync_install = false,
