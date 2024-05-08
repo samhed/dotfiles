@@ -212,8 +212,13 @@ return {
   },
 
   -- GitHub Copilot
-  { "github/copilot.vim",
-    config = require("setup.copilot"),
+  -- { "github/copilot.vim",
+  --   config = require("setup.copilot"),
+  -- },
+
+  -- Codeium
+  { "Exafunction/codeium.vim",
+    config = require("setup.codeium"),
   },
 
   -- Smooth scrolling
