@@ -4,7 +4,7 @@ return function()
       "c", "cpp", "python",
       "css", "html", "javascript", "json",
       "bash", "make", "markdown", "markdown_inline", "rst",
-      "git_rebase", "gitattributes", "gitignore", -- "gitcommit",
+      "git_rebase", "gitattributes", "gitignore",
       "comment", "diff", "regex", "lua", "vim",
     },
     sync_install = false,
@@ -17,7 +17,7 @@ return function()
       -- your editor, and you may see some duplicate highlights. Instead of
       -- true it can also be a list of languages
       additional_vim_regex_highlighting = false,
-      disable = { "alpha" }
+      disable = { "alpha", "gitcommit" }
     },
     indent = {
       enable = true,
