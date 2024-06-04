@@ -10,7 +10,7 @@ return function()
             vim.api.nvim_get_option_value("filetype", { buf = args.buf}),
             exclude_ft) then
           -- Make statuscol take up no space
-          vim.api.nvim_set_option_value("numberwidth", 1, { buf = args.buf})
+          vim.api.nvim_set_option_value("numberwidth", 1, { win = args.win})
           return false
         end
       end
