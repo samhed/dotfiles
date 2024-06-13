@@ -217,6 +217,7 @@ return {
   -- },
 
   -- Codeium
+  -- note that Exafunction/codeium.nvim depends on nvim-cmp
   { "Exafunction/codeium.vim",
     config = require("setup.codeium"),
   },
