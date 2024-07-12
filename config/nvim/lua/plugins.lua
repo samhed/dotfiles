@@ -220,7 +220,7 @@ return {
   -- note that Exafunction/codeium.nvim depends on nvim-cmp
   { "Exafunction/codeium.vim",
     config = require("setup.codeium"),
-    tag = "1.8.37",
+    tag = "1.8.80",
   },
 
   -- Smooth scrolling
