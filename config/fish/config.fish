@@ -87,6 +87,9 @@ alias cdc='cd ~/devel/ctc-git'
 # git diff for any diff
 alias diff="git diff --no-index"
 
+# copy terminfo to machines without kitty installed
+alias ssh="kitty +kitten ssh"
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
