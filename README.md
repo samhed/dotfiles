@@ -41,6 +41,7 @@ rm -r \
   ~/.config/nvim \
   ~/.config/fish \
   ~/.config/pycodestyle \
+  ~/.config/kitty/kitty.conf \
   ~/.gitignore \
   ~/.gitconfig \
   ~/.bashrc \
@@ -50,6 +51,7 @@ rm -r \
 ln -sf ~/devel/dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/devel/dotfiles/config/fish ~/.config/fish
 ln -sf ~/devel/dotfiles/config/pycodestyle ~/.config/pycodestyle
+ln -sf ~/devel/dotfiles/config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/devel/dotfiles/gitignore ~/.gitignore
 ln -sf ~/devel/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/devel/dotfiles/bashrc ~/.bashrc
