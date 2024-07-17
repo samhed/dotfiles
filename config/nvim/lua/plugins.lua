@@ -210,11 +210,6 @@ return {
     event = "VeryLazy",
   },
 
-  -- Google Keep integration
-  { "stevearc/gkeep.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
-
   -- GitHub Copilot
   -- { "github/copilot.vim",
   --   config = require("setup.copilot"),
