@@ -29,6 +29,7 @@ sudo systemctl start earlyoom
 
  * Keybindings
    - Change Alt+Tab from "Switch applications" to "Switch windows"
+   - Resize window with Super+R
    - Start terminal with Ctrl+Alt+T (kitty)
  * Nautilus
    - Performance, Show Thumbnails, set "All locations"
