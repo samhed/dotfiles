@@ -6,6 +6,11 @@ function toggleterm.config()
     insert_mappings = true, -- open mapping applies in insert mode
     terminal_mappings = true, -- open mapping applies in the opened terminals
     direction = 'float',
+    highlights = {
+      FloatBorder = {
+        guifg = '#34bfd0', -- match Telescope border
+      },
+    },
     float_opts = {
       border = 'curved',
       width = function()
