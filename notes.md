@@ -7,7 +7,7 @@
    - vertical overview
    - launch new instance
  * gnome tweaks
- * Black Box
+ * Kitty
  * cronie
  * slack
  * openssh-askpass
@@ -29,7 +29,7 @@ sudo systemctl start earlyoom
 
  * Keybindings
    - Change Alt+Tab from "Switch applications" to "Switch windows"
-   - Start terminal with Ctrl+Alt+T (flatpak run com.raggesilver.BlackBox)
+   - Start terminal with Ctrl+Alt+T (kitty)
  * Nautilus
    - Performance, Show Thumbnails, set "All locations"
    - Performance, Search in Subfolders, set "All files"
@@ -42,6 +42,8 @@ sudo systemctl start earlyoom
    - Window Titlebars, Titlebar Buttons, disable "Maximize"
 
 ### Black Box terminal emulator
+
+(Replaced by Kitty)
 
 See `BlackBox.gsettings`.
 
