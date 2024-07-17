@@ -202,6 +202,10 @@ return {
 
   -- keybinding helper
   { "folke/which-key.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
+    },
     config = require("setup.whichkey"),
     event = "VeryLazy",
   },
