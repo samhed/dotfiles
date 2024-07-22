@@ -9,6 +9,8 @@ vim.o.writebackup = false -- files, see CoC issue #649
 vim.o.undofile = true
 vim.g.netrw_browsex_viewer = 'xdg-open' -- open urls (start /w http://)
 vim.g.mapleader = " " -- Change leader key to SPACE
+vim.o.title = true -- Set terminal title
+vim.o.titlelen = 20 -- Terminal title length in %
 
 ------------------------------------------
 -- Memory, CPU
