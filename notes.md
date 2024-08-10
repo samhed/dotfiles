@@ -5,6 +5,7 @@
  * microsoft edge
  * gnome extensions
    - Launch new instance
+   - Rounded Window Corners Reborn
  * gnome tweaks
  * Kitty
  * cronie
