@@ -4,8 +4,7 @@
  * epiphany
  * microsoft edge
  * gnome extensions
-   - vertical overview
-   - launch new instance
+   - Launch new instance
  * gnome tweaks
  * Kitty
  * cronie
