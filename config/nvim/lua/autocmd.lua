@@ -4,6 +4,8 @@ local api = vim.api
 -- General auto commands
 ------------------------------------------
 
+table.unpack = table.unpack or unpack -- 5.1 compatibility
+
 -- Return to last edit positon when opening files
 api.nvim_create_autocmd({'BufRead', 'BufReadPost'}, {
   callback = function()
