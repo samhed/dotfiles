@@ -33,16 +33,8 @@ return function ()
          tab_opts)
 
   -- <Tab> --> in Normal-mode, show hover
-  -- <Tab> --> in fugitive buffers expands chunks
   keyset("n", "<TAB>", ":call CocActionAsync('doHover')<CR>",
          { silent = true, desc = 'Hover info' })
-  api.nvim_create_autocmd("User", {
-    pattern = { "FugitiveObject", "FugitiveIndex" },
-    callback = function()
-      keyset("n", "<TAB>", "<Plug>fugitive:=",
-             { buffer = true, desc = "Expand chunk" })
-    end,
-  })
 
   -- <ENTER> --> accept selected completion item or notify coc.nvim to format
   keyset("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() :]] ..

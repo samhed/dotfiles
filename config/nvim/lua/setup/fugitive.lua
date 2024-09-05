@@ -8,6 +8,15 @@ function fugitive.config()
     pattern = 'fugitive://*',
     command = 'set bufhidden=delete',
   })
+  -- <Tab> --> in fugitive buffers expands chunks
+  -- Note that this should override "doHover" from CoC
+  api.nvim_create_autocmd("User", {
+    pattern = { "FugitiveObject", "FugitiveIndex" },
+    callback = function()
+      vim.keymap.set("n", "<TAB>", "<Plug>fugitive:=",
+                     { buffer = true, desc = "Expand chunk" })
+    end,
+  })
 end
 
 -- Show notifications for git stuff
