@@ -17,6 +17,22 @@ function fugitive.config()
                      { buffer = true, desc = "Expand chunk" })
     end,
   })
+  -- <,> --> in fugitive log jumps to next commit
+  api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
+    pattern = "/tmp/nvim.*",
+    callback = function()
+      vim.keymap.set("n", ",", "<Plug>fugitive:]]",
+                     { buffer = true, desc = "Jump to next commit in log" })
+    end,
+  })
+  -- <m> --> in fugitive log jumps to previous commit
+  api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
+    pattern = "/tmp/nvim.*",
+    callback = function()
+      vim.keymap.set("n", "m", "<Plug>fugitive:[[",
+                     { buffer = true, desc = "Jump to previous commit in log" })
+    end,
+  })
 end
 
 -- Show notifications for git stuff
