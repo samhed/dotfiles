@@ -1,5 +1,6 @@
 return function()
   vim.g.codeium_disable_bindings = 1
+  vim.g.codeium_filetypes = { gitcommit = true }
 
   -- <Ctrl+SPACE> --> Accept the Codeium suggestion
   vim.keymap.set('i', '<C-space>', function () return vim.fn['codeium#Accept']() end,
