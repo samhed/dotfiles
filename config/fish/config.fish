@@ -26,6 +26,12 @@ set -g theme_nerd_fonts yes
 set -g default_user no
 
 ####################
+# Bindings
+####################
+
+bind \cx\ce edit_command_buffer
+
+####################
 # Utility functions
 ####################
 
