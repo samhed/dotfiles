@@ -1,0 +1,10 @@
+[Unit]
+Description="Run backup.service every hour"
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=1h
+Unit=backup.service
+
+[Install]
+WantedBy=timers.target

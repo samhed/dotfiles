@@ -61,6 +61,19 @@ ln -sf ~/devel/dotfiles/bash_profile ~/.bash_profile
 
 ### Optional steps ###
 
+Set up backup timer of `/local/home/samuel/`:
+```
+ln -sf ~/devel/dotfiles/config/systemd/user/backup.service ~/.config/systemd/user/backup.service
+ln -sf ~/devel/dotfiles/config/systemd/user/backup.timer ~/.config/systemd/user/backup.timer
+ln -sf ~/devel/dotfiles/config/systemd/user/backup.sh ~/.config/systemd/user/backup.sh
+$ systemctl --user daemon-reload
+
+$ systemctl --user start backup.timer
+$ systemctl --user enable --now backup.timer
+
+$ systemctl --user status backup.timer
+```
+
 Bootstrap Copilot in Neovim, it requires a GitHub login:
 ```
 :Copilot setup

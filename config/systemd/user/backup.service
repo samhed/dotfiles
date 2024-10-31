@@ -1,0 +1,11 @@
+[Unit]
+Description="Backup for /local/home/samuel"
+After=network.target
+Requires=backup.timer
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /home/samuel/.config/systemd/user/backup.sh
+
+[Install]
+WantedBy=default.target

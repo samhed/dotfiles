@@ -8,7 +8,6 @@
    - Rounded Window Corners Reborn
  * gnome tweaks
  * Kitty
- * cronie
  * slack
  * openssh-askpass
  * color picker
@@ -47,10 +46,3 @@ sudo systemctl start earlyoom
 (Replaced by Kitty)
 
 See `BlackBox.gsettings`.
-
-## crontab
-
-```
-$ crontab -l
-3 * * * * /usr/bin/rsync --archive --update --delete /local/home/samuel/* /home/samuel/backup/
-```
