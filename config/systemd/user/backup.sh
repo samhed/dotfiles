@@ -1,3 +1,24 @@
 #!/bin/bash
 set -e
-/usr/bin/rsync --archive --update --delete /local/home/samuel/* /home/samuel/backup/
+/usr/bin/rsync \
+    --archive \
+    --update \
+    --delete \
+    --exclude=ctc/buildarea \
+    --exclude=ctc/*.zip \
+    --exclude=ctc/*-bundle \
+    --exclude=ctc/*-debug \
+    --exclude=ctc-git/buildarea \
+    --exclude=ctc-git/*.zip \
+    --exclude=ctc-git/*-bundle \
+    --exclude=ctc-git/*-debug \
+    --exclude=tigervnc/build/output_* \
+    --exclude=cenbuild/repo/result \
+    --exclude=cenbuild/repo/rpmbuild \
+    --exclude=cenbuild/repo/cache \
+    --exclude=cenbuild/repo/staging \
+    --exclude=svn/cenbuild/repo/result \
+    --exclude=svn/cenbuild/repo/rpmbuild \
+    --exclude=svn/cenbuild/repo/cache \
+    --exclude=svn/cenbuild/repo/staging \
+    /local/home/samuel/* /home/samuel/backup/
