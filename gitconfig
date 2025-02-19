@@ -38,5 +38,3 @@
     br = branch
 [filter "coc_secrets"]
     clean = "sed -e 's/\"ltex.languageToolOrg.apiKey\":.*/\"ltex.languageToolOrg.apiKey\": --FILTERED_FROM_GIT!--,/'"
-[gc]
-    bigPackThreshold = 500m
