@@ -1,5 +1,18 @@
 #!/bin/bash
 set -e
+if [ $USER != 'samuel' ]; then
+    echo "This script must be run as user 'samuel'"
+    exit 1
+fi
+
+if [ $HOSTNAME != 'samuel.lkpg.cendio.se' ]; then
+    echo "This script must be run on host 'samuel.lkpg.cendio.se'"
+    exit 1
+fi
+
+if [ ! -d /home/samuel/backup ]; then
+    mkdir -p /home/samuel/backup
+fi
 /usr/bin/rsync \
     --archive \
     --update \
