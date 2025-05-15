@@ -24,7 +24,7 @@ fisher install rkbk60/onedark-fish
 Install font SourceCodePro:
 
 ```
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/SourceCodePro.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SourceCodePro.zip
 unzip SourceCodePro.zip -d ~/.local/share/fonts/
 ```
 
