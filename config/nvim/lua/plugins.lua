@@ -119,9 +119,9 @@ return {
 
   -- Better syntax highlighting possibilities
   { "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
     config = require("setup.treesitter"),
-    event = "VeryLazy",
   },
 
   -- Vim movements for treesitter objects
