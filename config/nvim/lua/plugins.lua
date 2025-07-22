@@ -119,6 +119,7 @@ return {
 
   -- Better syntax highlighting possibilities
   { "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     lazy = false,
     build = ":TSUpdate",
     config = require("setup.treesitter"),
