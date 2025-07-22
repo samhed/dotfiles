@@ -192,6 +192,11 @@ return {
     event = "VeryLazy",
   },
 
+  -- Cheetah syntax highlights
+  { "wting/cheetah.vim",
+    event = "VeryLazy",
+  },
+
   -- New GUI for messages, cmdline and popupmenu
   { "folke/noice.nvim",
     dependencies = {
