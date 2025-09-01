@@ -65,6 +65,7 @@ return function ()
       vim.fn.CocActionAsync('showOutline', 1)
       vim.o.cursorline = false
     else
+      -- Temporarily hide outline buffer, permanently close with ESC
       vim.fn.CocActionAsync('hideOutline', 1)
       vim.o.cursorline = true
     end
