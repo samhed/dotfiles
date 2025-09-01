@@ -2,21 +2,23 @@ return function()
   vim.g.codeium_disable_bindings = 1
   vim.g.codeium_filetypes = { gitcommit = true }
 
-  -- <Ctrl+SPACE> --> Accept the Codeium suggestion
+  -- Windsurf was formerly known as Codeium
+
+  -- <Ctrl+SPACE> --> Accept the Windsurf suggestion
   vim.keymap.set('i', '<C-space>', function () return vim.fn['codeium#Accept']() end,
                  { silent = true, expr = true,
-                   desc = 'Accept Codeium suggestion' })
+                   desc = 'Accept Windsurf suggestion' })
 
-  -- <Ctrl+Down> and <Ctrl+Up> --> Cycle through Codeium suggestions
+  -- <Ctrl+Down> and <Ctrl+Up> --> Cycle through Windsurf suggestions
   vim.keymap.set('i', '<c-Down>', function() return vim.fn['codeium#CycleCompletions'](1) end,
                  { silent = true, expr = true,
-                   desc = 'Next Codeium suggestion' })
+                   desc = 'Next Windsurf suggestion' })
   vim.keymap.set('i', '<c-Up>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
                  { silent = true, expr = true,
-                   desc = 'Previous Codeium suggestion' })
+                   desc = 'Previous Windsurf suggestion' })
 
-  -- <Ctrl+x> --> Clear Codeium suggestion
+  -- <Ctrl+x> --> Clear Windsurf suggestion
   vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end,
                  { silent = true, expr = true,
-                   desc = 'Clear Codeium suggestion' })
+                   desc = 'Clear Windsurf suggestion' })
 end

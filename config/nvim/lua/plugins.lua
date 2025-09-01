@@ -221,10 +221,10 @@ return {
   --   config = require("setup.copilot"),
   -- },
 
-  -- Codeium
-  -- note that Exafunction/codeium.nvim depends on nvim-cmp
-  { "Exafunction/codeium.vim",
-    config = require("setup.codeium"),
+  -- Windsurf
+  -- note that Exafunction/windsurf.nvim depends on nvim-cmp
+  { "Exafunction/windsurf.vim",
+    config = require("setup.windsurf"),
   },
 
   -- Smooth scrolling
