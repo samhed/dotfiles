@@ -94,6 +94,7 @@ alias cdc='cd ~/devel/ctc-git'
 alias diff="git diff --no-index"
 
 if test -z "$SSH_TTY"
+    and test "$TERM" = "xterm-kitty"
     # copy terminfo to machines without kitty installed
     alias ssh="kitty +kitten ssh"
 end
