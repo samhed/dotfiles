@@ -270,13 +270,13 @@ return function ()
   api.nvim_create_augroup("CocNavToggle", { clear = true })
   api.nvim_create_autocmd("BufEnter", {
     group = "CocNavToggle",
-    pattern = "*.html",
+    pattern = { "*.html", "*.svg" },
     command = "call CocActionAsync('deactivateExtension', 'coc-nav')",
     desc = "Turn off coc-nav for html"
   })
   api.nvim_create_autocmd("BufLeave", {
     group = "CocNavToggle",
-    pattern = "*.html",
+    pattern = { "*.html", "*.svg" },
     command = "call CocActionAsync('activeExtension', 'coc-nav')",
     desc = "Turn on coc-nav for other files"
   })
