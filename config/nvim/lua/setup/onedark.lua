@@ -1,6 +1,12 @@
 return function()
   require("onedark").setup({
     style = "deep",
+
+    -- Workaround https://github.com/navarasu/onedark.nvim/issues/251
+    highlights = {
+      ["@nospell"] = { fg = "none" },
+      ["@spell"] = { fg = "none" },
+    },
   })
   vim.cmd([[colorscheme onedark]])
 
