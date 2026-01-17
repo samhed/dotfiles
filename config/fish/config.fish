@@ -30,6 +30,7 @@ set -g default_user no
 ####################
 
 bind \cx\ce edit_command_buffer
+bind alt-backspace backward-kill-word
 
 ####################
 # Utility functions
