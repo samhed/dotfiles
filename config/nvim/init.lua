@@ -35,8 +35,6 @@ require("lazy").setup("plugins", {
       },
     },
   },
-  ui = {
-    border = "rounded",
-  },
+  ui = { border = "rounded" },
 })
 require("filetype")
