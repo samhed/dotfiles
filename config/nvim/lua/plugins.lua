@@ -77,7 +77,7 @@ return {
   -- c+o = choose ours, c+t = theirs, ]+x = previous conflict, [+x = next
   { "akinsho/git-conflict.nvim",
     opts = { disable_diagnostics = true },
-    event = "VeryLazy",
+    event = "BufReadPre",
   },
 
   -- Better folding
