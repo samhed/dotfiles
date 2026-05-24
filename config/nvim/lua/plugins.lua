@@ -75,7 +75,7 @@ return {
 
   -- Merge conflicts
   -- c+o = choose ours, c+t = theirs, ]+x = previous conflict, [+x = next
-  { "akinsho/git-conflict.nvim",
+  { "niekdomi/conflict.nvim",
     opts = { disable_diagnostics = true },
     event = "BufReadPre",
   },
