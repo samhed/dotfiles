@@ -2,3 +2,4 @@ pyrightconfig.json
 noVNC.code-workspace
 compile_commands.json
 config/fish/fish_variables
+**/.claude/settings.local.json
