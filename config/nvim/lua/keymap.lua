@@ -40,6 +40,12 @@ keyset('v', '<A-Down>', ':m .+1<CR>gv=gv', optsDown)
 keyset('v', '<A-k>', ':m .-2<CR>gv=gv', optsUp)
 keyset('v', '<A-Up>', ':m .-2<CR>gv=gv', optsUp)
 
+-- <C+Down> or <C+Up> --> next/previous method start
+keyset('n', '<C-j>', ']m', { desc = 'Next method' })
+keyset('n', '<C-k>', '[m', { desc = 'Previous method' })
+keyset('n', '<C-Down>', ']m', { desc = 'Next method' })
+keyset('n', '<C-Up>', '[m', { desc = 'Previous method' })
+
 ------------------------------------------
 -- Sudo
 ------------------------------------------
