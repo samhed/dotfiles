@@ -9,7 +9,7 @@
 
 Install required packages:
 ```
-sudo dnf install neovim nodejs gcc-c++ golang libsqlite3x-devel ripgrep pip fish git
+sudo dnf install neovim nodejs gcc-c++ clangd golang libsqlite3x-devel ripgrep pip fish git
 pip install pynvim
 ```
 
