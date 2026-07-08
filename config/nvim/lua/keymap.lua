@@ -11,6 +11,10 @@ keyset('v', '<C-c>', '"+y', { desc = 'Copy selected text'} )
 keyset('n', '<leader>c', ':nohl<CR>',
        { silent = true, desc = 'Clear search highlight' })
 
+-- <Alt+w> --> delete trailing whitespace in file
+keyset('n', '<A-w>', ':%s/\\s\\+$//e<CR>',
+       { silent = true, desc = 'Delete whitespace in file' })
+
 -- <Ctrl+s> --> save file (works in INSERT as well)
 local save_opts = { silent = true, desc = 'Save'}
 keyset('n', '<C-s>', ':update<CR>', save_opts)
